@@ -4,867 +4,335 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>요금표 - 원블럭</title>
-    <meta name="description" content="원블럭 서비스 요금 안내. 소상공인 맞춤 합리적인 가격으로 마케팅을 시작하세요.">
+    <meta name="description" content="원블럭 마케팅 서비스 요금표. 투명하고 합리적인 가격으로 소상공인을 지원합니다.">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
-    
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/common.css">
-    
-    <style>
-        /* ===== Pricing Page Styles ===== */
-        
-        /* Hero */
-        .pricing-hero {
-            padding: 140px 24px 60px;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--white) 100%);
-            text-align: center;
-        }
-        
-        /* Toggle */
-        .pricing-toggle {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 48px;
-            flex-wrap: wrap;
-        }
-        
-        .toggle-btn {
-            padding: 12px 24px;
-            border-radius: var(--radius-full);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 2px solid var(--gray-200);
-            background: var(--white);
-            color: var(--gray-700);
-            transition: all var(--transition-fast);
-        }
-        
-        .toggle-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-        
-        .toggle-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: var(--white);
-        }
-        
-        /* Pricing Section */
-        .pricing-section {
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        .pricing-section.active {
-            display: block;
-        }
-        
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .pricing-card {
-            background: var(--white);
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-xl);
-            padding: 32px;
-            text-align: center;
-            transition: all var(--transition-normal);
-            position: relative;
-        }
-        
-        .pricing-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .pricing-card.popular {
-            border-color: var(--primary);
-            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
-        }
-        
-        .pricing-card.popular::before {
-            content: '인기';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: var(--white);
-            padding: 4px 16px;
-            border-radius: var(--radius-full);
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-        
-        .pricing-card.accent {
-            border-color: var(--accent);
-        }
-        
-        .pricing-card.accent.popular::before {
-            background: var(--accent);
-        }
-        
-        .plan-icon {
-            font-size: 2.5rem;
-            margin-bottom: 16px;
-        }
-        
-        .plan-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--gray-900);
-        }
-        
-        .plan-desc {
-            font-size: 0.9rem;
-            color: var(--gray-500);
-            margin-bottom: 24px;
-        }
-        
-        .plan-price {
-            margin-bottom: 24px;
-        }
-        
-        .price-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-        
-        .pricing-card.accent .price-value {
-            color: var(--accent);
-        }
-        
-        .price-unit {
-            font-size: 1rem;
-            color: var(--gray-500);
-        }
-        
-        .price-note {
-            font-size: 0.85rem;
-            color: var(--gray-400);
-            margin-top: 4px;
-        }
-        
-        .plan-features {
-            text-align: left;
-            margin-bottom: 24px;
-        }
-        
-        .plan-features li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px 0;
-            font-size: 0.95rem;
-            color: var(--gray-700);
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
-        .plan-features li:last-child {
-            border-bottom: none;
-        }
-        
-        .plan-features li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        
-        .pricing-card.accent .plan-features li::before {
-            color: var(--accent);
-        }
-        
-        /* Service Pricing Table */
-        .pricing-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .pricing-table th,
-        .pricing-table td {
-            padding: 16px 20px;
-            text-align: left;
-        }
-        
-        .pricing-table thead {
-            background: var(--primary);
-            color: var(--white);
-        }
-        
-        .pricing-table thead th {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        .pricing-table tbody tr {
-            border-bottom: 1px solid var(--gray-100);
-        }
-        
-        .pricing-table tbody tr:hover {
-            background: var(--gray-50);
-        }
-        
-        .pricing-table .service-name {
-            font-weight: 600;
-            color: var(--gray-900);
-        }
-        
-        .pricing-table .service-price {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .pricing-table .service-note {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }
-        
-        /* Package Section */
-        .package-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: var(--radius-xl);
-            padding: 48px;
-            color: var(--white);
-            text-align: center;
-            max-width: 700px;
-            margin: 48px auto 0;
-        }
-        
-        .package-card h3 {
-            font-size: 1.5rem;
-            color: var(--white);
-            margin-bottom: 8px;
-        }
-        
-        .package-card .badge {
-            background: rgba(255,255,255,0.2);
-            color: var(--white);
-            margin-bottom: 24px;
-        }
-        
-        .package-price {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-        
-        .package-original {
-            font-size: 1.1rem;
-            opacity: 0.7;
-            text-decoration: line-through;
-            margin-bottom: 24px;
-        }
-        
-        .package-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 12px;
-            text-align: left;
-            margin: 24px 0;
-            padding: 24px;
-            background: rgba(255,255,255,0.1);
-            border-radius: var(--radius-md);
-        }
-        
-        .package-features li {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .package-features li::before {
-            content: "✓";
-            font-weight: 700;
-        }
-        
-        /* FAQ */
-        .faq-list {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .faq-item {
-            border-bottom: 1px solid var(--gray-200);
-        }
-        
-        .faq-question {
-            width: 100%;
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            text-align: left;
-        }
-        
-        .faq-question::after {
-            content: "+";
-            font-size: 1.5rem;
-            color: var(--primary);
-            transition: transform var(--transition-fast);
-        }
-        
-        .faq-item.active .faq-question::after {
-            transform: rotate(45deg);
-        }
-        
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height var(--transition-normal);
-        }
-        
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-        }
-        
-        .faq-answer p {
-            padding-bottom: 20px;
-            color: var(--gray-600);
-            line-height: 1.7;
-        }
-        
-        /* CTA */
-        .pricing-cta {
-            background: var(--gray-100);
-            padding: 80px 24px;
-            text-align: center;
-        }
-        
-        .pricing-cta h2 {
-            margin-bottom: 16px;
-        }
-        
-        .pricing-cta p {
-            color: var(--gray-600);
-            margin-bottom: 32px;
-        }
-        
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-table {
-                font-size: 0.9rem;
-            }
-            
-            .pricing-table th,
-            .pricing-table td {
-                padding: 12px;
-            }
-            
-            .package-card {
-                padding: 32px 24px;
-            }
-            
-            .package-price {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/common.css">
 </head>
 <body>
-
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="/" class="nav-logo">ONE<span>BLOCK</span></a>
+            <a href="../" class="nav-logo">
+                <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+            </a>
             
-            <div class="nav-menu">
-                <a href="services/keyword.html" class="nav-link">서비스</a>
-                <a href="pricing/" class="nav-link">요금</a>
-                <a href="ebook/" class="nav-link">전자책</a>
-                <a href="about/" class="nav-link">소개</a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
-            </div>
+            <button class="nav-toggle" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <ul class="nav-menu">
+                <li class="nav-item has-dropdown">
+                    <a href="../services/keyword.html" class="nav-link">서비스</a>
+                    <ul class="nav-dropdown">
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="./" class="nav-link active">요금</a></li>
+                <li class="nav-item"><a href="../ebook/" class="nav-link">무료 전자책</a></li>
+                <li class="nav-item"><a href="../about/" class="nav-link">소개</a></li>
+            </ul>
+            
+            <a href="../contact/" class="nav-cta btn btn-primary">무료 상담</a>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section class="pricing-hero">
+    <section class="page-hero">
         <div class="container">
-            <span class="badge badge-primary mb-3">💰 투명한 가격</span>
-            <h1>합리적인 요금으로<br>마케팅을 시작하세요</h1>
-            <p class="text-muted mt-2">소상공인 맞춤 가격 정책</p>
+            <div class="page-hero-content fade-in-up">
+                <h1>투명한 요금제</h1>
+                <p>숨겨진 비용 없이, 필요한 만큼만 사용하세요</p>
+            </div>
         </div>
     </section>
 
-    <!-- Pricing Toggle -->
-    <section class="section bg-white">
+    <!-- Package Section -->
+    <section class="section">
         <div class="container">
-            <div class="pricing-toggle">
-                <button class="toggle-btn active" data-target="tool">🔧 마케팅 도구</button>
-                <button class="toggle-btn" data-target="management">📍 관리 대행</button>
-                <button class="toggle-btn" data-target="ads">📢 광고 대행</button>
-                <button class="toggle-btn" data-target="package">📦 통합 패키지</button>
-            </div>
-
-            <!-- 마케팅 도구 -->
-            <div id="tool" class="pricing-section active">
-                <h2 class="section-title">마케팅 도구</h2>
-                <p class="section-subtitle">직접 마케팅하시는 사장님을 위한 도구</p>
-                
-                <div class="pricing-grid">
-                    <!-- 키워드 분석 -->
-                    <div class="pricing-card">
-                        <div class="plan-icon">🔍</div>
-                        <div class="plan-name">키워드 분석</div>
-                        <div class="plan-desc">카카오톡 챗봇으로 간편 분석</div>
-                        <div class="plan-price">
-                            <span class="price-value">무료</span>
-                            <div class="price-note">기본 기능</div>
-                        </div>
-                        <ul class="plan-features">
-                            <li>검색량 조회</li>
-                            <li>연관 키워드</li>
-                            <li>자동완성어</li>
-                            <li>일 5회 제한</li>
-                        </ul>
-                        <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-secondary" target="_blank">무료로 시작</a>
-                    </div>
-                    
-                    <!-- 키워드 분석 Pro -->
-                    <div class="pricing-card popular">
-                        <div class="plan-icon">🔍</div>
-                        <div class="plan-name">키워드 분석 Pro</div>
-                        <div class="plan-desc">무제한 + 광고 분석</div>
-                        <div class="plan-price">
-                            <span class="price-value">19,900</span>
-                            <span class="price-unit">원/월</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>무제한 조회</li>
-                            <li>광고 입찰가 분석</li>
-                            <li>경쟁강도 분석</li>
-                            <li>검색량 비교</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                    
-                    <!-- 부정클릭 모니터링 -->
-                    <div class="pricing-card">
-                        <div class="plan-icon">🛡️</div>
-                        <div class="plan-name">부정클릭 모니터링</div>
-                        <div class="plan-desc">경쟁사 클릭 감지 + 환불 증거</div>
-                        <div class="plan-price">
-                            <span class="price-value">29,900</span>
-                            <span class="price-unit">원/월</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>실시간 IP 추적</li>
-                            <li>기기 정보 수집</li>
-                            <li>카카오톡 알림</li>
-                            <li>월 1,500클릭</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                </div>
-                
-                <!-- 부정클릭 상세 요금 -->
-                <div class="mt-5">
-                    <h3 class="text-center mb-4">부정클릭 모니터링 상세 플랜</h3>
-                    <table class="pricing-table">
-                        <thead>
-                            <tr>
-                                <th>플랜</th>
-                                <th>월 광고비 기준</th>
-                                <th>월 이용료</th>
-                                <th>클릭 한도</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="service-name">라이트</td>
-                                <td>~30만원</td>
-                                <td class="service-price">19,900원</td>
-                                <td>500회</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">베이직</td>
-                                <td>30~100만원</td>
-                                <td class="service-price">29,900원</td>
-                                <td>1,500회</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">스탠다드</td>
-                                <td>100~300만원</td>
-                                <td class="service-price">49,900원</td>
-                                <td>4,000회</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">프리미엄</td>
-                                <td>300만원~</td>
-                                <td class="service-price">79,900원</td>
-                                <td>무제한</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 관리 대행 -->
-            <div id="management" class="pricing-section">
-                <h2 class="section-title">관리 대행</h2>
-                <p class="section-subtitle">전문가가 직접 관리해드립니다</p>
-                
-                <div class="pricing-grid">
-                    <!-- 블로그 상위노출 -->
-                    <div class="pricing-card accent">
-                        <div class="plan-icon">📝</div>
-                        <div class="plan-name">블로그 상위노출</div>
-                        <div class="plan-desc">검색 1페이지 노출 관리</div>
-                        <div class="plan-price">
-                            <span class="price-value">200,000</span>
-                            <span class="price-unit">원/월~</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>키워드 1개 관리</li>
-                            <li>상위노출 전략 수립</li>
-                            <li>콘텐츠 최적화</li>
-                            <li>순위 모니터링</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-accent" target="_blank">상담 신청</a>
-                    </div>
-                    
-                    <!-- 플레이스 관리 -->
-                    <div class="pricing-card accent popular">
-                        <div class="plan-icon">📍</div>
-                        <div class="plan-name">플레이스 순위 관리</div>
-                        <div class="plan-desc">네이버 플레이스 상위노출</div>
-                        <div class="plan-price">
-                            <span class="price-value">200,000</span>
-                            <span class="price-unit">원/월~</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>순위 상승 전략</li>
-                            <li>트래픽 관리</li>
-                            <li>리뷰 관리 가이드</li>
-                            <li>경쟁사 분석</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-accent" target="_blank">상담 신청</a>
-                    </div>
-                    
-                    <!-- 경쟁사 분석 -->
-                    <div class="pricing-card">
-                        <div class="plan-icon">📊</div>
-                        <div class="plan-name">경쟁사 분석</div>
-                        <div class="plan-desc">경쟁 업체 리뷰/키워드 분석</div>
-                        <div class="plan-price">
-                            <span class="price-value">33,000</span>
-                            <span class="price-unit">원/회</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>경쟁업체 5곳 분석</li>
-                            <li>리뷰 키워드 추출</li>
-                            <li>대표 키워드 비교</li>
-                            <li>리포트 제공</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                </div>
-                
-                <!-- 상세 요금표 -->
-                <div class="mt-5">
-                    <h3 class="text-center mb-4">서비스별 상세 요금</h3>
-                    <table class="pricing-table">
-                        <thead>
-                            <tr>
-                                <th>서비스</th>
-                                <th>가격</th>
-                                <th>비고</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="service-name">블로그 키워드 1개 관리</td>
-                                <td class="service-price">200,000원/월</td>
-                                <td class="service-note">상위노출 유지</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">블로그 키워드 3개 패키지</td>
-                                <td class="service-price">450,000원/월</td>
-                                <td class="service-note">25% 할인</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">블로그 포스팅 대행</td>
-                                <td class="service-price">33,000원/건</td>
-                                <td class="service-note">SEO 최적화 포함</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">플레이스 기본 관리</td>
-                                <td class="service-price">200,000원/월</td>
-                                <td class="service-note">순위 상승 전략</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">플레이스 프리미엄</td>
-                                <td class="service-price">350,000원/월</td>
-                                <td class="service-note">트래픽 + 리뷰 관리</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">플레이스 신규 세팅</td>
-                                <td class="service-price">110,000원</td>
-                                <td class="service-note">1회 (최적화 세팅)</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">경쟁사 분석 (1회)</td>
-                                <td class="service-price">33,000원</td>
-                                <td class="service-note">5개 업체 분석</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">경쟁사 분석 (월간)</td>
-                                <td class="service-price">99,000원/월</td>
-                                <td class="service-note">주 1회 리포트</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 광고 대행 -->
-            <div id="ads" class="pricing-section">
-                <h2 class="section-title">광고 대행</h2>
-                <p class="section-subtitle">네이버 · 구글 · 인스타그램 광고 통합 관리</p>
-                
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <div class="plan-icon">🔰</div>
-                        <div class="plan-name">스타터</div>
-                        <div class="plan-desc">월 광고비 100만원 이하</div>
-                        <div class="plan-price">
-                            <span class="price-value">15%</span>
-                            <span class="price-unit">수수료</span>
-                            <div class="price-note">최소 150,000원</div>
-                        </div>
-                        <ul class="plan-features">
-                            <li>광고 세팅 및 관리</li>
-                            <li>키워드 최적화</li>
-                            <li>주간 리포트</li>
-                            <li>카카오톡 소통</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                    
-                    <div class="pricing-card popular">
-                        <div class="plan-icon">🚀</div>
-                        <div class="plan-name">그로스</div>
-                        <div class="plan-desc">월 광고비 100~300만원</div>
-                        <div class="plan-price">
-                            <span class="price-value">12%</span>
-                            <span class="price-unit">수수료</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>스타터 전체 포함</li>
-                            <li>A/B 테스트</li>
-                            <li>전환 추적 설정</li>
-                            <li>월간 분석 리포트</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                    
-                    <div class="pricing-card">
-                        <div class="plan-icon">👑</div>
-                        <div class="plan-name">프리미엄</div>
-                        <div class="plan-desc">월 광고비 300만원 이상</div>
-                        <div class="plan-price">
-                            <span class="price-value">10%</span>
-                            <span class="price-unit">수수료</span>
-                        </div>
-                        <ul class="plan-features">
-                            <li>그로스 전체 포함</li>
-                            <li>전담 매니저 배정</li>
-                            <li>실시간 모니터링</li>
-                            <li>경쟁사 광고 분석</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                </div>
-                
-                <div class="mt-5">
-                    <table class="pricing-table">
-                        <thead>
-                            <tr>
-                                <th>항목</th>
-                                <th>가격</th>
-                                <th>비고</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="service-name">초기 세팅비</td>
-                                <td class="service-price">55,000원</td>
-                                <td class="service-note">최초 1회</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">플랫폼 추가</td>
-                                <td class="service-price">+33,000원/월</td>
-                                <td class="service-note">플랫폼당</td>
-                            </tr>
-                            <tr>
-                                <td class="service-name">랜딩페이지 제작</td>
-                                <td class="service-price">별도 협의</td>
-                                <td class="service-note">맞춤 제작</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- 통합 패키지 -->
-            <div id="package" class="pricing-section">
+            <div class="section-header fade-in-up">
+                <span class="section-badge">추천</span>
                 <h2 class="section-title">통합 패키지</h2>
-                <p class="section-subtitle">여러 서비스를 한 번에, 더 저렴하게</p>
-                
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <div class="plan-icon">🎯</div>
-                        <div class="plan-name">스타터 패키지</div>
-                        <div class="plan-desc">마케팅 입문자용</div>
-                        <div class="plan-price">
-                            <span class="price-value">199,000</span>
-                            <span class="price-unit">원/월</span>
-                            <div class="price-note">정가 280,000원</div>
-                        </div>
-                        <ul class="plan-features">
-                            <li>키워드 분석 Pro</li>
-                            <li>부정클릭 모니터링 (베이직)</li>
-                            <li>경쟁사 분석 (월 1회)</li>
-                            <li>카카오톡 1:1 상담</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
+                <p class="section-desc">여러 서비스를 한 번에 이용하면 더 저렴합니다</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in-up stagger-1">
+                    <div class="pricing-header">
+                        <h3>스타터</h3>
+                        <p>마케팅을 시작하는 분께</p>
                     </div>
-                    
-                    <div class="pricing-card accent popular">
-                        <div class="plan-icon">🚀</div>
-                        <div class="plan-name">그로스 패키지</div>
-                        <div class="plan-desc">성장하는 사업자용</div>
-                        <div class="plan-price">
-                            <span class="price-value">399,000</span>
-                            <span class="price-unit">원/월</span>
-                            <div class="price-note">정가 550,000원</div>
-                        </div>
-                        <ul class="plan-features">
-                            <li>스타터 전체 포함</li>
-                            <li>플레이스 기본 관리</li>
-                            <li>부정클릭 (스탠다드)</li>
-                            <li>주간 마케팅 리포트</li>
-                            <li>월 1회 전화 컨설팅</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-accent" target="_blank">상담 신청</a>
+                    <div class="pricing-price">
+                        <span class="price-amount">199,000</span>
+                        <span class="price-unit">원/월</span>
                     </div>
-                    
-                    <div class="pricing-card">
-                        <div class="plan-icon">👑</div>
-                        <div class="plan-name">프리미엄 패키지</div>
-                        <div class="plan-desc">올인원 마케팅</div>
-                        <div class="plan-price">
-                            <span class="price-value">699,000</span>
-                            <span class="price-unit">원/월</span>
-                            <div class="price-note">정가 950,000원</div>
-                        </div>
-                        <ul class="plan-features">
-                            <li>그로스 전체 포함</li>
-                            <li>블로그 키워드 1개 관리</li>
-                            <li>플레이스 프리미엄</li>
-                            <li>부정클릭 (프리미엄)</li>
-                            <li>전담 매니저 배정</li>
-                        </ul>
-                        <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">상담 신청</a>
-                    </div>
-                </div>
-                
-                <!-- 특별 패키지 -->
-                <div class="package-card">
-                    <span class="badge">🎁 첫 달 특가</span>
-                    <h3>원블럭 올인원</h3>
-                    <div class="package-price">299,000원</div>
-                    <div class="package-original">정가 400,000원</div>
-                    <ul class="package-features">
-                        <li>키워드 분석 Pro</li>
-                        <li>부정클릭 모니터링</li>
-                        <li>플레이스 기본 관리</li>
-                        <li>경쟁사 분석 리포트</li>
-                        <li>마케팅 전자책</li>
-                        <li>1:1 카카오톡 상담</li>
+                    <ul class="pricing-features">
+                        <li>✅ 키워드 분석 Pro</li>
+                        <li>✅ 부정클릭 베이직 (1,500회)</li>
+                        <li>✅ 경쟁사 분석 월 1회</li>
+                        <li>✅ 카카오톡 상담</li>
+                        <li class="disabled">❌ 플레이스 관리</li>
+                        <li class="disabled">❌ 블로그 관리</li>
                     </ul>
-                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-lg" style="background: white; color: var(--primary);" target="_blank">
-                        첫 달 특가로 시작하기
-                    </a>
+                    <a href="../contact/" class="btn btn-outline btn-block">시작하기</a>
                 </div>
+                
+                <div class="pricing-card popular fade-in-up stagger-2">
+                    <div class="popular-badge">인기</div>
+                    <div class="pricing-header">
+                        <h3>그로스</h3>
+                        <p>성장하는 사업자를 위해</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">399,000</span>
+                        <span class="price-unit">원/월</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✅ 스타터 전체 포함</li>
+                        <li>✅ 플레이스 기본 관리</li>
+                        <li>✅ 부정클릭 스탠다드 (4,000회)</li>
+                        <li>✅ 주간 마케팅 리포트</li>
+                        <li>✅ 월 1회 전화 컨설팅</li>
+                        <li class="disabled">❌ 블로그 관리</li>
+                    </ul>
+                    <a href="../contact/" class="btn btn-primary btn-block">시작하기</a>
+                </div>
+                
+                <div class="pricing-card fade-in-up stagger-3">
+                    <div class="pricing-header">
+                        <h3>프리미엄</h3>
+                        <p>올인원 솔루션</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price-amount">699,000</span>
+                        <span class="price-unit">원/월</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>✅ 그로스 전체 포함</li>
+                        <li>✅ 블로그 키워드 1개 관리</li>
+                        <li>✅ 부정클릭 프리미엄 (무제한)</li>
+                        <li>✅ 전담 매니저 배정</li>
+                        <li>✅ 월 2회 전화 컨설팅</li>
+                        <li>✅ 실시간 카카오톡 대응</li>
+                    </ul>
+                    <a href="../contact/" class="btn btn-outline btn-block">시작하기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Services -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">개별 서비스 요금</h2>
+                <p class="section-desc">필요한 서비스만 선택하세요</p>
+            </div>
+            
+            <!-- 마케팅 도구 -->
+            <div class="pricing-table-wrapper fade-in-up">
+                <h3 class="table-title">🔧 마케팅 도구</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>서비스</th>
+                            <th>플랜</th>
+                            <th>가격</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2"><strong>키워드 분석</strong></td>
+                            <td>무료 체험</td>
+                            <td>0원</td>
+                            <td>일 5회 제한</td>
+                        </tr>
+                        <tr>
+                            <td>Pro</td>
+                            <td>19,900원/월</td>
+                            <td>무제한 + 주간 리포트</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4"><strong>부정클릭 방어</strong></td>
+                            <td>라이트</td>
+                            <td>19,900원/월</td>
+                            <td>500회</td>
+                        </tr>
+                        <tr>
+                            <td>베이직</td>
+                            <td>29,900원/월</td>
+                            <td>1,500회</td>
+                        </tr>
+                        <tr>
+                            <td>스탠다드</td>
+                            <td>49,900원/월</td>
+                            <td>4,000회</td>
+                        </tr>
+                        <tr>
+                            <td>프리미엄</td>
+                            <td>79,900원/월</td>
+                            <td>무제한</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 관리 대행 -->
+            <div class="pricing-table-wrapper fade-in-up">
+                <h3 class="table-title">📋 관리 대행</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>서비스</th>
+                            <th>플랜</th>
+                            <th>가격</th>
+                            <th>내용</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="3"><strong>블로그 상위노출</strong></td>
+                            <td>키워드 1개</td>
+                            <td>200,000원/월</td>
+                            <td>순위 관리 + 유지</td>
+                        </tr>
+                        <tr>
+                            <td>키워드 3개</td>
+                            <td>450,000원/월</td>
+                            <td>패키지 할인</td>
+                        </tr>
+                        <tr>
+                            <td>포스팅 대행</td>
+                            <td>33,000원/건</td>
+                            <td>SEO 최적화 포스팅</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3"><strong>플레이스 관리</strong></td>
+                            <td>신규 세팅</td>
+                            <td>110,000원</td>
+                            <td>1회 (최적화 세팅)</td>
+                        </tr>
+                        <tr>
+                            <td>기본 관리</td>
+                            <td>200,000원/월</td>
+                            <td>순위 관리</td>
+                        </tr>
+                        <tr>
+                            <td>프리미엄</td>
+                            <td>350,000원/월</td>
+                            <td>리뷰 관리 + 트래픽</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2"><strong>경쟁사 분석</strong></td>
+                            <td>1회</td>
+                            <td>33,000원</td>
+                            <td>5개 업체 분석</td>
+                        </tr>
+                        <tr>
+                            <td>월간</td>
+                            <td>99,000원/월</td>
+                            <td>주 1회 분석</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 광고 대행 -->
+            <div class="pricing-table-wrapper fade-in-up">
+                <h3 class="table-title">📢 광고 대행</h3>
+                <table class="pricing-table">
+                    <thead>
+                        <tr>
+                            <th>월 광고비</th>
+                            <th>수수료율</th>
+                            <th>최소 금액</th>
+                            <th>비고</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>~100만원</td>
+                            <td>15%</td>
+                            <td>150,000원</td>
+                            <td>소규모 사업자</td>
+                        </tr>
+                        <tr>
+                            <td>100~300만원</td>
+                            <td>12%</td>
+                            <td>-</td>
+                            <td>성장 사업자</td>
+                        </tr>
+                        <tr>
+                            <td>300만원 이상</td>
+                            <td>10%</td>
+                            <td>-</td>
+                            <td>협의 가능</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">초기 세팅비</td>
+                            <td>55,000원</td>
+                            <td>최초 1회</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section bg-gray">
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">자주 묻는 질문</h2>
-            <p class="section-subtitle">요금 관련 궁금한 점</p>
+            <div class="section-header fade-in-up">
+                <h2 class="section-title">자주 묻는 질문</h2>
+            </div>
             
             <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">결제는 어떻게 하나요?</button>
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>결제는 어떻게 하나요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
                     <div class="faq-answer">
-                        <p>계좌이체로 진행됩니다. 매월 1일에 청구되며, 카카오톡으로 안내드립니다. 추후 카드결제도 지원 예정입니다.</p>
+                        <p>계좌이체로 진행합니다. 상담 후 서비스 확정 시 안내드립니다. 세금계산서 발행 가능합니다.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">중간에 해지하면 환불되나요?</button>
+                
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>환불이 가능한가요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
                     <div class="faq-answer">
-                        <p>월 단위 결제라 중간 해지 시 해당 월은 환불되지 않습니다. 다음 달부터 결제가 중단됩니다. 단, 서비스 불만족 시 첫 달은 전액 환불해드립니다.</p>
+                        <p>서비스 시작 후 7일 이내 전액 환불 가능합니다. 이후에는 이용 일수를 제외한 금액을 환불해드립니다.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">플랜 변경이 가능한가요?</button>
+                
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>계약 기간이 있나요?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
                     <div class="faq-answer">
-                        <p>네, 언제든 가능합니다. 업그레이드는 즉시 적용되고, 다운그레이드는 다음 달부터 적용됩니다.</p>
+                        <p>최소 계약 기간은 1개월입니다. 언제든지 해지 가능하며, 위약금은 없습니다.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question">부정클릭 클릭 한도를 초과하면요?</button>
-                    <div class="faq-answer">
-                        <p>한도 80% 도달 시 미리 알림을 드립니다. 초과 시 플랜 업그레이드를 안내드리며, 업그레이드 전까지 모니터링은 계속됩니다.</p>
+                
+                <div class="faq-item fade-in-up">
+                    <div class="faq-question">
+                        <span>효과가 없으면 어떻게 하나요?</span>
+                        <span class="faq-toggle">+</span>
                     </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">세금계산서 발행되나요?</button>
                     <div class="faq-answer">
-                        <p>네, 사업자등록증 제출 시 세금계산서 발행됩니다. 개인사업자/법인 모두 가능합니다.</p>
+                        <p>매주 리포트로 성과를 공유드립니다. 3개월 후에도 개선이 없다면 전략을 재검토하거나 환불을 진행합니다.</p>
                     </div>
                 </div>
             </div>
@@ -872,66 +340,69 @@
     </section>
 
     <!-- CTA -->
-    <section class="pricing-cta">
+    <section class="section section-gray">
         <div class="container">
-            <h2>어떤 플랜이 맞는지 모르겠다면?</h2>
-            <p>부담 없이 상담받아보세요. 상황에 맞는 플랜을 추천해드립니다.</p>
-            <div class="btn-group btn-group-center">
-                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-primary" target="_blank">
-                    1:1 무료 상담
-                </a>
-                <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-secondary" target="_blank">
-                    카카오 채널 추가
-                </a>
+            <div class="cta-box fade-in-up">
+                <h2>어떤 서비스가 필요한지 모르겠다면?</h2>
+                <p>무료 상담으로 현재 상황을 진단받고 맞춤 제안을 받아보세요</p>
+                <div class="cta-buttons">
+                    <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-kakao btn-lg" target="_blank">
+                        카카오톡 상담하기
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer footer-simple">
-        <div class="footer-logo">ONE<span>BLOCK</span></div>
-        <div class="footer-simple-links">
-            <a href="/">홈</a>
-            <a href="/pricing/">요금</a>
-            <a href="/ebook/">전자책</a>
-            <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
-            <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../" class="footer-logo">
+                        <span class="logo-one">ONE</span><span class="logo-block">BLOCK</span>
+                    </a>
+                    <p>마케팅의 첫 블럭, 원블럭<br>모든 성공은 첫 번째 블럭부터</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>서비스</h4>
+                    <ul>
+                        <li><a href="../services/keyword.html">키워드 분석</a></li>
+                        <li><a href="../services/click-guard.html">부정클릭 방어</a></li>
+                        <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        <li><a href="../services/blog-seo.html">블로그 상위노출</a></li>
+                        <li><a href="../services/place.html">플레이스 관리</a></li>
+                        <li><a href="../services/ads.html">광고 대행</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>정보</h4>
+                    <ul>
+                        <li><a href="./">요금표</a></li>
+                        <li><a href="../ebook/">무료 전자책</a></li>
+                        <li><a href="../about/">회사 소개</a></li>
+                        <li><a href="../contact/">문의하기</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>문의</h4>
+                    <ul>
+                        <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
+                        <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
+                        <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 원블럭. All rights reserved.</p>
+            </div>
         </div>
-        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="assets/js/common.js"></script>
-    <script>
-        // Pricing Toggle
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Remove active from all
-                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.pricing-section').forEach(s => s.classList.remove('active'));
-                
-                // Add active to clicked
-                this.classList.add('active');
-                document.getElementById(this.dataset.target).classList.add('active');
-            });
-        });
-        
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const item = this.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Close all
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                
-                // Open clicked if wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
-
+    <script src="../assets/js/common.js"></script>
 </body>
 </html>
