@@ -86,6 +86,384 @@
 }
 
 /* ===================================
+   경쟁사 분석 페이지 추가 스타일
+   =================================== */
+
+/* 리포트 목업 */
+.report-mockup .mockup-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mockup-title {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.report-section {
+    margin-bottom: 16px;
+}
+
+.report-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.report-chart .chart-bar {
+    height: 24px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+}
+
+.chart-bar span {
+    font-size: 12px;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.report-graph {
+    height: 60px;
+    background: var(--light);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.graph-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+.report-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.report-tags .tag {
+    padding: 4px 12px;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+/* 분석 항목 그리드 */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.analysis-card {
+    padding: 32px 24px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.analysis-card__icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.analysis-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.analysis-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.analysis-card__list li {
+    padding: 8px 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: var(--gray);
+    position: relative;
+}
+
+.analysis-card__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* 리포트 프리뷰 */
+.preview-content {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.preview-tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-tab {
+    flex: 1;
+    padding: 16px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.preview-tab:hover {
+    color: var(--primary);
+}
+
+.preview-tab.active {
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.05);
+    border-bottom: 2px solid var(--primary);
+}
+
+.preview-panels {
+    padding: 24px;
+}
+
+.preview-panel {
+    display: none;
+}
+
+.preview-panel.active {
+    display: block;
+}
+
+/* 프리뷰 테이블 */
+.preview-table {
+    width: 100%;
+}
+
+.table-header,
+.table-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 16px;
+    padding: 12px 16px;
+}
+
+.table-header {
+    background: var(--light);
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 14px;
+}
+
+.table-row {
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.table-row span.highlight {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.table-row span.warning {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* 프리뷰 차트 */
+.preview-chart {
+    text-align: center;
+}
+
+.chart-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.legend-item {
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.legend-item.competitor-a { color: var(--primary); }
+.legend-item.competitor-b { color: #f59e0b; }
+.legend-item.our { color: var(--accent); }
+
+.chart-placeholder {
+    padding: 40px;
+    background: var(--light);
+    border-radius: 12px;
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* 프리뷰 키워드 */
+.keywords-section h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.keyword-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.keyword {
+    padding: 8px 16px;
+    background: var(--light);
+    border-radius: 20px;
+    color: var(--dark);
+}
+
+.keyword.large {
+    font-size: 18px;
+    font-weight: 600;
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary);
+}
+
+.keyword.medium {
+    font-size: 15px;
+}
+
+.keyword.small {
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.keywords-insight {
+    padding: 16px;
+    background: #fef3c7;
+    border-radius: 12px;
+}
+
+.keywords-insight p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--dark);
+}
+
+/* 프리뷰 전략 */
+.preview-strategy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.strategy-item {
+    padding: 20px;
+    background: var(--light);
+    border-radius: 12px;
+    position: relative;
+}
+
+.priority-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.strategy-item.priority-high .priority-badge {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.strategy-item.priority-medium .priority-badge {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.strategy-item.priority-low .priority-badge {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.strategy-item h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.strategy-item p {
+    font-size: 14px;
+    color: var(--gray);
+    margin: 0;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .analysis-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .preview-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .preview-tab {
+        flex: 1 1 50%;
+    }
+    
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .table-header span:nth-child(3),
+    .table-header span:nth-child(4),
+    .table-row span:nth-child(3),
+    .table-row span:nth-child(4) {
+        display: none;
+    }
+}
+
+/* ===================================
    블로그 체험단 페이지 추가 스타일
    =================================== */
 
