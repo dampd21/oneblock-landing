@@ -6,210 +6,25 @@
     <title>원블럭 - 소상공인 마케팅 파트너</title>
     <meta name="description" content="자영업 20년 노하우로 만든 마케팅 솔루션. 키워드 분석, 부정클릭 모니터링, 플레이스 관리까지.">
     
+    <!-- Open Graph -->
+    <meta property="og:title" content="원블럭 - 소상공인 마케팅 파트너">
+    <meta property="og:description" content="자영업 20년 노하우로 만든 마케팅 솔루션">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oneblock.co.kr">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>">
     
-    <!-- Pretendard Font -->
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
     
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/css/common.css">
+    
     <style>
-        :root {
-            --primary: #2563EB;
-            --primary-dark: #1D4ED8;
-            --primary-light: #3B82F6;
-            --accent: #03C75A;
-            --dark: #1E293B;
-            --gray-900: #0F172A;
-            --gray-700: #334155;
-            --gray-500: #64748B;
-            --gray-300: #CBD5E1;
-            --gray-100: #F1F5F9;
-            --white: #FFFFFF;
-        }
+        /* ===== Page Specific Styles ===== */
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--gray-900);
-            background: var(--white);
-        }
-        
-        /* ===== Navigation ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-100);
-            z-index: 1000;
-            padding: 16px 24px;
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--gray-900);
-        }
-        
-        .nav-cta {
-            background: var(--primary);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-        
-        .nav-cta:hover {
-            background: var(--primary-dark);
-        }
-        
-        /* ===== Hero Section ===== */
-        .hero {
-            padding: 140px 24px 80px;
-            background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
-            text-align: center;
-        }
-        
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero-badge {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            line-height: 1.3;
-            margin-bottom: 20px;
-            color: var(--gray-900);
-        }
-        
-        .hero h1 .highlight {
-            color: var(--primary);
-        }
-        
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--gray-700);
-            margin-bottom: 36px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-        }
-        
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-        }
-        
-        .btn-secondary {
-            background: var(--white);
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-        
-        .btn-accent {
-            background: var(--accent);
-            color: var(--white);
-            box-shadow: 0 4px 14px rgba(3, 199, 90, 0.4);
-        }
-        
-        .btn-accent:hover {
-            background: #02A04A;
-            transform: translateY(-2px);
-        }
-        
-        /* ===== Problem Section ===== */
-        .problem {
-            padding: 80px 24px;
-            background: var(--white);
-        }
-        
-        .section-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--gray-900);
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--gray-500);
-            margin-bottom: 48px;
-        }
-        
+        /* Problem Section */
         .problem-list {
             display: grid;
             gap: 16px;
@@ -222,9 +37,9 @@
             align-items: center;
             gap: 16px;
             padding: 20px 24px;
-            background: #FEF2F2;
-            border-radius: 12px;
-            border-left: 4px solid #EF4444;
+            background: var(--red-bg);
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--red);
         }
         
         .problem-item span {
@@ -237,79 +52,7 @@
             font-weight: 500;
         }
         
-        /* ===== Services Section ===== */
-        .services {
-            padding: 80px 24px;
-            background: var(--gray-100);
-        }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-        
-        .service-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            border: 1px solid var(--gray-100);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-        
-        .service-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .service-card.accent .service-icon {
-            background: linear-gradient(135deg, var(--accent) 0%, #34D399 100%);
-        }
-        
-        .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--gray-900);
-        }
-        
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--gray-500);
-            line-height: 1.7;
-        }
-        
-        .service-tag {
-            display: inline-block;
-            margin-top: 16px;
-            padding: 6px 12px;
-            background: var(--gray-100);
-            border-radius: 6px;
-            font-size: 0.8rem;
-            color: var(--gray-700);
-            font-weight: 500;
-        }
-        
-        /* ===== Why Section ===== */
-        .why {
-            padding: 80px 24px;
-            background: var(--white);
-        }
-        
+        /* Why Section */
         .why-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -322,10 +65,6 @@
             font-weight: 800;
             margin-bottom: 24px;
             line-height: 1.4;
-        }
-        
-        .why-text h2 span {
-            color: var(--primary);
         }
         
         .why-list {
@@ -360,7 +99,7 @@
         .why-card {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             padding: 40px;
-            border-radius: 20px;
+            border-radius: var(--radius-xl);
             color: var(--white);
             text-align: center;
         }
@@ -374,113 +113,43 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 12px;
+            color: var(--white);
         }
         
         .why-card p {
             font-size: 1rem;
             opacity: 0.9;
             line-height: 1.7;
-        }
-        
-        /* ===== Free Section ===== */
-        .free {
-            padding: 80px 24px;
-            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
-        }
-        
-        .free-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .free-badge {
-            display: inline-block;
-            background: var(--accent);
             color: var(--white);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 24px;
         }
         
-        .free h2 {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            color: var(--gray-900);
-        }
-        
-        .free > .free-container > p {
-            font-size: 1.1rem;
-            color: var(--gray-700);
-            margin-bottom: 40px;
-        }
-        
-        .free-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-        
-        .free-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
-        
-        .free-card:hover {
-            border-color: var(--accent);
-        }
-        
-        .free-card-icon {
-            font-size: 3rem;
-            margin-bottom: 16px;
-        }
-        
-        .free-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--gray-900);
-        }
-        
-        .free-card p {
-            font-size: 0.95rem;
-            color: var(--gray-500);
-        }
-        
+        /* Free Section */
         .free-card .value {
             display: inline-block;
             margin-top: 16px;
             padding: 8px 16px;
-            background: #FEF3C7;
-            border-radius: 8px;
+            background: var(--yellow-bg);
+            border-radius: var(--radius-sm);
             font-size: 0.85rem;
             color: #92400E;
             font-weight: 600;
         }
         
-        /* ===== CTA Section ===== */
-        .cta {
+        /* CTA Section */
+        .cta-section {
             padding: 100px 24px;
-            background: linear-gradient(135deg, var(--gray-900) 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, var(--gray-900) 0%, var(--gray-800) 100%);
             text-align: center;
         }
         
-        .cta h2 {
+        .cta-section h2 {
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--white);
             margin-bottom: 16px;
         }
         
-        .cta p {
+        .cta-section p {
             font-size: 1.15rem;
             color: var(--gray-300);
             margin-bottom: 40px;
@@ -489,75 +158,7 @@
             margin-right: auto;
         }
         
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* ===== Footer ===== */
-        footer {
-            padding: 40px 24px;
-            background: var(--gray-900);
-            text-align: center;
-            border-top: 1px solid var(--gray-700);
-        }
-        
-        .footer-logo {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--white);
-            margin-bottom: 16px;
-        }
-        
-        .footer-logo span {
-            color: var(--primary-light);
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--gray-300);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--white);
-        }
-        
-        .footer-copy {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }
-        
-        /* ===== Responsive ===== */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 14px 24px;
-                font-size: 0.95rem;
-            }
-            
-            .section-title {
-                font-size: 1.6rem;
-            }
-            
             .why-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -567,59 +168,39 @@
                 order: -1;
             }
             
-            .cta h2 {
+            .cta-section h2 {
                 font-size: 1.6rem;
             }
-            
-            .nav-cta {
-                padding: 8px 16px;
-                font-size: 0.85rem;
-            }
         }
-        
-        /* ===== Animations ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero-container {
-            animation: fadeInUp 0.8s ease-out;
-        }
-        
-        .service-card {
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
-        }
-        
-        .service-card:nth-child(1) { animation-delay: 0.1s; }
-        .service-card:nth-child(2) { animation-delay: 0.2s; }
-        .service-card:nth-child(3) { animation-delay: 0.3s; }
-        .service-card:nth-child(4) { animation-delay: 0.4s; }
-        .service-card:nth-child(5) { animation-delay: 0.5s; }
-        .service-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav class="nav">
         <div class="nav-container">
-            <a href="#" class="logo">ONE<span>BLOCK</span></a>
-            <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
+            <a href="/" class="nav-logo">ONE<span>BLOCK</span></a>
+            
+            <div class="nav-menu">
+                <a href="/services/keyword.html" class="nav-link">서비스</a>
+                <a href="/pricing/" class="nav-link">요금</a>
+                <a href="/ebook/" class="nav-link">전자책</a>
+                <a href="/about/" class="nav-link">소개</a>
+                <a href="https://open.kakao.com/o/sL5miBAg" class="nav-cta" target="_blank">1:1 상담</a>
+            </div>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-badge">🧱 자영업 20년 노하우</div>
+        <div class="hero-container animate-fadeInUp">
+            <span class="badge badge-primary mb-3">🧱 자영업 20년 노하우</span>
             <h1>
                 광고비만 나가고<br>
                 <span class="highlight">효과 없으셨죠?</span>
@@ -628,7 +209,7 @@
                 직접 장사해본 사람만 압니다.<br>
                 소상공인 마케팅, 이제 원블럭이 함께합니다.
             </p>
-            <div class="hero-buttons">
+            <div class="btn-group btn-group-center">
                 <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-primary" target="_blank">
                     💬 카카오 채널 추가
                 </a>
@@ -640,8 +221,8 @@
     </section>
 
     <!-- Problem Section -->
-    <section class="problem">
-        <div class="section-container">
+    <section class="section bg-white">
+        <div class="container container-narrow">
             <h2 class="section-title">이런 고민 있으시죠?</h2>
             <p class="section-subtitle">혼자 해결하기 어려운 마케팅 문제들</p>
             
@@ -667,64 +248,64 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services">
-        <div class="section-container">
+    <section class="section bg-gray">
+        <div class="container">
             <h2 class="section-title">원블럭 서비스</h2>
             <p class="section-subtitle">마케팅의 첫 블럭부터 함께 쌓아갑니다</p>
             
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>키워드 분석</h3>
-                    <p>검색량, 경쟁강도, 광고비용까지<br>카카오톡으로 바로 분석해드립니다.</p>
-                    <span class="service-tag">카카오 챗봇</span>
+            <div class="card-grid stagger">
+                <div class="card">
+                    <div class="card-icon">🔍</div>
+                    <h3 class="card-title">키워드 분석</h3>
+                    <p class="card-text">검색량, 경쟁강도, 광고비용까지<br>카카오톡으로 바로 분석해드립니다.</p>
+                    <span class="card-tag">카카오 챗봇</span>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>부정클릭 모니터링</h3>
-                    <p>경쟁사 부정클릭 실시간 감지<br>환불 증거까지 자동 수집합니다.</p>
-                    <span class="service-tag">실시간 알림</span>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3 class="card-title">부정클릭 모니터링</h3>
+                    <p class="card-text">경쟁사 부정클릭 실시간 감지<br>환불 증거까지 자동 수집합니다.</p>
+                    <span class="card-tag">실시간 알림</span>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>경쟁사 분석</h3>
-                    <p>경쟁 업체 리뷰, 키워드, 전략을<br>한눈에 파악할 수 있습니다.</p>
-                    <span class="service-tag">리포트 제공</span>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">경쟁사 분석</h3>
+                    <p class="card-text">경쟁 업체 리뷰, 키워드, 전략을<br>한눈에 파악할 수 있습니다.</p>
+                    <span class="card-tag">리포트 제공</span>
                 </div>
                 
-                <div class="service-card accent">
-                    <div class="service-icon">📝</div>
-                    <h3>블로그 상위노출</h3>
-                    <p>검색 상위에 노출되는<br>블로그 포스팅 비법을 알려드립니다.</p>
-                    <span class="service-tag">노하우 전수</span>
+                <div class="card">
+                    <div class="card-icon accent">📝</div>
+                    <h3 class="card-title">블로그 상위노출</h3>
+                    <p class="card-text">검색 상위에 노출되는<br>블로그 포스팅 비법을 알려드립니다.</p>
+                    <span class="card-tag">노하우 전수</span>
                 </div>
                 
-                <div class="service-card accent">
-                    <div class="service-icon">📍</div>
-                    <h3>플레이스 순위 관리</h3>
-                    <p>네이버 플레이스 순위 상승<br>트래픽 관리까지 해드립니다.</p>
-                    <span class="service-tag">순위 상승</span>
+                <div class="card">
+                    <div class="card-icon accent">📍</div>
+                    <h3 class="card-title">플레이스 순위 관리</h3>
+                    <p class="card-text">네이버 플레이스 순위 상승<br>트래픽 관리까지 해드립니다.</p>
+                    <span class="card-tag">순위 상승</span>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">📢</div>
-                    <h3>광고 대행</h3>
-                    <p>네이버, 구글, 인스타그램<br>광고 세팅부터 관리까지.</p>
-                    <span class="service-tag">통합 관리</span>
+                <div class="card">
+                    <div class="card-icon">📢</div>
+                    <h3 class="card-title">광고 대행</h3>
+                    <p class="card-text">네이버, 구글, 인스타그램<br>광고 세팅부터 관리까지.</p>
+                    <span class="card-tag">통합 관리</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Section -->
-    <section class="why">
-        <div class="section-container">
+    <section class="section bg-white">
+        <div class="container">
             <div class="why-content">
                 <div class="why-text">
                     <h2>
-                        왜 <span>원블럭</span>인가요?
+                        왜 <span class="text-primary">원블럭</span>인가요?
                     </h2>
                     <ul class="why-list">
                         <li>자영업 20년, 직접 장사해본 경험</li>
@@ -748,23 +329,23 @@
     </section>
 
     <!-- Free Section -->
-    <section class="free">
-        <div class="free-container">
-            <div class="free-badge">🎁 무료 혜택</div>
-            <h2>지금 바로 받아가세요</h2>
-            <p>오픈채팅 참여하시면 무료로 드립니다</p>
+    <section class="section bg-accent-light">
+        <div class="container container-narrow text-center">
+            <span class="badge badge-accent mb-3">🎁 무료 혜택</span>
+            <h2 class="section-title">지금 바로 받아가세요</h2>
+            <p class="section-subtitle">오픈채팅 참여하시면 무료로 드립니다</p>
             
-            <div class="free-cards">
-                <div class="free-card">
-                    <div class="free-card-icon">📚</div>
-                    <h3>마케팅 전자책</h3>
-                    <p>100페이지 분량의<br>소상공인 마케팅 가이드</p>
+            <div class="card-grid-2 mb-5">
+                <div class="card free-card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📚</div>
+                    <h3 class="card-title">마케팅 전자책</h3>
+                    <p class="card-text">100페이지 분량의<br>소상공인 마케팅 가이드</p>
                     <span class="value">정가 99,000원 상당</span>
                 </div>
-                <div class="free-card">
-                    <div class="free-card-icon">👥</div>
-                    <h3>마케팅 커뮤니티</h3>
-                    <p>사장님들과 함께하는<br>정보 공유 오픈채팅방</p>
+                <div class="card free-card text-center">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">👥</div>
+                    <h3 class="card-title">마케팅 커뮤니티</h3>
+                    <p class="card-text">사장님들과 함께하는<br>정보 공유 오픈채팅방</p>
                     <span class="value">무료 참여</span>
                 </div>
             </div>
@@ -776,16 +357,16 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
-        <div class="section-container">
+    <section class="cta-section">
+        <div class="container">
             <h2>마케팅, 어디서부터 시작할지<br>막막하신가요?</h2>
             <p>원블럭이 첫 블럭부터 함께 쌓아드립니다.<br>부담 없이 상담받아보세요.</p>
             
-            <div class="cta-buttons">
+            <div class="btn-group btn-group-center">
                 <a href="http://pf.kakao.com/_ZGjYn" class="btn btn-primary" target="_blank">
                     💬 카카오 채널 추가
                 </a>
-                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-secondary" target="_blank" style="background: transparent; border-color: white; color: white;">
+                <a href="https://open.kakao.com/o/sL5miBAg" class="btn btn-outline-white" target="_blank">
                     🗣️ 1:1 상담하기
                 </a>
             </div>
@@ -793,15 +374,18 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer footer-simple">
         <div class="footer-logo">ONE<span>BLOCK</span></div>
-        <div class="footer-links">
+        <div class="footer-simple-links">
             <a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a>
             <a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅</a>
             <a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a>
         </div>
-        <p class="footer-copy">© 2024 ONEBLOCK. All rights reserved.</p>
+        <p class="footer-copy">© <span class="current-year">2024</span> ONEBLOCK. All rights reserved.</p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="/assets/js/common.js"></script>
 
 </body>
 </html>
