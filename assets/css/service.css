@@ -86,6 +86,294 @@
 }
 
 /* ===================================
+   광고대행 페이지 추가 스타일
+   =================================== */
+
+/* 광고 대시보드 목업 */
+.ads-mockup .mockup-content {
+    padding: 20px;
+}
+
+.ads-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.ads-stat {
+    padding: 16px;
+    background: var(--light);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.ads-stat.highlight {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: var(--white);
+}
+
+.ads-stat-label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+
+.ads-stat.highlight .ads-stat-label {
+    opacity: 0.9;
+}
+
+.ads-stat-value {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.ads-chart {
+    background: var(--light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.ads-chart .chart-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 80px;
+    gap: 8px;
+}
+
+.chart-bars .bar {
+    flex: 1;
+    background: linear-gradient(180deg, var(--primary), var(--accent));
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    min-height: 20px;
+}
+
+.chart-bars .bar span {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: var(--gray);
+}
+
+.ads-keywords {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.keyword-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: var(--light);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.keyword-item.good {
+    border-left: 3px solid var(--accent);
+}
+
+.keyword-item.bad {
+    border-left: 3px solid #dc2626;
+    opacity: 0.7;
+}
+
+.keyword-name {
+    flex: 1;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+.keyword-roas {
+    font-weight: 600;
+}
+
+.keyword-item.good .keyword-roas {
+    color: var(--accent);
+}
+
+.keyword-item.bad .keyword-roas {
+    color: #dc2626;
+}
+
+.keyword-action {
+    font-size: 12px;
+}
+
+/* 플랫폼 그리드 */
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.platform-card {
+    padding: 32px 24px;
+    background: var(--white);
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-5px);
+}
+
+.platform-card__logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+}
+
+.platform-card__logo.naver {
+    background: #03C75A;
+}
+
+.platform-card__logo.meta {
+    background: #1877F2;
+}
+
+.platform-card__logo.google {
+    background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+}
+
+.platform-card__logo.kakao {
+    background: #FEE500;
+    color: #000;
+}
+
+.platform-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+}
+
+.platform-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.platform-card__list li {
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--gray);
+    position: relative;
+    padding-left: 16px;
+}
+
+.platform-card__list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+/* 서비스 상세 그리드 */
+.services-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.service-detail-card {
+    padding: 32px 24px;
+    background: var(--light);
+    border-radius: 16px;
+    position: relative;
+}
+
+.service-detail-card__number {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary);
+    opacity: 0.15;
+}
+
+.service-detail-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.service-detail-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-detail-card__list li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--gray);
+    position: relative;
+    padding-left: 20px;
+}
+
+.service-detail-card__list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .platforms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .services-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .ads-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .platforms-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================
    키워드 분석 페이지 추가 스타일
    =================================== */
 
