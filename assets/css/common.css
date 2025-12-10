@@ -670,6 +670,363 @@ section {
     opacity: 0.9;
 }
 
+/* ===================================
+   포트폴리오 페이지 전용 스타일
+   =================================== */
+
+/* 통계 섹션 */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.stats-card {
+    padding: 40px 24px;
+    background: var(--light);
+    border-radius: 16px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-5px);
+}
+
+.stats-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.stats-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary);
+    display: inline;
+}
+
+.stats-plus {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stats-label {
+    display: block;
+    font-size: 16px;
+    color: var(--gray);
+    margin-top: 8px;
+}
+
+/* 필터 탭 */
+.filter-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-tab {
+    padding: 10px 24px;
+    background: var(--white);
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-tab:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filter-tab.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+}
+
+/* 성공사례 그리드 */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.case-card {
+    padding: 32px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.case-badge {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    padding: 6px 16px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+}
+
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-top: 8px;
+}
+
+.case-category {
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.case-period {
+    font-size: 13px;
+    color: var(--gray);
+    background: var(--light);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.case-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 20px;
+}
+
+.case-results {
+    margin-bottom: 20px;
+}
+
+.case-before-after {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--light);
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.case-before-after .before,
+.case-before-after .after {
+    text-align: center;
+}
+
+.case-before-after .label {
+    display: block;
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 4px;
+}
+
+.case-before-after .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.case-before-after .value.highlight {
+    color: var(--primary);
+    font-size: 18px;
+}
+
+.case-before-after .arrow {
+    font-size: 24px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.case-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.case-metrics .metric {
+    padding: 12px;
+    background: var(--light);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.metric-label {
+    display: block;
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 4px;
+}
+
+.metric-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.case-quote {
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(3, 199, 90, 0.05));
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.cases-more {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 후기 갤러리 */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.review-card {
+    padding: 24px;
+    background: var(--light);
+    border-radius: 16px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.review-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    background: rgba(37, 99, 235, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.review-date {
+    font-size: 13px;
+    color: var(--gray);
+}
+
+.review-content {
+    margin-bottom: 16px;
+}
+
+.chat-bubble {
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    max-width: 85%;
+}
+
+.chat-bubble.received {
+    background: var(--white);
+    color: var(--dark);
+    border-bottom-left-radius: 4px;
+}
+
+.chat-bubble.sent {
+    background: #ffe812;
+    color: var(--dark);
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.review-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.review-business {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.review-result {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    
+    .stats-card {
+        padding: 24px 16px;
+    }
+    
+    .stats-number {
+        font-size: 32px;
+    }
+    
+    .filter-tabs {
+        gap: 8px;
+    }
+    
+    .filter-tab {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .cases-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .case-card {
+        padding: 24px;
+    }
+    
+    .case-title {
+        font-size: 18px;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* 브랜드 스토리 */
 .brand-story-content {
     display: grid;
