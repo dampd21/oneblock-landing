@@ -86,6 +86,327 @@
 }
 
 /* ===================================
+   블로그 체험단 페이지 추가 스타일
+   =================================== */
+
+/* 블로그 검색 목업 */
+.blog-mockup .mockup-content {
+    padding: 20px;
+}
+
+.blog-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--light);
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.blog-tabs {
+    display: flex;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 16px;
+}
+
+.blog-tabs .tab {
+    font-size: 14px;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.blog-tabs .tab.active {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.blog-results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.blog-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--light);
+    border-radius: 8px;
+}
+
+.blog-item.featured {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(3, 199, 90, 0.1));
+    border: 2px solid var(--accent);
+}
+
+.blog-rank {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gray);
+    color: var(--white);
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+.blog-item.featured .blog-rank {
+    background: var(--accent);
+}
+
+.blog-info {
+    flex: 1;
+}
+
+.blog-title {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 4px;
+}
+
+.blog-meta {
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.blog-item.featured .blog-meta {
+    color: var(--accent);
+    font-weight: 500;
+}
+
+/* 문제 인사이트 박스 */
+.problem-insight {
+    margin-top: 48px;
+}
+
+.problem-insight__content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background: linear-gradient(135deg, #fef3c7, #fff);
+    border: 2px solid #fbbf24;
+    border-radius: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.problem-insight__icon {
+    font-size: 48px;
+    flex-shrink: 0;
+}
+
+.problem-insight__text h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+}
+
+.problem-insight__text p {
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* 비교 카드 */
+.comparison-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.comparison-card {
+    padding: 32px;
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.comparison-card.oneblock {
+    border: 3px solid var(--primary);
+}
+
+.comparison-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 20px;
+    background: var(--primary);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 20px;
+}
+
+.comparison-card__header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.comparison-card__label {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.comparison-card__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+}
+
+.comparison-card__list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    font-size: 15px;
+}
+
+.comparison-card__list li .icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.comparison-card__list li.negative .icon {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.comparison-card__list li.negative {
+    color: var(--gray);
+}
+
+.comparison-card__list li.positive .icon {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.comparison-card__list li.positive {
+    color: var(--dark);
+}
+
+.comparison-card__result {
+    text-align: center;
+    padding: 16px;
+    background: var(--light);
+    border-radius: 12px;
+}
+
+.comparison-card__result .result-rate {
+    display: block;
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 4px;
+}
+
+.comparison-card__result .result-value {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.comparison-card__result .result-value.negative {
+    color: #dc2626;
+}
+
+.comparison-card__result .result-value.positive {
+    color: var(--accent);
+}
+
+/* 사장님 역할 섹션 */
+.role-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.role-card {
+    padding: 32px 24px;
+    background: var(--light);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.role-card__icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.role-card__title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.role-card__desc {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+.role-note {
+    text-align: center;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(3, 199, 90, 0.05));
+    border-radius: 12px;
+}
+
+.role-note p {
+    font-size: 16px;
+    color: var(--dark);
+    margin: 0;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .problem-insight__content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .comparison-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-card.oneblock {
+        order: -1;
+    }
+    
+    .role-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================
    부정클릭 모니터링 페이지 추가 스타일
    =================================== */
 
