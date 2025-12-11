@@ -1,0 +1,2690 @@
+/* ============================================
+   ONEBLOCK - Common Styles
+   원블럭 공통 스타일시트
+   ============================================ */
+
+/* ============================================
+   1. CSS Variables (색상, 폰트 등)
+   ============================================ */
+:root {
+    /* 메인 색상 - 다크 네이비 */
+    --primary: #0F172A;
+    --primary-dark: #020617;
+    --primary-light: #1E293B;
+    
+    /* 포인트 색상 - 골드 */
+    --accent: #EAB308;
+    --accent-dark: #CA8A04;
+    --accent-light: #FDE047;
+    
+    /* 기본 색상 */
+    --dark: #0F172A;
+    --dark-light: #334155;
+    --gray: #64748B;
+    --gray-light: #94A3B8;
+    --gray-lighter: #E2E8F0;
+    --light: #F8FAFC;
+    --white: #FFFFFF;
+    
+    /* 상태 색상 */
+    --success: #22C55E;
+    --error: #EF4444;
+    --warning: #F59E0B;
+    
+    /* 폰트 */
+    --font-primary: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* 그림자 */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    
+    /* 트랜지션 */
+    --transition-fast: 0.15s ease;
+    --transition: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* 둥글기 */
+    --radius-sm: 4px;
+    --radius: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+    
+    /* 간격 */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+    
+    /* 컨테이너 */
+    --container-max: 1200px;
+    --container-padding: 20px;
+    
+    /* 헤더 높이 */
+    --header-height: 80px;
+}
+
+/* ============================================
+   2. Reset & Base Styles
+   ============================================ */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul, ol {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* ============================================
+   3. Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-gray {
+    color: var(--gray);
+}
+
+strong {
+    font-weight: 600;
+}
+
+/* ============================================
+   4. Layout
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.section {
+    padding: var(--space-4xl) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.section-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+    color: var(--dark);
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   5. Buttons
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-light);
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--dark);
+    border: 2px solid var(--dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+.btn-lg {
+    padding: 16px 32px;
+    font-size: 1.125rem;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* ============================================
+   6. Header & Navigation
+   ============================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    box-shadow: var(--shadow-md);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-top: -4px;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark);
+    padding: var(--space-sm) 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--primary);
+}
+
+.nav-cta {
+    margin-left: var(--space-lg);
+}
+
+/* 햄버거 메뉴 */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+}
+
+/* ============================================
+   7. Hero Section
+   ============================================ */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: var(--header-height);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(234, 179, 8, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(234, 179, 8, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: rgba(234, 179, 8, 0.2);
+    color: var(--accent);
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-lg);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: var(--space-lg);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--space-md);
+    line-height: 1.5;
+}
+
+.hero-desc {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: var(--space-xl);
+}
+
+.hero-cta {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-3xl);
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    gap: var(--space-2xl);
+}
+
+.hero-stat {
+    text-align: center;
+}
+
+.hero-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.hero-stat-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ============================================
+   8. Page Hero (서브페이지용)
+   ============================================ */
+.page-hero {
+    padding: calc(var(--header-height) + var(--space-3xl)) 0 var(--space-3xl);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    text-align: center;
+}
+
+.page-hero-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.page-hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: var(--space-md);
+}
+
+.page-hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   9. Problems Section
+   ============================================ */
+.problems {
+    background-color: var(--light);
+}
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.problem-card {
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.problem-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.problem-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--dark);
+}
+
+.problem-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+.problems-cta {
+    text-align: center;
+}
+
+.problems-cta-text {
+    font-size: 1.125rem;
+    color: var(--dark);
+    margin-bottom: var(--space-lg);
+}
+
+/* ============================================
+   10. Differences Section
+   ============================================ */
+.differences-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.difference-card {
+    background-color: var(--light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    position: relative;
+    transition: var(--transition);
+}
+
+.difference-card:hover {
+    background-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.difference-card:hover .difference-number,
+.difference-card:hover .difference-title,
+.difference-card:hover .difference-list li {
+    color: var(--white);
+}
+
+.difference-card:hover .difference-icon {
+    background-color: var(--accent);
+}
+
+.difference-number {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+    transition: var(--transition);
+}
+
+.difference-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    border-radius: var(--radius-md);
+    font-size: 1.5rem;
+    margin-bottom: var(--space-md);
+    transition: var(--transition);
+}
+
+.difference-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    transition: var(--transition);
+}
+
+.difference-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.difference-list li {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    padding-left: var(--space-md);
+    position: relative;
+    transition: var(--transition);
+}
+
+.difference-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* ============================================
+   11. Services Preview Section
+   ============================================ */
+.services-preview {
+    background-color: var(--light);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.service-card {
+    display: block;
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.service-card:hover .service-link {
+    color: var(--accent);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--dark);
+}
+
+.service-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: var(--space-md);
+}
+
+.service-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+.services-cta {
+    text-align: center;
+}
+
+/* ============================================
+   12. Process Section
+   ============================================ */
+.process-timeline {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.process-step {
+    display: flex;
+    gap: var(--space-lg);
+    padding-bottom: var(--space-xl);
+    position: relative;
+}
+
+.process-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 56px;
+    width: 2px;
+    height: calc(100% - 56px);
+    background-color: var(--gray-lighter);
+}
+
+.process-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 1.25rem;
+    font-weight: 800;
+    border-radius: var(--radius-full);
+    flex-shrink: 0;
+}
+
+.process-content {
+    padding-top: var(--space-sm);
+}
+
+.process-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.process-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   13. Testimonials Section
+   ============================================ */
+.testimonials {
+    background-color: var(--primary);
+}
+
+.testimonials .section-title,
+.testimonials .section-subtitle {
+    color: var(--white);
+}
+
+.testimonials .section-subtitle {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonials-slider {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.testimonial-card {
+    background-color: var(--primary-light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.testimonial-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin-bottom: var(--space-lg);
+}
+
+.testimonial-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+.testimonial-name {
+    display: block;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.testimonial-business {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.testimonial-result {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    background-color: rgba(234, 179, 8, 0.2);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+.testimonials-cta {
+    text-align: center;
+}
+
+.testimonials-cta .btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.testimonials-cta .btn-outline:hover {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* ============================================
+   14. Ebook Section (메인)
+   ============================================ */
+.ebook {
+    background-color: var(--light);
+}
+
+.ebook-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xl);
+}
+
+.ebook-text {
+    flex: 1;
+}
+
+.ebook-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+}
+
+.ebook-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+}
+
+.ebook-subtitle {
+    font-size: 1.125rem;
+    color: var(--gray);
+    margin-bottom: var(--space-lg);
+}
+
+.ebook-features {
+    margin-bottom: var(--space-xl);
+}
+
+.ebook-features li {
+    font-size: 1rem;
+    color: var(--dark);
+    padding: var(--space-sm) 0;
+}
+
+.ebook-image {
+    flex-shrink: 0;
+}
+
+.ebook-mockup {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-xl);
+    transform: rotate(3deg);
+}
+
+.ebook-mockup-text {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* ============================================
+   15. CTA Section
+   ============================================ */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: var(--space-md);
+}
+
+.cta-subtitle {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-xl);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-section .btn-outline {
+    border-color: var(--white);
+    color: var(--white);
+}
+
+.cta-section .btn-outline:hover {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* ============================================
+   16. Footer
+   ============================================ */
+.footer {
+    background-color: var(--primary-dark);
+    padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.footer-brand {
+    max-width: 280px;
+}
+
+.footer-logo .logo-text {
+    color: var(--white);
+}
+
+.footer-logo .logo-sub {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-slogan {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: var(--space-md) 0 var(--space-sm);
+}
+
+.footer-desc {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--space-3xl);
+}
+
+.footer-menu-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: var(--space-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.footer-menu-list a {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: var(--transition);
+}
+
+.footer-menu-list a:hover {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   17. Kakao Float Button
+   ============================================ */
+.kakao-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    background-color: #FEE500;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+    transition: var(--transition);
+}
+
+.kakao-float:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.kakao-icon {
+    width: 32px;
+    height: 32px;
+    color: #3C1E1E;
+}
+
+/* ============================================
+   18. Forms
+   ============================================ */
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: var(--space-sm);
+}
+
+.form-label .required {
+    color: var(--error);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    color: var(--dark);
+    background-color: var(--white);
+    border: 2px solid var(--gray-lighter);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--gray-light);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 44px;
+}
+
+.form-hint {
+    font-size: 0.8125rem;
+    color: var(--gray);
+    margin-top: var(--space-xs);
+    margin-bottom: 0;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.form-checkbox input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--accent);
+}
+
+.form-checkbox label {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   19. Contact Page Styles
+   ============================================ */
+.contact-form-section {
+    background-color: var(--light);
+}
+
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--space-2xl);
+    align-items: start;
+}
+
+.contact-form-wrapper {
+    background-color: var(--white);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.contact-form-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.contact-form-desc {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: var(--space-xl);
+}
+
+.form-success {
+    text-align: center;
+    padding: var(--space-2xl);
+}
+
+.success-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.success-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.success-message {
+    color: var(--gray);
+    margin-bottom: var(--space-xl);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.contact-info-card {
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.contact-info-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+}
+
+.contact-info-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: var(--space-md);
+}
+
+.contact-channels {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.contact-channel {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background-color: var(--light);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.contact-channel:hover {
+    background-color: var(--accent);
+}
+
+.channel-icon {
+    font-size: 1.25rem;
+}
+
+.channel-name {
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.contact-info-list li {
+    font-size: 0.9375rem;
+    color: var(--dark);
+}
+
+/* ============================================
+   20. Portfolio Page Styles
+   ============================================ */
+.portfolio-stats {
+    background-color: var(--primary);
+    padding: var(--space-2xl) 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.stat-card {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.stat-plus,
+.stat-unit {
+    font-size: 1.5rem;
+}
+
+.stat-label {
+    display: block;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: var(--space-xs);
+}
+
+/* 성공사례 필터 */
+.case-filter {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--gray);
+    background-color: var(--light);
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+/* 성공사례 카드 */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.case-card {
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-lighter);
+    transition: var(--transition);
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.case-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    background-color: rgba(234, 179, 8, 0.15);
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+}
+
+.case-duration {
+    font-size: 0.8125rem;
+    color: var(--gray);
+}
+
+.case-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+.case-results {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.case-result {
+    padding: var(--space-md);
+    background-color: var(--light);
+    border-radius: var(--radius);
+}
+
+.case-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray);
+    margin-bottom: var(--space-xs);
+}
+
+.case-change {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.case-before {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    text-decoration: line-through;
+}
+
+.case-arrow {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.case-after {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.case-services {
+    display: flex;
+    gap: var(--space-xs);
+    flex-wrap: wrap;
+}
+
+.case-service-tag {
+    font-size: 0.75rem;
+    color: var(--gray);
+    background-color: var(--light);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.cases-note {
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* 고객 후기 그리드 */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.review-card {
+    background-color: var(--light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+}
+
+.review-text {
+    font-size: 1rem;
+    color: var(--dark);
+    line-height: 1.8;
+    margin-bottom: var(--space-lg);
+    font-style: italic;
+}
+
+.review-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.review-name {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.review-business {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+/* ============================================
+   21. Blog Page Styles
+   ============================================ */
+.blog-filter {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-2xl);
+    flex-wrap: wrap;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.blog-card {
+    display: block;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.blog-card-image {
+    position: relative;
+    height: 180px;
+    background-color: var(--light);
+}
+
+.blog-card-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+}
+
+.blog-card-badge {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    padding: 4px 8px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+}
+
+.blog-card-content {
+    padding: var(--space-lg);
+}
+
+.blog-card-category {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.blog-card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--dark);
+    line-height: 1.4;
+}
+
+.blog-card-excerpt {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-bottom: var(--space-md);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-card-date {
+    font-size: 0.8125rem;
+    color: var(--accent-dark);
+    font-weight: 500;
+}
+
+.blog-more {
+    text-align: center;
+}
+
+/* 블로그 전자책 배너 */
+.blog-ebook-banner {
+    background-color: var(--primary);
+    padding: var(--space-2xl) 0;
+}
+
+.ebook-banner {
+    text-align: center;
+}
+
+.ebook-banner-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
+
+.ebook-banner-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: var(--space-sm);
+}
+
+.ebook-banner-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-lg);
+}
+
+/* ============================================
+   22. Ebook Page Styles
+   ============================================ */
+.ebook-hero {
+    text-align: center;
+}
+
+.ebook-intro {
+    background-color: var(--light);
+}
+
+.ebook-intro-wrapper {
+    display: flex;
+    gap: var(--space-3xl);
+    align-items: center;
+}
+
+.ebook-mockup-large {
+    flex-shrink: 0;
+}
+
+.ebook-cover {
+    width: 280px;
+    height: 380px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+}
+
+.ebook-cover-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    padding: 6px 12px;
+    background-color: var(--accent);
+    color: var(--dark);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: var(--radius-sm);
+}
+
+.ebook-cover-title {
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: var(--space-sm);
+}
+
+.ebook-cover-subtitle {
+    color: var(--accent);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-lg);
+}
+
+.ebook-cover-pages {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.ebook-intro-content {
+    flex: 1;
+}
+
+.ebook-intro-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--space-lg);
+}
+
+.ebook-recommend-list {
+    margin-bottom: var(--space-xl);
+}
+
+.ebook-recommend-list li {
+    font-size: 1.0625rem;
+    color: var(--dark);
+    padding: var(--space-sm) 0;
+}
+
+.ebook-stats {
+    display: flex;
+    gap: var(--space-2xl);
+}
+
+.ebook-stat {
+    text-align: center;
+}
+
+.ebook-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.ebook-stat-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+/* 목차 */
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+
+.toc-item {
+    background-color: var(--light);
+    padding: var(--space-lg);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.toc-item:hover {
+    background-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.toc-item:hover .toc-number,
+.toc-item:hover .toc-title,
+.toc-item:hover .toc-desc {
+    color: var(--white);
+}
+
+.toc-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+    transition: var(--transition);
+}
+
+.toc-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    transition: var(--transition);
+}
+
+.toc-desc {
+    font-size: 0.8125rem;
+    color: var(--gray);
+    margin-bottom: 0;
+    transition: var(--transition);
+}
+
+/* 전자책 다운로드 폼 */
+.ebook-download {
+    background-color: var(--primary);
+}
+
+.ebook-download-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+}
+
+.ebook-download-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-sm);
+}
+
+.ebook-download-desc {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: var(--space-xl);
+}
+
+.ebook-success {
+    text-align: center;
+}
+
+.ebook-tip {
+    font-size: 0.875rem;
+    color: var(--gray);
+    margin-top: var(--space-lg);
+    margin-bottom: 0;
+}
+
+/* 추가 혜택 */
+.bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+
+.bonus-card {
+    text-align: center;
+    padding: var(--space-xl);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+}
+
+.bonus-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.bonus-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.bonus-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+}
+
+/* ============================================
+   23. About Page Styles
+   ============================================ */
+.brand-story-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.brand-meaning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin: var(--space-2xl) 0;
+}
+
+.brand-word {
+    text-align: center;
+}
+
+.brand-word-main {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.brand-word-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+}
+
+.brand-plus {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--gray-light);
+}
+
+.brand-message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: var(--space-lg);
+}
+
+.brand-desc {
+    font-size: 1.0625rem;
+    color: var(--gray);
+    line-height: 1.8;
+}
+
+/* CEO 소개 */
+.ceo-intro {
+    background-color: var(--light);
+}
+
+.ceo-content {
+    display: flex;
+    gap: var(--space-3xl);
+    align-items: flex-start;
+}
+
+.ceo-image {
+    flex-shrink: 0;
+}
+
+.ceo-photo-placeholder {
+    width: 280px;
+    height: 350px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-xl);
+}
+
+.ceo-photo-text {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.ceo-text {
+    flex: 1;
+}
+
+.ceo-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+}
+
+.ceo-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: var(--space-lg);
+}
+
+.ceo-intro-text {
+    font-size: 1.25rem;
+    color: var(--dark);
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+}
+
+.ceo-career,
+.ceo-achievements {
+    margin-bottom: var(--space-xl);
+}
+
+.ceo-career-title,
+.ceo-achievements-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray);
+    margin-bottom: var(--space-md);
+}
+
+.ceo-career-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.ceo-career-list li {
+    font-size: 1rem;
+    color: var(--dark);
+    padding-left: var(--space-md);
+    position: relative;
+}
+
+.ceo-career-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.ceo-stats {
+    display: flex;
+    gap: var(--space-xl);
+}
+
+.ceo-stat {
+    text-align: center;
+}
+
+.ceo-stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.ceo-stat-label {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+.ceo-quote {
+    font-size: 1.125rem;
+    color: var(--dark);
+    line-height: 1.7;
+    padding: var(--space-lg);
+    background-color: var(--white);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 0;
+}
+
+/* 미션/비전 */
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+}
+
+.mission-card,
+.vision-card {
+    background-color: var(--light);
+    padding: var(--space-2xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.mission-icon,
+.vision-icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.mission-title,
+.vision-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+    margin-bottom: var(--space-sm);
+}
+
+.mission-text,
+.vision-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: var(--space-md);
+}
+
+.mission-desc,
+.vision-desc {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 0;
+    line-height: 1.7;
+}
+
+/* 핵심 가치 */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+}
+
+.value-card {
+    background-color: var(--light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.value-card:hover {
+    background-color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.value-card:hover .value-number,
+.value-card:hover .value-title,
+.value-card:hover .value-desc {
+    color: var(--white);
+}
+
+.value-number {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+    transition: var(--transition);
+}
+
+.value-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    transition: var(--transition);
+}
+
+.value-desc {
+    font-size: 0.9375rem;
+    color: var(--gray);
+    margin-bottom: 0;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+/* ============================================
+   24. Services List Page
+   ============================================ */
+.services-grid-full {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.service-card-full {
+    display: flex;
+    gap: var(--space-xl);
+    background-color: var(--white);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 2px solid transparent;
+    transition: var(--transition);
+}
+
+.service-card-full:hover {
+    border-color: var(--accent);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light);
+    border-radius: var(--radius-md);
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.service-card-content {
+    flex: 1;
+}
+
+.service-card-number {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+}
+
+.service-card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.service-card-desc {
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: var(--space-md);
+}
+
+.service-card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+}
+
+.service-card-features li {
+    font-size: 0.875rem;
+    color: var(--dark);
+    background-color: var(--light);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+}
+
+.service-card-link {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* 서비스 가이드 */
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.guide-card {
+    background-color: var(--light);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+}
+
+.guide-question {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    color: var(--dark);
+}
+
+.guide-answer {
+    font-size: 1rem;
+    color: var(--accent-dark);
+    margin-bottom: var(--space-md);
+}
+
+.guide-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.guide-link:hover {
+    color: var(--accent);
+}
+
+.guide-cta {
+    text-align: center;
+}
+
+.guide-cta-text {
+    font-size: 1.125rem;
+    color: var(--gray);
+    margin-bottom: var(--space-lg);
+}
+
+/* ============================================
+   25. Animations
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger delays */
+.animate-fade-in:nth-child(1) { transition-delay: 0s; }
+.animate-fade-in:nth-child(2) { transition-delay: 0.1s; }
+.animate-fade-in:nth-child(3) { transition-delay: 0.2s; }
+.animate-fade-in:nth-child(4) { transition-delay: 0.3s; }
+.animate-fade-in:nth-child(5) { transition-delay: 0.4s; }
+.animate-fade-in:nth-child(6) { transition-delay: 0.5s; }
+
+/* ============================================
+   26. Utilities
+   ============================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-sm); }
+.mt-2 { margin-top: var(--space-md); }
+.mt-3 { margin-top: var(--space-lg); }
+.mt-4 { margin-top: var(--space-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-sm); }
+.mb-2 { margin-bottom: var(--space-md); }
+.mb-3 { margin-bottom: var(--space-lg); }
+.mb-4 { margin-bottom: var(--space-xl); }
+
+.hidden { display: none; }
+.visible { display: block; }
+
+/* ============================================
+   27. Responsive - Tablet (768px 이하)
+   ============================================ */
+@media (max-width: 768px) {
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    .section {
+        padding: var(--space-2xl) 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Header */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--white);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: var(--space-xl);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-link {
+        font-size: 1.25rem;
+    }
+    
+    .nav-cta {
+        display: none;
+    }
+    
+    .hamburger {
+        display: flex;
+    }
+    
+    /* Hero */
+    .hero {
+        min-height: auto;
+        padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-2xl);
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .hero-desc {
+        font-size: 1rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+    }
+    
+    .hero-stats {
+        flex-wrap: wrap;
+        gap: var(--space-lg);
+    }
+    
+    .hero-stat {
+        flex: 1;
+        min-width: 100px;
+    }
+    
+    /* Page Hero */
+    .page-hero {
+        padding: calc(var(--header-height) + var(--space-xl)) 0 var(--space-xl);
+    }
+    
+    .page-hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .page-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Problems */
+    .problems-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Differences */
+    .differences-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Services Preview */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Process */
+    .process-step {
+        gap: var(--space-md);
+    }
+    
+    .process-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .process-step:not(:last-child)::before {
+        left: 20px;
+        top: 48px;
+        height: calc(100% - 48px);
+    }
+    
+    /* Testimonials */
+    .testimonials-slider {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ebook Section */
+    .ebook-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ebook-mockup {
+        transform: none;
+    }
+    
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+        gap: var(--space-2xl);
+    }
+    
+    .footer-brand {
+        max-width: none;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-xl);
+    }
+    
+    .footer-menu {
+        text-align: center;
+    }
+    
+    /* Contact */
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Portfolio */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .cases-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Blog */
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ebook Page */
+    .ebook-intro-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ebook-cover {
+        width: 220px;
+        height: 300px;
+    }
+    
+    .ebook-stats {
+        justify-content: center;
+    }
+    
+    .toc-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .bonus-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* About Page */
+    .brand-meaning {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+    
+    .brand-plus {
+        transform: rotate(90deg);
+    }
+    
+    .brand-word-main {
+        font-size: 2rem;
+    }
+    
+    .ceo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ceo-photo-placeholder {
+        width: 200px;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .ceo-stats {
+        justify-content: center;
+    }
+    
+    .ceo-quote {
+        text-align: left;
+    }
+    
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Services List */
+    .service-card-full {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-card-icon {
+        margin: 0 auto;
+    }
+    
+    .service-card-features {
+        justify-content: center;
+    }
+    
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* CTA */
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+    }
+    
+    /* Kakao Float */
+    .kakao-float {
+        width: 52px;
+        height: 52px;
+        bottom: 16px;
+        right: 16px;
+    }
+    
+    .kakao-icon {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+/* ============================================
+   28. Responsive - Mobile Small (480px 이하)
+   ============================================ */
+@media (max-width: 480px) {
+    :root {
+        --container-padding: 16px;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.375rem; }
+    
+    .hero-title {
+        font-size: 1.625rem;
+    }
+    
+    .hero-stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9375rem;
+    }
+    
+    .btn-lg {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    /* Stats */
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    /* Values */
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* TOC */
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Filter buttons */
+    .case-filter,
+    .blog-filter {
+        gap: var(--space-xs);
+    }
+    
+    .filter-btn {
+        padding: 8px 14px;
+        font-size: 0.8125rem;
+    }
+    
+    /* Form */
+    .contact-form-wrapper {
+        padding: var(--space-lg);
+    }
+    
+    .ebook-download-wrapper {
+        padding: var(--space-lg);
+    }
+}
+
+/* ============================================
+   29. Print Styles
+   ============================================ */
+@media print {
+    .header,
+    .footer,
+    .kakao-float,
+    .btn,
+    .nav-cta {
+        display: none !important;
+    }
+    
+    .hero,
+    .page-hero {
+        background: none !important;
+        color: var(--dark) !important;
+        padding-top: 0 !important;
+    }
+    
+    .hero-title,
+    .page-hero-title {
+        color: var(--dark) !important;
+    }
+    
+    .section {
+        padding: var(--space-lg) 0;
+    }
+}
