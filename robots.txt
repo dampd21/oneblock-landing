@@ -1,0 +1,8 @@
+# robots.txt for ONEBLOCK
+# https://oneblock.co.kr
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://oneblock.co.kr/sitemap.xml
