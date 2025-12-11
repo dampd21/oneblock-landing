@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="원블럭 경쟁사 분석 - 자체 개발 크롤러로 경쟁사 플레이스 3개월치 데이터를 완전 해부합니다">
+    <title>경쟁사 분석 - 원블럭(ONEBLOCK)</title>
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/service.css">
+</head>
+<body>
+    <!-- ========== 헤더 ========== -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="../index.html" class="logo">
+                    <span class="logo-text">ONEBLOCK</span>
+                    <span class="logo-sub">원블럭</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="../about/index.html" class="nav-link">회사소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../portfolio/index.html" class="nav-link">포트폴리오</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../services/index.html" class="nav-link active">서비스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../blog/index.html" class="nav-link">블로그</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../contact/index.html" class="nav-link">문의하기</a>
+                    </li>
+                </ul>
+                
+                <a href="../contact/index.html" class="btn btn-primary nav-cta">무료 진단 신청</a>
+                
+                <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========== 서비스 히어로 ========== -->
+    <section class="service-hero">
+        <div class="container">
+            <div class="service-hero-content animate-fade-in">
+                <span class="service-hero-badge">SERVICE 04</span>
+                <h1 class="service-hero-title">경쟁사 분석</h1>
+                <p class="service-hero-subtitle">
+                    경쟁사가 왜 항상 위에 있는지<br>
+                    이제 정확히 알 수 있습니다
+                </p>
+                <a href="../contact/index.html" class="btn btn-accent btn-lg">경쟁사 분석 신청</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 문제 제기 ========== -->
+    <section class="section service-problem">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">이런 고민 있으시죠?</h2>
+            </div>
+            <div class="problem-list">
+                <div class="problem-item animate-fade-in">
+                    <span class="problem-icon">🤔</span>
+                    <p class="problem-text">"경쟁사는 왜 항상 1페이지인지 모르겠어요"</p>
+                </div>
+                <div class="problem-item animate-fade-in">
+                    <span class="problem-icon">📈</span>
+                    <p class="problem-text">"경쟁사가 뭘 했길래 갑자기 올라왔죠?"</p>
+                </div>
+                <div class="problem-item animate-fade-in">
+                    <span class="problem-icon">🔍</span>
+                    <p class="problem-text">"경쟁사 마케팅 전략을 알고 싶어요"</p>
+                </div>
+                <div class="problem-item animate-fade-in">
+                    <span class="problem-icon">📊</span>
+                    <p class="problem-text">"우리랑 뭐가 다른지 비교하고 싶어요"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 솔루션 설명 ========== -->
+    <section class="section service-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">원블럭의 솔루션</h2>
+                <p class="section-subtitle animate-fade-in">
+                    자체 개발 크롤러로 경쟁사의 모든 것을 파악합니다
+                </p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-card animate-fade-in">
+                    <div class="solution-number">01</div>
+                    <h3 class="solution-title">순위 변동 추적</h3>
+                    <p class="solution-desc">경쟁사 플레이스 순위를 3개월간 추적하여 패턴을 분석합니다.</p>
+                    <ul class="solution-list">
+                        <li>일별 순위 변동 그래프</li>
+                        <li>순위 상승/하락 시점 분석</li>
+                        <li>마케팅 활동과 순위 연관성 파악</li>
+                        <li>시즌별 패턴 분석</li>
+                    </ul>
+                </div>
+                <div class="solution-card animate-fade-in">
+                    <div class="solution-number">02</div>
+                    <h3 class="solution-title">리뷰 분석</h3>
+                    <p class="solution-desc">경쟁사 리뷰를 분석하여 강점과 약점을 파악합니다.</p>
+                    <ul class="solution-list">
+                        <li>블로그 리뷰 수 추적</li>
+                        <li>영수증 리뷰 수 추적</li>
+                        <li>리뷰 키워드 분석</li>
+                        <li>리뷰 증가 패턴 분석</li>
+                    </ul>
+                </div>
+                <div class="solution-card animate-fade-in">
+                    <div class="solution-number">03</div>
+                    <h3 class="solution-title">전략 도출</h3>
+                    <p class="solution-desc">분석 결과를 바탕으로 이길 수 있는 전략을 수립합니다.</p>
+                    <ul class="solution-list">
+                        <li>경쟁사 대비 우위 요소 파악</li>
+                        <li>보완해야 할 점 도출</li>
+                        <li>실행 가능한 액션 플랜</li>
+                        <li>예상 성과 시뮬레이션</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 분석 항목 ========== -->
+    <section class="section service-info">
+        <div class="container">
+            <div class="info-content animate-fade-in">
+                <h2 class="info-title">분석 항목</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-item">
+                        <span class="analysis-icon">📍</span>
+                        <h3>플레이스 정보</h3>
+                        <p>카테고리, 키워드, 설명문</p>
+                    </div>
+                    <div class="analysis-item">
+                        <span class="analysis-icon">📊</span>
+                        <h3>순위 데이터</h3>
+                        <p>3개월간 일별 순위</p>
+                    </div>
+                    <div class="analysis-item">
+                        <span class="analysis-icon">⭐</span>
+                        <h3>리뷰 데이터</h3>
+                        <p>블로그/영수증 리뷰</p>
+                    </div>
+                    <div class="analysis-item">
+                        <span class="analysis-icon">📷</span>
+                        <h3>콘텐츠</h3>
+                        <p>사진, 메뉴, 소식</p>
+                    </div>
+                    <div class="analysis-item">
+                        <span class="analysis-icon">🏷️</span>
+                        <h3>키워드</h3>
+                        <p>상위노출 키워드</p>
+                    </div>
+                    <div class="analysis-item">
+                        <span class="analysis-icon">📈</span>
+                        <h3>트렌드</h3>
+                        <p>마케팅 활동 패턴</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 특장점 ========== -->
+    <section class="section service-features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">원블럭만의 차별점</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">🔧</div>
+                    <h3 class="feature-title">자체 개발 크롤러</h3>
+                    <p class="feature-desc">시중에 없는 자체 개발 도구로 깊이 있는 분석이 가능합니다.</p>
+                </div>
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">3개월 데이터</h3>
+                    <p class="feature-desc">단발성이 아닌 3개월간의 추이를 분석합니다.</p>
+                </div>
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">시각화 리포트</h3>
+                    <p class="feature-desc">Google Sheets로 이해하기 쉬운 리포트를 제공합니다.</p>
+                </div>
+                <div class="feature-card animate-fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">액션 플랜</h3>
+                    <p class="feature-desc">분석에서 끝나지 않고 실행 전략까지 제안합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 프로세스 ========== -->
+    <section class="section service-process">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">진행 프로세스</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step animate-fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">상담 & 경쟁사 선정</h3>
+                        <p class="step-desc">분석할 경쟁사 3~5곳을 함께 선정합니다.</p>
+                    </div>
+                </div>
+                <div class="process-step animate-fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">데이터 수집</h3>
+                        <p class="step-desc">자체 크롤러로 3개월치 데이터를 수집합니다.</p>
+                    </div>
+                </div>
+                <div class="process-step animate-fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">분석 & 리포트</h3>
+                        <p class="step-desc">데이터를 분석하여 리포트를 작성합니다.</p>
+                    </div>
+                </div>
+                <div class="process-step animate-fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">전략 미팅</h3>
+                        <p class="step-desc">분석 결과와 전략을 상세히 설명드립니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section service-faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">자주 묻는 질문</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item animate-fade-in">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <h3>분석 기간은 얼마나 걸리나요?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>경쟁사 수에 따라 다르지만, 보통 3~5영업일 내에 리포트를 제공합니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-fade-in">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <h3>몇 개 업체까지 분석 가능한가요?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>기본 패키지는 경쟁사 3곳이며, 추가 분석도 가능합니다.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-fade-in">
+                    <div class="faq-question">
+                        <span class="faq-q">Q</span>
+                        <h3>분석만 받고 직접 실행할 수 있나요?</h3>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-a">A</span>
+                        <p>네, 분석 리포트만 받으셔도 됩니다. 실행까지 원하시면 별도 서비스로 진행 가능합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="section service-cta">
+        <div class="container">
+            <div class="cta-content animate-fade-in">
+                <h2 class="cta-title">경쟁사의 비밀을 파헤쳐 드립니다</h2>
+                <p class="cta-subtitle">데이터로 승리 전략을 세우세요</p>
+                <div class="cta-buttons">
+                    <a href="../contact/index.html" class="btn btn-accent btn-lg">경쟁사 분석 신청</a>
+                    <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="btn btn-outline btn-lg">카카오톡 상담</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 다른 서비스 ========== -->
+    <section class="section other-services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">다른 서비스도 확인해보세요</h2>
+            </div>
+            <div class="other-services-grid">
+                <a href="place.html" class="other-service-card animate-fade-in">
+                    <span class="other-service-icon">📍</span>
+                    <span class="other-service-title">플레이스 순위관리</span>
+                </a>
+                <a href="keyword.html" class="other-service-card animate-fade-in">
+                    <span class="other-service-icon">🔑</span>
+                    <span class="other-service-title">키워드 분석</span>
+                </a>
+                <a href="blog-review.html" class="other-service-card animate-fade-in">
+                    <span class="other-service-icon">✍️</span>
+                    <span class="other-service-title">블로그 체험단</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== 푸터 ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <span class="logo-text">ONEBLOCK</span>
+                        <span class="logo-sub">원블럭</span>
+                    </a>
+                    <p class="footer-slogan">마케팅의 첫 블럭, 원블럭</p>
+                    <p class="footer-desc">소상공인의 든든한 마케팅 동반자</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-menu">
+                        <h4 class="footer-menu-title">서비스</h4>
+                        <ul class="footer-menu-list">
+                            <li><a href="../services/place.html">플레이스 순위관리</a></li>
+                            <li><a href="../services/adfraud.html">부정클릭 모니터링</a></li>
+                            <li><a href="../services/blog-review.html">블로그 체험단</a></li>
+                            <li><a href="../services/competitor.html">경쟁사 분석</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-menu">
+                        <h4 class="footer-menu-title">회사</h4>
+                        <ul class="footer-menu-list">
+                            <li><a href="../about/index.html">회사소개</a></li>
+                            <li><a href="../portfolio/index.html">포트폴리오</a></li>
+                            <li><a href="../blog/index.html">블로그</a></li>
+                            <li><a href="../contact/index.html">문의하기</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-menu">
+                        <h4 class="footer-menu-title">채널</h4>
+                        <ul class="footer-menu-list">
+                            <li><a href="http://pf.kakao.com/_ZGjYn" target="_blank">카카오 채널</a></li>
+                            <li><a href="https://open.kakao.com/o/sL5miBAg" target="_blank">1:1 상담</a></li>
+                            <li><a href="https://open.kakao.com/o/g56hVlTh" target="_blank">오픈채팅방</a></li>
+                            <li><a href="https://blog.naver.com/kbml2024" target="_blank">네이버 블로그</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2025 ONEBLOCK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 카카오톡 플로팅 버튼 -->
+    <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="kakao-float" aria-label="카카오톡 상담">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="kakao-icon">
+            <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.73-.14.52-.9 3.27-.93 3.48 0 0-.02.16.08.22.1.06.22.02.22.02.29-.04 3.37-2.2 3.9-2.57.73.1 1.48.15 2.23.15 5.52 0 10-3.58 10-8 0-4.42-4.48-8-10-8z"/>
+        </svg>
+    </a>
+
+    <script src="../assets/js/common.js"></script>
+</body>
+</html>
