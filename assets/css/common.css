@@ -2688,3 +2688,30 @@ strong {
         padding: var(--space-lg) 0;
     }
 }
+
+/* ============================================
+   Google Forms Container
+   ============================================ */
+.google-form-container {
+    width: 100%;
+    min-height: 900px;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.google-form-container iframe {
+    width: 100%;
+    min-height: 900px;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .google-form-container {
+        min-height: 1000px;
+    }
+    
+    .google-form-container iframe {
+        min-height: 1000px;
+    }
+}
