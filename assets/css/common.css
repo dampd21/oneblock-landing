@@ -370,7 +370,7 @@ strong {
 }
 
 /* ============================================
-   7. Hero Section
+   7. Hero Section - 이미지 포함 버전
    ============================================ */
 .hero {
     position: relative;
@@ -394,10 +394,18 @@ strong {
     pointer-events: none;
 }
 
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3xl);
+}
+
 .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 800px;
+    flex: 1;
+    max-width: 600px;
 }
 
 .hero-badge {
@@ -412,7 +420,7 @@ strong {
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.75rem;
     font-weight: 800;
     color: var(--white);
     line-height: 1.2;
@@ -420,14 +428,14 @@ strong {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: var(--space-md);
     line-height: 1.5;
 }
 
 .hero-desc {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: var(--space-xl);
 }
@@ -435,13 +443,13 @@ strong {
 .hero-cta {
     display: flex;
     gap: var(--space-md);
-    margin-bottom: var(--space-3xl);
+    margin-bottom: var(--space-2xl);
     flex-wrap: wrap;
 }
 
 .hero-stats {
     display: flex;
-    gap: var(--space-2xl);
+    gap: var(--space-xl);
 }
 
 .hero-stat {
@@ -450,14 +458,166 @@ strong {
 
 .hero-stat-number {
     display: block;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--accent);
 }
 
 .hero-stat-label {
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: rgba(255, 255, 255, 0.7);
+}
+
+/* 히어로 이미지/일러스트 영역 */
+.hero-image {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image-placeholder {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+/* 블록 애니메이션 */
+.hero-blocks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
+
+.hero-block {
+    position: absolute;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    border-radius: var(--radius);
+    box-shadow: 0 10px 40px rgba(234, 179, 8, 0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+.block-1 {
+    width: 80px;
+    height: 80px;
+    top: 0;
+    left: 0;
+    animation-delay: 0s;
+}
+
+.block-2 {
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    right: 0;
+    animation-delay: 0.5s;
+}
+
+.block-3 {
+    width: 70px;
+    height: 70px;
+    bottom: 20px;
+    left: 30px;
+    animation-delay: 1s;
+}
+
+.block-4 {
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    right: 30px;
+    animation-delay: 1.5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 차트 바 */
+.hero-chart {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+}
+
+.chart-bar {
+    width: 30px;
+    background: linear-gradient(to top, var(--accent-dark), var(--accent));
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    animation: grow 2s ease-out forwards;
+}
+
+.bar-1 { height: 40px; animation-delay: 0.2s; }
+.bar-2 { height: 70px; animation-delay: 0.4s; }
+.bar-3 { height: 55px; animation-delay: 0.6s; }
+.bar-4 { height: 90px; animation-delay: 0.8s; }
+
+@keyframes grow {
+    from {
+        height: 0;
+    }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-2xl);
+    }
+    
+    .hero-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: 1.875rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .hero-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--space-lg);
+    }
+    
+    .hero-image {
+        display: none;
+    }
 }
 
 /* ============================================
