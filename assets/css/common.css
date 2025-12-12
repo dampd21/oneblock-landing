@@ -978,9 +978,11 @@ strong {
 .ebook-content {
     display: flex;
     align-items: center;
+    justify-content: center; /* ← 추가! */
     gap: var(--space-3xl);
     max-width: 1000px;
     margin: 0 auto;
+    padding: 0 var(--container-padding); /* ← 추가! */
 }
 
 /* 왼쪽: 전자책 표지 */
