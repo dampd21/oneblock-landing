@@ -973,23 +973,24 @@ strong {
    ============================================ */
 .ebook {
     background-color: var(--light);
-    display: flex;
-    justify-content: center;
+    padding: var(--space-4xl) 0;        /* 섹션 상하 여백 추가 */
 }
 
-.ebook .container {
-    max-width: 1200px;
-    margin: 0 auto;
+.ebook > .container {
+    display: flex;
+    justify-content: center;           /* 이 줄이 핵심!!! */
+    padding: 0 var(--container-padding);
 }
 
 .ebook-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-3xl);
+    gap: 80px;                         /* var(--space-3xl)보다 살짝 더 줘도 예뻐 */
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+    text-align: left;                  /* 텍스트는 왼쪽 정렬 유지 */
 }
 
 
@@ -1082,15 +1083,8 @@ strong {
         gap: var(--space-2xl);
     }
     
-    .ebook-mockup {
-        width: 220px;
-        height: 300px;
-        transform: none;
-        margin: 0 auto;
-    }
-    
-    .ebook-mockup:hover {
-        transform: scale(1.05);
+    .ebook-content .ebook-text {
+        min-width: auto;
     }
 }
 /* ============================================
