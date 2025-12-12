@@ -972,50 +972,42 @@ strong {
    14. Ebook Section (메인)
    ============================================ */
 .ebook {
-    padding: 140px 0;
     background-color: var(--light);
+    padding: 140px 20px;
 }
 
 .ebook > .container {
-    all: unset;                    /* 이게 핵꿀 */
-    display: block;
-    padding: 0 20px;
-    max-width: none;
+    max-width: none !important;
+    padding: 0 !important;
 }
 
 .ebook-content {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
-    max-width: 1100px;
+    gap: 120px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
-/* 왼쪽 표지 */
-.ebook-image {
-    flex-shrink: 0;
+.ebook-image,
+.ebook-text {
+    flex: 0 0 auto;     /* 이게 핵심이다 형 */
 }
 
 .ebook-mockup {
-    width: 320px !important;
-    height: 430px !important;
-    transform: rotate(-4deg);
-    transition: all 0.4s ease;
+    width: 340px;
+    height: 460px;
+    transform: rotate(-5deg);
+    box-shadow: var(--shadow-xl);
 }
 
 .ebook-mockup:hover {
-    transform: rotate(-2deg) scale(1.06);
+    transform: rotate(-2deg) scale(1.05);
 }
 
-/* 오른쪽 텍스트 */
-.ebook-text {
-    flex: 1;
-    max-width: 500px;
-}
-
-/* 모바일 강제 세로정렬 + 중앙 */
+/* 모바일 */
 @media (max-width: 992px) {
     .ebook-content {
         flex-direction: column;
@@ -1024,15 +1016,13 @@ strong {
     }
     
     .ebook-mockup {
-        transform: none !important;
+        transform: none;
+        width: 280px;
+        height: 380px;
     }
     
     .ebook-mockup:hover {
-        transform: scale(1.08) !important;
-    }
-    
-    .ebook-text {
-        max-width: 100%;
+        transform: scale(1.08);
     }
 }
 /* ============================================
