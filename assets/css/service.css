@@ -70,9 +70,9 @@
 
 .tool-video-wrapper {
     position: relative;
-    max-width: 900px;
+    max-width: 1000px; /* 900px → 1000px로 확대 */
     margin: 0 auto var(--space-3xl);
-    padding-bottom: 56.25%; /* 16:9 비율 */
+    padding-bottom: 56.25%; /* 16:9 비율 유지 */
     height: 0;
     overflow: hidden;
     border-radius: var(--radius-lg);
@@ -91,14 +91,17 @@
 
 .tool-features {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr); /* 4개 → 2개 (2x2 그리드) */
+    gap: var(--space-xl); /* 간격 확대 */
     margin-bottom: var(--space-2xl);
+    max-width: 900px; /* 중앙 정렬을 위한 최대 너비 */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tool-feature-item {
     text-align: center;
-    padding: var(--space-lg);
+    padding: var(--space-xl);
     background-color: var(--light);
     border-radius: var(--radius-lg);
     transition: var(--transition);
@@ -107,25 +110,36 @@
 .tool-feature-item:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
+    background-color: var(--primary);
+}
+
+.tool-feature-item:hover .tool-icon,
+.tool-feature-item:hover h3,
+.tool-feature-item:hover p {
+    color: var(--white);
 }
 
 .tool-icon {
     font-size: 2.5rem;
     display: block;
     margin-bottom: var(--space-md);
+    transition: var(--transition);
 }
 
 .tool-feature-item h3 {
-    font-size: 1.0625rem;
+    font-size: 1.125rem; /* 약간 키움 */
     font-weight: 700;
-    margin-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm); /* 간격 조정 */
     color: var(--dark);
+    transition: var(--transition);
 }
 
 .tool-feature-item p {
-    font-size: 0.875rem;
+    font-size: 0.9375rem; /* 약간 키움 */
     color: var(--gray);
     margin-bottom: 0;
+    line-height: 1.6;
+    transition: var(--transition);
 }
 
 .tool-cta {
@@ -136,7 +150,7 @@
 }
 
 .tool-cta-text {
-    font-size: 1.125rem;
+    font-size: 1.25rem; /* 1.125rem → 1.25rem */
     font-weight: 600;
     color: var(--dark);
     margin-bottom: var(--space-lg);
@@ -144,14 +158,29 @@
 
 /* 반응형 */
 @media (max-width: 768px) {
+    .tool-video-wrapper {
+        max-width: 100%; /* 모바일에서 전체 너비 */
+    }
+    
     .tool-features {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* 모바일: 1줄 */
+        max-width: 100%;
     }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
+    .tool-video-wrapper {
+        max-width: 800px; /* 태블릿: 중간 크기 */
+    }
+    
     .tool-features {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 태블릿: 2x2 유지 */
+    }
+}
+
+@media (min-width: 1025px) {
+    .tool-video-wrapper {
+        max-width: 1000px; /* PC: 큰 크기 */
     }
 }
 
