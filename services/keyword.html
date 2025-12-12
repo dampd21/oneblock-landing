@@ -162,29 +162,116 @@
         </div>
     </section>
 
-    <!-- ========== 챗봇 안내 ========== -->
-    <section class="section service-info">
+    <!-- ========== 챗봇 사용법 (NEW) ========== -->
+    <section class="section chatbot-guide" style="background-color: var(--light);">
         <div class="container">
-            <div class="info-content animate-fade-in">
-                <h2 class="info-title">카카오톡 챗봇으로 즉시 분석!</h2>
-                <p class="info-desc">
-                    카카오톡 채널에서 키워드를 입력하면<br>
-                    <strong>즉시 검색량과 경쟁강도</strong>를 확인할 수 있습니다.
+            <div class="section-header">
+                <h2 class="section-title animate-fade-in">카카오톡 챗봇으로 즉시 분석!</h2>
+                <p class="section-subtitle animate-fade-in">
+                    채널 추가 한 번으로 모든 키워드 분석이 가능합니다
                 </p>
-                <div class="chatbot-demo">
-                    <div class="chatbot-message chatbot-user">
-                        <span>강남 맛집</span>
+            </div>
+            
+            <div class="chatbot-screenshots">
+                <!-- 1. 채널 추가 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-01-channel.png" alt="카카오 채널 추가" class="screenshot-img">
                     </div>
-                    <div class="chatbot-message chatbot-bot">
-                        <span>
-                            📊 키워드: 강남 맛집<br>
-                            📱 월 검색량: 74,000회<br>
-                            💰 광고 경쟁: 높음<br>
-                            📈 추천 연관키워드: 강남역 맛집, 강남 점심...
-                        </span>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">01</span>
+                        <h3 class="screenshot-title">채널 추가 & 가이드</h3>
+                        <p class="screenshot-desc">
+                            카카오톡에서 "원블럭 키워드" 검색<br>
+                            또는 QR/링크로 채널 추가
+                        </p>
                     </div>
                 </div>
-                <a href="http://pf.kakao.com/_ZGjYn" target="_blank" class="btn btn-accent">카카오 채널 바로가기</a>
+                
+                <!-- 2. 키워드 조회 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-02-keywords.png" alt="키워드 조회" class="screenshot-img">
+                    </div>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">02</span>
+                        <h3 class="screenshot-title">키워드 조회</h3>
+                        <p class="screenshot-desc">
+                            단일/다중 키워드 검색량<br>
+                            연관검색어까지 한번에
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 3. 자동완성어 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-03-autocomplete.png" alt="자동완성어" class="screenshot-img">
+                    </div>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">03</span>
+                        <h3 class="screenshot-title">자동완성어 분석</h3>
+                        <p class="screenshot-desc">
+                            네이버/유튜브 자동완성<br>
+                            플레이스 대표키워드 추출
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 4. 대표키워드 & 비교 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-04-place-compare.png" alt="플레이스 분석" class="screenshot-img">
+                    </div>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">04</span>
+                        <h3 class="screenshot-title">플레이스 & 비교분석</h3>
+                        <p class="screenshot-desc">
+                            URL로 대표키워드 추출<br>
+                            작년 대비 검색량 증감 확인
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 5. 광고 맞춤 분석 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-05-ad-custom.png" alt="광고 맞춤 분석" class="screenshot-img">
+                    </div>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">05</span>
+                        <h3 class="screenshot-title">광고 맞춤 분석</h3>
+                        <p class="screenshot-desc">
+                            입찰가 입력 시<br>
+                            예상 순위/클릭/비용 즉시 확인
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 6. 광고 전체 분석 -->
+                <div class="screenshot-item animate-fade-in">
+                    <div class="screenshot-image">
+                        <img src="../assets/images/chatbot-06-ad-full.png" alt="광고 전체 분석" class="screenshot-img">
+                    </div>
+                    <div class="screenshot-info">
+                        <span class="screenshot-number">06</span>
+                        <h3 class="screenshot-title">광고 전체 분석</h3>
+                        <p class="screenshot-desc">
+                            추천 입찰가, 예상 성과<br>
+                            순위별 최소 입찰가까지
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA -->
+            <div class="chatbot-guide-cta" style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.125rem; color: var(--gray); margin-bottom: 1.5rem;">
+                    💬 지금 바로 카카오톡에서 체험해보세요!
+                </p>
+                <a href="http://pf.kakao.com/_ZGjYn" target="_blank" class="btn btn-accent btn-lg">
+                    원블럭 키워드 채널 바로가기 →
+                </a>
             </div>
         </div>
     </section>
@@ -392,6 +479,53 @@
         </svg>
     </a>
 
+    <!-- 라이트박스 모달 (동적 생성) -->
+    <div id="lightbox" class="lightbox" style="display: none;">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
     <script src="../assets/js/common.js"></script>
+    <script>
+        // 라이트박스 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+            const screenshots = document.querySelectorAll('.screenshot-img');
+            
+            // 스크린샷 클릭 시 라이트박스 열기
+            screenshots.forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', function() {
+                    lightbox.style.display = 'flex';
+                    lightboxImg.src = this.src;
+                    document.body.style.overflow = 'hidden'; // 스크롤 방지
+                });
+            });
+            
+            // 닫기 버튼 클릭
+            lightboxClose.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // 배경 클릭 시 닫기
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // ESC 키로 닫기
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
