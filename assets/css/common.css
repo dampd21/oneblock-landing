@@ -972,13 +972,15 @@ strong {
    14. Ebook Section (메인)
    ============================================ */
 .ebook {
+    padding: 140px 0;
     background-color: var(--light);
-    padding: 120px 0;
 }
 
 .ebook > .container {
-    padding: 0 !important;
-    max-width: none !important;
+    all: unset;                    /* 이게 핵꿀 */
+    display: block;
+    padding: 0 20px;
+    max-width: none;
 }
 
 .ebook-content {
