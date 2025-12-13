@@ -2911,11 +2911,12 @@ strong {
 }
 
 .ceo-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 100px;
-    max-width: 1240px;
-    width: 100%;
+    justify-content: center;
+    gap: 120px;
+}
+
+.ceo-text {
+    max-width: 580px;
 }
 
 .ceo-image {
