@@ -1293,21 +1293,21 @@
 }
 
 /* ============================================
-   Checklist Preview (미리보기 스크롤)
+   Checklist Preview (place.html 미리보기)
    ============================================ */
 .checklist-preview {
     background-color: var(--white);
 }
 
-.checklist-preview-wrapper {
+.checklist-preview-link {
     display: block;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
     text-decoration: none;
     color: inherit;
 }
 
-.checklist-preview-container {
+.checklist-preview-box {
     background-color: var(--primary);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -1315,9 +1315,9 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.checklist-preview-wrapper:hover .checklist-preview-container {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.3);
+.checklist-preview-link:hover .checklist-preview-box {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(15, 23, 42, 0.35);
 }
 
 .checklist-preview-header {
@@ -1326,7 +1326,6 @@
     align-items: center;
     padding: var(--space-md) var(--space-lg);
     background-color: var(--primary-dark);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .checklist-preview-title {
@@ -1345,71 +1344,75 @@
 }
 
 .checklist-preview-scroll {
-    height: 300px;
+    height: 280px;
     overflow: hidden;
-    position: relative;
 }
 
-.checklist-preview-content {
-    animation: scrollUpChecklist 20s linear infinite;
+.checklist-preview-table {
+    width: 100%;
+    border-collapse: collapse;
+    animation: scrollUpPreview 18s linear infinite;
 }
 
-.preview-category {
-    padding: var(--space-md) var(--space-lg);
+.checklist-preview-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-align: left;
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--primary);
+    position: sticky;
+    top: 0;
+}
+
+.checklist-preview-table td {
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.85);
+    padding: var(--space-sm) var(--space-md);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.preview-category-header {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: var(--space-sm);
+.preview-cat {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--dark);
+    background-color: var(--accent);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
 }
 
-.preview-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
-    font-size: 0.8125rem;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 6px 0;
-    line-height: 1.5;
-}
-
-.preview-checkbox {
+.preview-check {
+    font-size: 1.25rem;
     color: var(--gray-light);
-    font-size: 1rem;
 }
 
 .checklist-preview-footer {
-    padding: var(--space-md) var(--space-lg);
+    padding: var(--space-md);
     background-color: var(--primary-dark);
     text-align: center;
     color: var(--accent);
     font-size: 0.875rem;
     font-weight: 600;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.checklist-cta-button {
+.checklist-cta-btn {
     text-align: center;
     margin-top: var(--space-xl);
 }
 
-@keyframes scrollUpChecklist {
+@keyframes scrollUpPreview {
     0% { transform: translateY(0); }
     100% { transform: translateY(-50%); }
 }
 
 /* ============================================
-   Checklist Page Styles
+   Checklist Table Page (place-checklist.html)
    ============================================ */
-.checklist-hero {
-    padding-bottom: var(--space-xl);
-}
 
 /* 점수 고정 바 */
-.score-sticky {
+.score-bar {
     position: fixed;
     top: var(--header-height);
     left: 0;
@@ -1421,22 +1424,22 @@
     transition: transform 0.3s ease;
 }
 
-.score-sticky.visible {
+.score-bar.visible {
     transform: translateY(0);
 }
 
-.score-sticky-content {
+.score-bar-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-lg);
     padding: var(--space-md) 0;
 }
 
-.score-display {
+.score-info {
     display: flex;
     align-items: baseline;
-    gap: var(--space-xs);
+    gap: 6px;
+    white-space: nowrap;
 }
 
 .score-label {
@@ -1444,20 +1447,20 @@
     color: var(--gray);
 }
 
-.score-number {
+.score-value {
     font-size: 1.75rem;
     font-weight: 800;
     color: var(--accent);
 }
 
-.score-total {
+.score-max {
     font-size: 0.875rem;
     color: var(--gray);
 }
 
-.score-progress {
+.score-progress-wrap {
     flex: 1;
-    height: 8px;
+    height: 10px;
     background-color: var(--gray-lighter);
     border-radius: var(--radius-full);
     overflow: hidden;
@@ -1465,170 +1468,164 @@
 
 .score-progress-bar {
     height: 100%;
+    width: 0%;
     background-color: var(--accent);
     border-radius: var(--radius-full);
     transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.score-checked {
-    font-size: 0.875rem;
+.score-count {
+    font-size: 0.9375rem;
+    font-weight: 600;
     color: var(--gray);
     white-space: nowrap;
 }
 
-/* 체크리스트 폼 */
-.checklist-section {
+/* 테이블 영역 */
+.checklist-table-section {
     background-color: var(--light);
     padding-top: var(--space-xl);
 }
 
-.checklist-form {
-    max-width: 800px;
+.checklist-table-wrapper {
+    max-width: 900px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-lg);
-}
-
-.checklist-category {
     background-color: var(--white);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow-lg);
 }
 
-.category-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-lg);
-    background-color: var(--light);
-    border-bottom: 2px solid var(--gray-lighter);
-    transition: background-color 0.3s ease;
+.checklist-table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.category-header.complete {
-    background-color: rgba(34, 197, 94, 0.1);
-    border-bottom-color: var(--success);
-}
-
-.category-header.incomplete {
-    background-color: rgba(239, 68, 68, 0.05);
-}
-
-.category-number {
+.checklist-table th {
     font-size: 0.875rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--white);
     background-color: var(--primary);
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
-}
-
-.category-title {
-    flex: 1;
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.category-score {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--gray);
-}
-
-.category-items {
     padding: var(--space-md) var(--space-lg);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-sm);
+    text-align: left;
 }
 
-/* 체크박스 아이템 */
-.checklist-item {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-md);
-    padding: var(--space-md);
-    background-color: var(--light);
-    border-radius: var(--radius);
-    cursor: pointer;
+.checklist-table th.col-category {
+    width: 120px;
+}
+
+.checklist-table th.col-check {
+    width: 80px;
+    text-align: center;
+}
+
+.checklist-table td {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--gray-lighter);
+    vertical-align: middle;
+}
+
+.checklist-table tbody tr {
     transition: background-color 0.2s ease;
 }
 
-.checklist-item:hover {
-    background-color: var(--gray-lighter);
+.checklist-table tbody tr:hover {
+    background-color: var(--light);
 }
 
-.checklist-item input {
+.checklist-table tbody tr.checked {
+    background-color: rgba(34, 197, 94, 0.08);
+}
+
+.checklist-table tbody tr.checked td {
+    color: var(--dark);
+}
+
+/* 카테고리 뱃지 */
+.cat-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+}
+
+.cat-1 { background-color: #DBEAFE; color: #1E40AF; }
+.cat-2 { background-color: #FCE7F3; color: #9D174D; }
+.cat-3 { background-color: #D1FAE5; color: #065F46; }
+.cat-4 { background-color: #FEF3C7; color: #92400E; }
+.cat-5 { background-color: #E0E7FF; color: #3730A3; }
+.cat-6 { background-color: #FFEDD5; color: #9A3412; }
+.cat-7 { background-color: #CFFAFE; color: #155E75; }
+.cat-8 { background-color: #F3E8FF; color: #6B21A8; }
+.cat-9 { background-color: #FEE2E2; color: #991B1B; }
+
+/* 체크박스 */
+.check-box {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.check-box input {
     display: none;
 }
 
-.checkmark {
-    width: 24px;
-    height: 24px;
+.check-mark {
+    width: 28px;
+    height: 28px;
     border: 2px solid var(--gray-light);
     border-radius: var(--radius-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     transition: all 0.2s ease;
 }
 
-.checkmark::after {
+.check-mark::after {
     content: '✓';
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     color: var(--white);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transform: scale(0.5);
+    transition: all 0.2s ease;
 }
 
-.checklist-item input:checked + .checkmark {
+.check-box input:checked + .check-mark {
     background-color: var(--accent);
     border-color: var(--accent);
 }
 
-.checklist-item input:checked + .checkmark::after {
+.check-box input:checked + .check-mark::after {
     opacity: 1;
+    transform: scale(1);
 }
 
-.item-text {
-    font-size: 0.9375rem;
-    color: var(--dark);
-    line-height: 1.6;
+.check-box:hover .check-mark {
+    border-color: var(--accent);
 }
 
-/* 결과 섹션 */
+/* 결과 영역 */
 .result-section {
     background-color: var(--white);
 }
 
-.result-card {
-    max-width: 700px;
+.result-box {
+    max-width: 600px;
     margin: 0 auto;
     text-align: center;
 }
 
-.result-header {
-    margin-bottom: var(--space-xl);
+.result-score-area {
+    margin-bottom: var(--space-2xl);
 }
 
-.result-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-}
-
-.result-score-display {
-    margin-bottom: var(--space-xl);
-}
-
-.result-score-circle {
-    width: 180px;
-    height: 180px;
-    border: 8px solid var(--gray-lighter);
+.result-circle {
+    width: 160px;
+    height: 160px;
+    border: 6px solid var(--gray-lighter);
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -1638,15 +1635,15 @@
     transition: border-color 0.3s ease;
 }
 
-.result-score-number {
-    font-size: 3.5rem;
+.result-number {
+    font-size: 3rem;
     font-weight: 800;
     color: var(--dark);
     line-height: 1;
 }
 
-.result-score-unit {
-    font-size: 1.25rem;
+.result-unit {
+    font-size: 1rem;
     color: var(--gray);
 }
 
@@ -1655,10 +1652,11 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
+    margin-bottom: var(--space-md);
 }
 
-.grade-emoji {
-    font-size: 2rem;
+.grade-icon {
+    font-size: 1.75rem;
 }
 
 .grade-text {
@@ -1667,71 +1665,23 @@
     color: var(--dark);
 }
 
-.result-summary {
-    font-size: 1.0625rem;
-    color: var(--gray);
-    margin-bottom: var(--space-xl);
-}
-
-.result-categories {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-    margin-bottom: var(--space-2xl);
-    text-align: left;
-}
-
-.result-category-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-sm) var(--space-md);
-    background-color: var(--light);
-    border-radius: var(--radius);
-    font-size: 0.8125rem;
-}
-
-.result-category-item.status-good {
-    background-color: rgba(34, 197, 94, 0.1);
-}
-
-.result-category-item.status-warn {
-    background-color: rgba(234, 179, 8, 0.1);
-}
-
-.result-category-item.status-bad {
-    background-color: rgba(239, 68, 68, 0.1);
-}
-
-.result-cat-icon {
+.result-desc {
     font-size: 1rem;
-}
-
-.result-cat-title {
-    flex: 1;
-    font-weight: 500;
-    color: var(--dark);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.result-cat-score {
-    font-weight: 700;
     color: var(--gray);
 }
 
-.result-cta {
+.result-cta-area {
     background-color: var(--light);
     padding: var(--space-xl);
     border-radius: var(--radius-lg);
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
 }
 
 .result-cta-text {
-    font-size: 1.0625rem;
+    font-size: 1rem;
     color: var(--dark);
     margin-bottom: var(--space-lg);
+    line-height: 1.7;
 }
 
 .result-cta-buttons {
@@ -1741,38 +1691,41 @@
     flex-wrap: wrap;
 }
 
-.result-actions {
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--gray-lighter);
+.btn-reset {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--gray);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);
+    transition: color 0.2s ease;
 }
 
-/* 체크리스트 반응형 */
+.btn-reset:hover {
+    color: var(--dark);
+}
+
+/* 반응형 */
 @media (max-width: 768px) {
-    .score-sticky-content {
+    .score-bar-inner {
         flex-wrap: wrap;
         gap: var(--space-sm);
     }
     
-    .score-progress {
+    .score-progress-wrap {
         order: 3;
         width: 100%;
     }
     
-    .result-categories {
-        grid-template-columns: 1fr;
+    .checklist-table th.col-category,
+    .checklist-table td:first-child {
+        display: none;
     }
     
-    .result-score-circle {
-        width: 150px;
-        height: 150px;
-    }
-    
-    .result-score-number {
-        font-size: 2.5rem;
-    }
-    
-    .checklist-preview-scroll {
-        height: 250px;
+    .checklist-table th,
+    .checklist-table td {
+        padding: var(--space-sm) var(--space-md);
     }
     
     .result-cta-buttons {
@@ -1782,20 +1735,15 @@
     .result-cta-buttons .btn {
         width: 100%;
     }
+    
+    .checklist-preview-scroll {
+        height: 220px;
+    }
 }
 
 @media (max-width: 480px) {
-    .category-header {
-        flex-wrap: wrap;
-    }
-    
-    .category-title {
-        order: 2;
-        width: 100%;
-        margin-top: var(--space-sm);
-    }
-    
-    .category-score {
-        order: 1;
+    .checklist-preview-table th:first-child,
+    .checklist-preview-table td:first-child {
+        display: none;
     }
 }
