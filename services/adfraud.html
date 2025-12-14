@@ -143,57 +143,429 @@
         </div>
     </section>
 
-    <!-- ========== 솔루션 설명 ========== -->
-    <section class="section service-solution">
+    <!-- ========== STEP 01: 실시간 감지 ========== -->
+    <section class="section solution-step solution-step-dark">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title animate-fade-in">원블럭의 솔루션</h2>
-                <p class="section-subtitle animate-fade-in">
-                    감지부터 환불까지 원스톱으로 처리합니다
-                </p>
-            </div>
-            <div class="solution-grid">
-                <div class="solution-card animate-fade-in">
-                    <div class="solution-number">01</div>
-                    <h3 class="solution-title">실시간 감지</h3>
-                    <p class="solution-desc">
+            <div class="solution-step-wrapper">
+                <div class="solution-step-content animate-fade-in">
+                    <span class="solution-step-number">STEP 01</span>
+                    <h2 class="solution-step-title">실시간 감지</h2>
+                    <p class="solution-step-desc">
                         24시간 광고 클릭을 모니터링하여<br>
                         부정클릭을 즉시 감지합니다.
                     </p>
-                    <ul class="solution-list">
+                    <ul class="solution-step-list">
                         <li>IP 주소 추적</li>
                         <li>디바이스 핑거프린트</li>
                         <li>클릭 패턴 분석</li>
                         <li>시간대별 이상 징후 감지</li>
                     </ul>
                 </div>
-                <div class="solution-card animate-fade-in">
-                    <div class="solution-number">02</div>
-                    <h3 class="solution-title">즉시 알림</h3>
-                    <p class="solution-desc">
+                <div class="solution-step-visual animate-fade-in">
+                    <!-- 자동 스크롤 데이터 테이블 -->
+                    <div class="fraud-data-container">
+                        <div class="fraud-data-header">
+                            <span class="fraud-data-title">🔴 LIVE 부정클릭 감지 현황</span>
+                            <span class="fraud-data-badge">실시간</span>
+                        </div>
+                        <div class="fraud-data-scroll">
+                            <table class="fraud-data-table">
+                                <thead>
+                                    <tr>
+                                        <th>IP 주소</th>
+                                        <th>클릭</th>
+                                        <th>체류</th>
+                                        <th>시간</th>
+                                        <th>검색어</th>
+                                        <th>기기</th>
+                                        <th>의심도</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>4</td>
+                                        <td>129초</td>
+                                        <td>20:43:12</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>20:44:04</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>2</td>
+                                        <td>12초</td>
+                                        <td>20:44:17</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>185.24.11.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>12:44:39</td>
+                                        <td>-</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>106.101.71.***</td>
+                                        <td>4</td>
+                                        <td>8초</td>
+                                        <td>20:44:42</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>106.101.71.***</td>
+                                        <td>5</td>
+                                        <td>24초</td>
+                                        <td>20:45:06</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>106.101.71.***</td>
+                                        <td>6</td>
+                                        <td>24초</td>
+                                        <td>20:45:30</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>5</td>
+                                        <td>210초</td>
+                                        <td>20:46:42</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>193.19.109.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>11:50:02</td>
+                                        <td>-</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>118.235.11.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>21:10:19</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-low">낮음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>118.235.11.***</td>
+                                        <td>2</td>
+                                        <td>7초</td>
+                                        <td>21:10:26</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>118.235.11.***</td>
+                                        <td>3</td>
+                                        <td>3초</td>
+                                        <td>21:10:30</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>118.235.11.***</td>
+                                        <td>4</td>
+                                        <td>3초</td>
+                                        <td>21:10:33</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>6</td>
+                                        <td>2885초</td>
+                                        <td>21:34:47</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>7</td>
+                                        <td>7초</td>
+                                        <td>21:34:55</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>8</td>
+                                        <td>10초</td>
+                                        <td>21:35:06</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>9</td>
+                                        <td>1628초</td>
+                                        <td>22:02:14</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>10</td>
+                                        <td>6초</td>
+                                        <td>22:02:21</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>22:09:10</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-low">낮음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>2</td>
+                                        <td>21초</td>
+                                        <td>22:09:32</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>3</td>
+                                        <td>9초</td>
+                                        <td>22:09:41</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>4</td>
+                                        <td>7초</td>
+                                        <td>22:09:49</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>5</td>
+                                        <td>6초</td>
+                                        <td>22:09:55</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>6</td>
+                                        <td>5초</td>
+                                        <td>22:10:00</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>169.213.18.***</td>
+                                        <td>7</td>
+                                        <td>5초</td>
+                                        <td>22:10:06</td>
+                                        <td>***</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>124.62.240.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>10:20:52</td>
+                                        <td>***</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-low">낮음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>124.62.240.***</td>
+                                        <td>2</td>
+                                        <td>11초</td>
+                                        <td>10:21:04</td>
+                                        <td>***</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>124.62.240.***</td>
+                                        <td>3</td>
+                                        <td>6초</td>
+                                        <td>10:21:10</td>
+                                        <td>***</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>124.62.240.***</td>
+                                        <td>4</td>
+                                        <td>46초</td>
+                                        <td>10:21:57</td>
+                                        <td>***</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>124.62.240.***</td>
+                                        <td>5</td>
+                                        <td>7초</td>
+                                        <td>10:22:05</td>
+                                        <td>***</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <!-- 복제된 데이터 (무한 스크롤용) -->
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>4</td>
+                                        <td>129초</td>
+                                        <td>20:43:12</td>
+                                        <td>***맛집</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>20:44:04</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>116.45.68.***</td>
+                                        <td>2</td>
+                                        <td>12초</td>
+                                        <td>20:44:17</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>185.24.11.***</td>
+                                        <td>1</td>
+                                        <td>-</td>
+                                        <td>12:44:39</td>
+                                        <td>-</td>
+                                        <td>PC</td>
+                                        <td><span class="risk-high">높음</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>106.101.71.***</td>
+                                        <td>4</td>
+                                        <td>8초</td>
+                                        <td>20:44:42</td>
+                                        <td>***맛집</td>
+                                        <td>모바일</td>
+                                        <td><span class="risk-medium">중간</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STEP 02: 즉시 알림 ========== -->
+    <section class="section solution-step">
+        <div class="container">
+            <div class="solution-step-wrapper reverse">
+                <div class="solution-step-content animate-fade-in">
+                    <span class="solution-step-number">STEP 02</span>
+                    <h2 class="solution-step-title">즉시 알림</h2>
+                    <p class="solution-step-desc">
                         부정클릭 발생 시 카카오톡으로<br>
                         즉시 알려드립니다.
                     </p>
-                    <ul class="solution-list">
+                    <ul class="solution-step-list">
                         <li>카카오톡 실시간 알림</li>
                         <li>일별 리포트 발송</li>
                         <li>의심 IP 목록 제공</li>
                         <li>클릭 상세 정보 제공</li>
                     </ul>
                 </div>
-                <div class="solution-card animate-fade-in">
-                    <div class="solution-number">03</div>
-                    <h3 class="solution-title">증거 수집 & 환불</h3>
-                    <p class="solution-desc">
+                <div class="solution-step-visual animate-fade-in">
+                    <!-- 카카오톡 알림 스크린샷 -->
+                    <div class="step-screenshot kakao-screenshot">
+                        <img src="../assets/images/kakao-alert.webp" 
+                             alt="원블럭 부정클릭 카카오톡 실시간 알림 화면" 
+                             width="750" 
+                             height="400"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STEP 03: 증거수집 & 환불 ========== -->
+    <section class="section solution-step solution-step-dark">
+        <div class="container">
+            <div class="solution-step-wrapper">
+                <div class="solution-step-content animate-fade-in">
+                    <span class="solution-step-number">STEP 03</span>
+                    <h2 class="solution-step-title">증거 수집 & 환불</h2>
+                    <p class="solution-step-desc">
                         네이버 환불 신청에 필요한<br>
                         증거 자료를 자동으로 수집합니다.
                     </p>
-                    <ul class="solution-list">
+                    <ul class="solution-step-list">
                         <li>증거 자료 자동 생성</li>
                         <li>환불 신청서 작성 대행</li>
                         <li>네이버 환불 진행</li>
                         <li>환불 결과 안내</li>
                     </ul>
+                </div>
+                <div class="solution-step-visual animate-fade-in">
+                    <!-- 네이버 환불 신청 스크린샷 -->
+                    <div class="step-screenshot refund-screenshot">
+                        <img src="../assets/images/naver-refund.webp" 
+                             alt="네이버 검색광고 부정클릭 환불 신청 화면" 
+                             width="1200" 
+                             height="750"
+                             loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -417,7 +789,6 @@
         </div>
     </footer>
 
-    <!-- 카카오톡 플로팅 버튼 -->
     <a href="https://open.kakao.com/o/sL5miBAg" target="_blank" class="kakao-float" aria-label="카카오톡 상담">
         <svg viewBox="0 0 24 24" fill="currentColor" class="kakao-icon">
             <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.73-.14.52-.9 3.27-.93 3.48 0 0-.02.16.08.22.1.06.22.02.22.02.29-.04 3.37-2.2 3.9-2.57.73.1 1.48.15 2.23.15 5.52 0 10-3.58 10-8 0-4.42-4.48-8-10-8z"/>
