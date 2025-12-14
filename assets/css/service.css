@@ -1002,7 +1002,8 @@
 .solution-step-wrapper {
     display: flex;
     align-items: center;
-    gap: var(--space-3xl);
+    justify-content: center;
+    gap: var(--space-xl); /* 3xl → xl로 줄임 (64px → 32px) */
 }
 
 .solution-step-wrapper.reverse {
@@ -1011,7 +1012,31 @@
 
 .solution-step-content {
     flex: 1;
-    max-width: 450px;
+    max-width: 420px;
+}
+
+/* 텍스트 오른쪽 정렬 (STEP 01, 03용) */
+.solution-step-content.text-right {
+    text-align: right;
+}
+
+.solution-step-content.text-right .solution-step-number {
+    /* 뱃지도 오른쪽 */
+}
+
+.solution-step-content.text-right .solution-step-list {
+    align-items: flex-end;
+}
+
+.solution-step-content.text-right .solution-step-list li {
+    text-align: right;
+    padding-left: 0;
+    padding-right: var(--space-lg);
+}
+
+.solution-step-content.text-right .solution-step-list li::before {
+    left: auto;
+    right: 0;
 }
 
 .solution-step-number {
@@ -1228,6 +1253,25 @@
         max-width: 100%;
     }
     
+    .solution-step-content.text-right {
+        text-align: center;
+    }
+    
+    .solution-step-content.text-right .solution-step-list {
+        align-items: center;
+    }
+    
+    .solution-step-content.text-right .solution-step-list li {
+        text-align: left;
+        padding-left: var(--space-lg);
+        padding-right: 0;
+    }
+    
+    .solution-step-content.text-right .solution-step-list li::before {
+        left: 0;
+        right: auto;
+    }
+    
     .solution-step-visual {
         max-width: 100%;
         width: 100%;
@@ -1245,29 +1289,5 @@
 @media (max-width: 768px) {
     .solution-step-title {
         font-size: 1.5rem;
-    }
-    
-    .fraud-data-scroll {
-        height: 280px;
-    }
-    
-    .fraud-data-table th,
-    .fraud-data-table td {
-        padding: var(--space-xs) var(--space-sm);
-        font-size: 0.6875rem;
-    }
-    
-    .kakao-screenshot {
-        max-width: 100%;
-        border-width: 4px;
-    }
-}
-
-@media (max-width: 480px) {
-    .fraud-data-table th:nth-child(5),
-    .fraud-data-table td:nth-child(5),
-    .fraud-data-table th:nth-child(6),
-    .fraud-data-table td:nth-child(6) {
-        display: none;
     }
 }
