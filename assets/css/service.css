@@ -1181,217 +1181,37 @@
 }
 
 /* ============================================
-   Kakao Alert Mockup
+   Step Screenshots (실제 이미지)
    ============================================ */
-.kakao-alert-mockup {
-    display: flex;
-    justify-content: center;
-}
-
-.phone-frame {
-    width: 300px;
-    background-color: var(--dark);
-    border-radius: 36px;
-    padding: 12px;
-    box-shadow: var(--shadow-xl);
-}
-
-.phone-notch {
-    width: 100px;
-    height: 24px;
-    background-color: var(--dark);
-    border-radius: 12px;
-    margin: 0 auto 8px;
-}
-
-.phone-screen {
-    background-color: #B2C7D9;
-    border-radius: 24px;
-    overflow: hidden;
-    min-height: 450px;
-}
-
-.kakao-header {
-    background-color: #B2C7D9;
-    padding: var(--space-md);
-    text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.kakao-title {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--dark);
-}
-
-.kakao-messages {
-    padding: var(--space-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-}
-
-.kakao-message {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-}
-
-.kakao-bubble {
-    background-color: var(--white);
-    padding: var(--space-md);
-    border-radius: 16px 16px 16px 4px;
-    font-size: 0.8125rem;
-    line-height: 1.6;
-    color: var(--dark);
-    max-width: 85%;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.kakao-bubble strong {
-    color: var(--dark);
-}
-
-.kakao-time {
-    font-size: 0.6875rem;
-    color: rgba(0, 0, 0, 0.5);
-    margin-left: 4px;
-}
-
-/* ============================================
-   Refund Screenshot Placeholder
-   ============================================ */
-.refund-screenshot-placeholder {
-    text-align: center;
-}
-
-.screenshot-browser {
-    background-color: var(--white);
+.step-screenshot {
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-xl);
-    text-align: left;
 }
 
-.browser-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    padding: var(--space-sm) var(--space-md);
-    background-color: var(--gray-lighter);
-    border-bottom: 1px solid var(--gray-lighter);
+.step-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
 }
 
-.browser-dots {
-    display: flex;
-    gap: 6px;
+.step-screenshot:hover img {
+    transform: scale(1.02);
 }
 
-.browser-dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: var(--gray-light);
+/* 카카오톡 스크린샷 */
+.kakao-screenshot {
+    max-width: 500px;
+    margin: 0 auto;
+    border: 8px solid var(--dark);
+    border-radius: var(--radius-xl);
 }
 
-.browser-dots span:first-child {
-    background-color: #FF5F56;
-}
-
-.browser-dots span:nth-child(2) {
-    background-color: #FFBD2E;
-}
-
-.browser-dots span:last-child {
-    background-color: #27CA40;
-}
-
-.browser-address {
-    flex: 1;
-    font-size: 0.75rem;
-    color: var(--gray);
-    background-color: var(--white);
-    padding: 6px 12px;
-    border-radius: var(--radius-sm);
-}
-
-.browser-content {
-    padding: var(--space-xl);
-}
-
-.naver-logo {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #03C75A;
-    margin-bottom: var(--space-lg);
-}
-
-.refund-form {
-    background-color: var(--light);
-    padding: var(--space-lg);
-    border-radius: var(--radius);
-}
-
-.refund-form h4 {
-    font-size: 1.125rem;
-    font-weight: 700;
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
-    border-bottom: 2px solid var(--primary);
-}
-
-.form-row {
-    display: flex;
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--gray-lighter);
-}
-
-.form-row .form-label {
-    width: 100px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--gray);
-}
-
-.form-row .form-value {
-    font-size: 0.875rem;
-    color: var(--dark);
-}
-
-.form-row .form-value.highlight {
-    font-weight: 700;
-    color: var(--error);
-    font-size: 1rem;
-}
-
-.refund-status {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
-    padding-top: var(--space-md);
-}
-
-.status-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--white);
-    background-color: var(--warning);
-    padding: 4px 12px;
-    border-radius: var(--radius-full);
-}
-
-.status-text {
-    font-size: 0.8125rem;
-    color: var(--gray);
-}
-
-.screenshot-note {
-    font-size: 0.8125rem;
-    color: var(--gray);
-    margin-top: var(--space-md);
-    margin-bottom: 0;
+/* 네이버 환불 스크린샷 */
+.refund-screenshot {
+    max-width: 100%;
+    border: 1px solid var(--gray-lighter);
 }
 
 /* ============================================
@@ -1437,16 +1257,9 @@
         font-size: 0.6875rem;
     }
     
-    .phone-frame {
-        width: 260px;
-    }
-    
-    .phone-screen {
-        min-height: 380px;
-    }
-    
-    .kakao-bubble {
-        font-size: 0.75rem;
+    .kakao-screenshot {
+        max-width: 100%;
+        border-width: 4px;
     }
 }
 
