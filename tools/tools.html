@@ -66,9 +66,9 @@
         .tab-nav { display: flex; background: var(--primary); flex-wrap: wrap; }
         .tab-btn {
             flex: 1;
-            min-width: 80px;
-            padding: var(--space-md) var(--space-sm);
-            font-size: 0.75rem;
+            min-width: 70px;
+            padding: var(--space-md) var(--space-xs);
+            font-size: 0.7rem;
             font-weight: 600;
             color: rgba(255,255,255,0.6);
             background: transparent;
@@ -184,7 +184,7 @@
             font-weight: 700;
         }
         
-        /* 조합 규칙 섹션 */
+        /* 조합 규칙 */
         .rules-section { margin-bottom: var(--space-lg); }
         .rules-header { 
             display: flex; 
@@ -226,7 +226,6 @@
         .rule-chip:hover { border-color: var(--accent); background: rgba(234,179,8,0.1); }
         .rule-chip.active { background: var(--accent); border-color: var(--accent); color: var(--dark); font-weight: 700; }
         
-        /* 규칙 카테고리 */
         .rules-category { margin-bottom: var(--space-md); }
         .rules-category-title {
             font-size: 0.75rem;
@@ -262,7 +261,7 @@
         .mixer-result-btn.primary { background: var(--primary); color: var(--white); border-color: var(--primary); }
         .mixer-result-btn.primary:hover { background: var(--primary-light); }
         
-        /* 조합 결과 테이블 */
+        /* 키워드 결과 테이블 */
         .keyword-result-wrapper {
             max-height: 400px;
             overflow-y: auto;
@@ -291,20 +290,9 @@
             border-bottom: 1px solid var(--gray-lighter);
         }
         .keyword-result-table tr:hover { background: var(--light); }
-        .keyword-result-table .num { 
-            width: 50px; 
-            text-align: center; 
-            color: var(--gray); 
-            font-size: 0.75rem;
-        }
+        .keyword-result-table .num { width: 50px; text-align: center; color: var(--gray); font-size: 0.75rem; }
         .keyword-result-table .keyword { font-weight: 500; }
-        .keyword-result-table .rule { 
-            font-size: 0.7rem; 
-            color: var(--gray);
-            background: var(--light);
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
+        .keyword-result-table .rule { font-size: 0.7rem; color: var(--gray); background: var(--light); padding: 2px 6px; border-radius: 3px; }
         .keyword-result-table .copy-btn {
             padding: 4px 8px;
             font-size: 0.7rem;
@@ -316,6 +304,7 @@
         }
         .keyword-result-table .copy-btn:hover { background: var(--accent); }
         
+        /* 검색량 테이블 */
         .volume-table-wrapper {
             max-height: 400px;
             overflow-y: auto;
@@ -362,18 +351,123 @@
             flex-wrap: wrap;
             gap: var(--space-sm);
         }
-        .related-title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
+        .related-title { font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .source-keyword { font-size: 0.7rem; color: var(--gray); background: var(--light); padding: 2px 6px; border-radius: 3px; }
+        
+        /* 광고 분석 */
+        .ad-mode-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
         }
-        .source-keyword {
-            font-size: 0.7rem;
-            color: var(--gray);
+        .ad-mode-card {
             background: var(--light);
-            padding: 2px 6px;
-            border-radius: 3px;
+            border: 2px solid var(--gray-lighter);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
         }
+        .ad-mode-card:hover { border-color: var(--accent); background: rgba(234,179,8,0.05); }
+        .ad-mode-card.active { border-color: var(--accent); background: rgba(234,179,8,0.1); }
+        .ad-mode-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+        .ad-mode-title { font-size: 0.9375rem; font-weight: 700; color: var(--dark); margin-bottom: var(--space-xs); }
+        .ad-mode-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.4; }
+        
+        .ad-input-section { margin-bottom: var(--space-lg); }
+        .ad-bid-input-group {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: flex-end;
+        }
+        .ad-bid-input-group .form-group { flex: 1; margin-bottom: 0; }
+        .ad-bid-input-group .btn { height: 48px; }
+        
+        .ad-result-card {
+            background: var(--white);
+            border: 1px solid var(--gray-lighter);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-md);
+        }
+        .ad-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .ad-result-title { font-size: 1rem; font-weight: 700; color: var(--dark); }
+        .ad-result-badge {
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .ad-result-badge.high { background: #fee2e2; color: #991b1b; }
+        .ad-result-badge.medium { background: #fef3c7; color: #92400e; }
+        .ad-result-badge.low { background: #d1fae5; color: #065f46; }
+        
+        .ad-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-md);
+        }
+        .ad-stat-item {
+            background: var(--light);
+            padding: var(--space-md);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+        .ad-stat-label { font-size: 0.75rem; color: var(--gray); margin-bottom: var(--space-xs); }
+        .ad-stat-value { font-size: 1.25rem; font-weight: 700; color: var(--dark); }
+        .ad-stat-value.highlight { color: var(--accent-dark); }
+        
+        .ad-rank-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8125rem;
+        }
+        .ad-rank-table th, .ad-rank-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .ad-rank-table th { background: var(--primary); color: var(--white); font-weight: 600; }
+        .ad-rank-table tr:hover { background: var(--light); }
+        .ad-rank-table .rank-num { font-weight: 700; color: var(--accent-dark); }
+        
+        .ad-perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8125rem;
+            margin-top: var(--space-md);
+        }
+        .ad-perf-table th, .ad-perf-table td {
+            padding: 10px 12px;
+            text-align: right;
+            border-bottom: 1px solid var(--gray-lighter);
+        }
+        .ad-perf-table th { background: var(--primary); color: var(--white); font-weight: 600; text-align: center; }
+        .ad-perf-table td:first-child { text-align: left; font-weight: 500; }
+        .ad-perf-table tr:hover { background: var(--light); }
+        .ad-perf-table .recommended { background: rgba(234,179,8,0.15); }
+        
+        .ad-recommendation {
+            background: linear-gradient(135deg, var(--accent) 0%, #f59e0b 100%);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            color: var(--dark);
+            margin-top: var(--space-lg);
+        }
+        .ad-recommendation-title { font-size: 1rem; font-weight: 700; margin-bottom: var(--space-md); }
+        .ad-recommendation-content { display: flex; flex-wrap: wrap; gap: var(--space-lg); }
+        .ad-recommendation-item { flex: 1; min-width: 120px; }
+        .ad-recommendation-label { font-size: 0.75rem; opacity: 0.8; margin-bottom: 2px; }
+        .ad-recommendation-value { font-size: 1.125rem; font-weight: 700; }
         
         .loading-overlay {
             display: none;
@@ -449,7 +543,7 @@
         @media (max-width: 768px) {
             .crawler-section { padding: calc(var(--header-height) + var(--space-lg)) var(--space-md) var(--space-2xl); }
             .tab-content { padding: var(--space-lg); }
-            .tab-btn { padding: var(--space-sm); font-size: 0.65rem; min-width: 60px; }
+            .tab-btn { padding: var(--space-sm) 2px; font-size: 0.6rem; min-width: 50px; }
             .tab-btn-icon { font-size: 1rem; }
             .id-grid { grid-template-columns: 1fr; }
             .mixer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -460,6 +554,9 @@
             .volume-table { font-size: 0.7rem; }
             .volume-table th, .volume-table td { padding: 8px 6px; }
             .rules-grid { grid-template-columns: repeat(4, 1fr); }
+            .ad-mode-selector { grid-template-columns: 1fr; }
+            .ad-bid-input-group { flex-direction: column; }
+            .ad-bid-input-group .btn { width: 100%; }
         }
         
         @media (max-width: 480px) {
@@ -503,10 +600,11 @@
                     <div class="crawler-card">
                         <!-- 탭 -->
                         <div class="tab-nav">
-                            <button class="tab-btn active" data-tab="keyword"><span class="tab-btn-icon">🔍</span>키워드 검색</button>
-                            <button class="tab-btn" data-tab="place"><span class="tab-btn-icon">📍</span>플레이스 ID</button>
-                            <button class="tab-btn" data-tab="mixer"><span class="tab-btn-icon">🔀</span>키워드 조합</button>
-                            <button class="tab-btn" data-tab="bulk"><span class="tab-btn-icon">📊</span>검색량 조회</button>
+                            <button class="tab-btn active" data-tab="keyword"><span class="tab-btn-icon">🔍</span>키워드검색</button>
+                            <button class="tab-btn" data-tab="place"><span class="tab-btn-icon">📍</span>플레이스ID</button>
+                            <button class="tab-btn" data-tab="mixer"><span class="tab-btn-icon">🔀</span>키워드조합</button>
+                            <button class="tab-btn" data-tab="bulk"><span class="tab-btn-icon">📊</span>검색량</button>
+                            <button class="tab-btn" data-tab="ad"><span class="tab-btn-icon">💰</span>광고분석</button>
                         </div>
                         
                         <!-- 탭 1: 키워드 검색 -->
@@ -642,7 +740,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 2개 조합 (12개) -->
                                 <div class="rules-category">
                                     <p class="rules-category-title">2개 조합 (12개)</p>
                                     <div class="rules-grid">
@@ -661,7 +758,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 3개 조합 (24개) -->
                                 <div class="rules-category">
                                     <p class="rules-category-title">3개 조합 (24개)</p>
                                     <div class="rules-grid">
@@ -692,7 +788,6 @@
                                     </div>
                                 </div>
                                 
-                                <!-- 4개 조합 (24개) -->
                                 <div class="rules-category">
                                     <p class="rules-category-title">4개 조합 (24개)</p>
                                     <div class="rules-grid">
@@ -798,6 +893,74 @@
                             </div>
                         </div>
 
+                        <!-- 탭 5: 광고 분석 (새로 추가) -->
+                        <div id="adTab" class="tab-content">
+                            <div class="tab-header">
+                                <h1 class="tab-title">광고 분석</h1>
+                                <p class="tab-subtitle">네이버 검색광고 입찰가 및 성과 분석</p>
+                            </div>
+                            
+                            <div class="info-box">
+                                <p class="info-box-title">📌 분석 유형</p>
+                                <ul>
+                                    <li>맞춤 분석: 입찰가 입력 → 예상 순위/클릭/비용</li>
+                                    <li>전체 분석: 입찰가별 성과 비교 + 추천</li>
+                                    <li>순위별 입찰가: 1~5위 달성에 필요한 최소 입찰가</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- 키워드 입력 -->
+                            <div class="form-group">
+                                <label class="form-label">🔎 분석 키워드 <span class="required">*</span></label>
+                                <input type="text" id="adKeyword" class="form-input" placeholder="예: 강남 맛집">
+                            </div>
+                            
+                            <!-- 분석 모드 선택 -->
+                            <div class="ad-mode-selector">
+                                <div class="ad-mode-card" data-mode="custom" onclick="selectAdMode('custom')">
+                                    <div class="ad-mode-icon">🎯</div>
+                                    <div class="ad-mode-title">맞춤 분석</div>
+                                    <div class="ad-mode-desc">입찰가 입력 시<br>예상 성과 확인</div>
+                                </div>
+                                <div class="ad-mode-card" data-mode="full" onclick="selectAdMode('full')">
+                                    <div class="ad-mode-icon">📊</div>
+                                    <div class="ad-mode-title">전체 분석</div>
+                                    <div class="ad-mode-desc">입찰가별 성과 비교<br>+ 추천 입찰가</div>
+                                </div>
+                                <div class="ad-mode-card" data-mode="rank" onclick="selectAdMode('rank')">
+                                    <div class="ad-mode-icon">🏆</div>
+                                    <div class="ad-mode-title">순위별 입찰가</div>
+                                    <div class="ad-mode-desc">1~5위 달성에<br>필요한 최소 금액</div>
+                                </div>
+                            </div>
+                            
+                            <!-- 맞춤 분석 입찰가 입력 -->
+                            <div id="adBidInputSection" class="ad-input-section" style="display:none;">
+                                <div class="ad-bid-input-group">
+                                    <div class="form-group">
+                                        <label class="form-label">💰 입찰가 (원)</label>
+                                        <input type="number" id="adBidAmount" class="form-input" placeholder="예: 3000" min="70" max="100000">
+                                    </div>
+                                    <button type="button" onclick="analyzeAdCustom()" id="adCustomBtn" class="btn btn-accent btn-lg">분석하기</button>
+                                </div>
+                            </div>
+                            
+                            <!-- 전체/순위 분석 버튼 -->
+                            <div id="adAnalyzeSection" class="ad-input-section" style="display:none;">
+                                <button type="button" onclick="analyzeAd()" id="adAnalyzeBtn" class="btn btn-accent btn-lg btn-full">🚀 분석 시작</button>
+                            </div>
+                            
+                            <!-- 결과 영역 -->
+                            <div class="mixer-result" id="adResultArea" style="position:relative; display:none;">
+                                <div class="loading-overlay" id="adLoading">
+                                    <span class="spinner" style="width:32px;height:32px;border-width:3px;"></span>
+                                    <span class="loading-text" id="adLoadingText">광고 분석 중...</span>
+                                </div>
+                                
+                                <div id="adResult"></div>
+                            </div>
+                        </div>
+
                         <div class="bottom-links">
                             <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" target="_blank" class="sheets-link">📊 결과 시트</a>
                         </div>
@@ -814,12 +977,11 @@
         const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
 
         // ============================================
-        // 인증 (서버 검증 방식)
+        // 인증
         // ============================================
         function checkAuth() {
             const token = localStorage.getItem(TOKEN_KEY);
             const expiry = localStorage.getItem(TOKEN_EXPIRY_KEY);
-            
             if (token && expiry && Date.now() < parseInt(expiry)) {
                 showMainContent();
             }
@@ -844,12 +1006,8 @@
                 const res = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        tool_type: 'auth',
-                        password: input.value
-                    })
+                    body: JSON.stringify({ tool_type: 'auth', password: input.value })
                 });
-                
                 const data = await res.json();
                 
                 if (data.success) {
@@ -902,7 +1060,7 @@
         });
 
         // ============================================
-        // 키워드 크롤러 폼
+        // 크롤러 폼
         // ============================================
         document.getElementById('keywordForm').addEventListener('submit', async e => {
             e.preventDefault();
@@ -913,9 +1071,6 @@
             }, document.getElementById('keywordSubmitBtn'), document.getElementById('keywordResult'));
         });
 
-        // ============================================
-        // 플레이스 크롤러 폼
-        // ============================================
         document.getElementById('placeForm').addEventListener('submit', async e => {
             e.preventDefault();
             const extractId = input => { const m = input.match(/(\d{5,})/); return m ? m[1] : ''; };
@@ -962,12 +1117,10 @@
             });
         });
         
-        // 규칙 칩 클릭 이벤트
         document.querySelectorAll('.rule-chip').forEach(chip => {
             chip.addEventListener('click', () => chip.classList.toggle('active'));
         });
         
-        // 전체 선택/해제
         function selectAllRules() {
             document.querySelectorAll('.rule-chip').forEach(chip => chip.classList.add('active'));
         }
@@ -977,7 +1130,7 @@
         }
         
         let currentKeywords = [];
-        let keywordRuleMap = []; // 키워드와 규칙 매핑
+        let keywordRuleMap = [];
         
         function generateKeywords() {
             const groups = [1,2,3,4].map(i => 
@@ -988,10 +1141,7 @@
             const sep = addSpace ? ' ' : '';
             const activeRules = [...document.querySelectorAll('.rule-chip.active')].map(c => c.dataset.rule);
             
-            if (!activeRules.length) { 
-                alert('조합 규칙을 선택해주세요.'); 
-                return; 
-            }
+            if (!activeRules.length) { alert('조합 규칙을 선택해주세요.'); return; }
             
             let results = [];
             keywordRuleMap = [];
@@ -1000,7 +1150,6 @@
                 const indices = rule.split('+').map(n => parseInt(n) - 1);
                 const selected = indices.map(i => groups[i]);
                 
-                // 모든 그룹에 키워드가 있는지 확인
                 if (selected.every(g => g.length > 0)) {
                     cartesian(...selected).forEach(combo => {
                         const keyword = combo.join(sep);
@@ -1012,7 +1161,6 @@
                 }
             });
             
-            // 중복 제거 시 keywordRuleMap도 정리
             if (removeDuplicates) {
                 const seen = new Set();
                 const uniqueMap = [];
@@ -1027,13 +1175,9 @@
             }
             
             currentKeywords = results;
-            
-            // 결과 영역 표시
             document.getElementById('mixerResultArea').style.display = 'block';
             document.getElementById('resultCount').textContent = `총 ${results.length}개`;
             document.getElementById('volumeResult').innerHTML = '';
-            
-            // 테이블 렌더링
             renderKeywordTable();
         }
         
@@ -1043,31 +1187,10 @@
                 return;
             }
             
-            let html = `
-                <div class="keyword-result-wrapper">
-                    <table class="keyword-result-table">
-                        <thead>
-                            <tr>
-                                <th class="num">No.</th>
-                                <th>키워드</th>
-                                <th>조합 규칙</th>
-                                <th style="width:60px;">복사</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            `;
-            
+            let html = `<div class="keyword-result-wrapper"><table class="keyword-result-table"><thead><tr><th class="num">No.</th><th>키워드</th><th>조합 규칙</th><th style="width:60px;">복사</th></tr></thead><tbody>`;
             keywordRuleMap.forEach((item, idx) => {
-                html += `
-                    <tr>
-                        <td class="num">${idx + 1}</td>
-                        <td class="keyword">${item.keyword}</td>
-                        <td><span class="rule">${item.rule}</span></td>
-                        <td><button class="copy-btn" onclick="copySingleKeyword('${item.keyword.replace(/'/g, "\\'")}')">📋</button></td>
-                    </tr>
-                `;
+                html += `<tr><td class="num">${idx + 1}</td><td class="keyword">${item.keyword}</td><td><span class="rule">${item.rule}</span></td><td><button class="copy-btn" onclick="copySingleKeyword('${item.keyword.replace(/'/g, "\\'")}')">📋</button></td></tr>`;
             });
-            
             html += '</tbody></table></div>';
             document.getElementById('keywordResultTable').innerHTML = html;
         }
@@ -1087,8 +1210,6 @@
             document.getElementById('volumeResult').innerHTML = '';
             currentKeywords = [];
             keywordRuleMap = [];
-            
-            // 기본 규칙만 선택
             deselectAllRules();
             ['1+2', '1+2+3', '1+2+3+4'].forEach(rule => {
                 const chip = document.querySelector(`.rule-chip[data-rule="${rule}"]`);
@@ -1097,10 +1218,7 @@
         }
         
         function copySingleKeyword(keyword) {
-            navigator.clipboard.writeText(keyword).then(() => {
-                // 간단한 피드백
-            }).catch(() => {
-                // fallback
+            navigator.clipboard.writeText(keyword).catch(() => {
                 const textarea = document.createElement('textarea');
                 textarea.value = keyword;
                 document.body.appendChild(textarea);
@@ -1111,10 +1229,7 @@
         }
         
         function copyAllKeywords() {
-            if (!currentKeywords.length) {
-                alert('복사할 키워드가 없습니다.');
-                return;
-            }
+            if (!currentKeywords.length) { alert('복사할 키워드가 없습니다.'); return; }
             const text = currentKeywords.join('\n');
             navigator.clipboard.writeText(text).then(() => {
                 alert(`${currentKeywords.length}개 키워드가 복사되었습니다!`);
@@ -1130,22 +1245,14 @@
         }
         
         function downloadKeywordCSV() {
-            if (!keywordRuleMap.length) { 
-                alert('다운로드할 키워드가 없습니다.'); 
-                return; 
-            }
+            if (!keywordRuleMap.length) { alert('다운로드할 키워드가 없습니다.'); return; }
             let csv = 'No,키워드,조합규칙\n';
-            keywordRuleMap.forEach((item, idx) => {
-                csv += `${idx + 1},"${item.keyword}","${item.rule}"\n`;
-            });
+            keywordRuleMap.forEach((item, idx) => { csv += `${idx + 1},"${item.keyword}","${item.rule}"\n`; });
             downloadFile(new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'}), 'keywords.csv');
         }
         
         function downloadKeywordTXT() {
-            if (!currentKeywords.length) { 
-                alert('다운로드할 키워드가 없습니다.'); 
-                return; 
-            }
+            if (!currentKeywords.length) { alert('다운로드할 키워드가 없습니다.'); return; }
             downloadFile(new Blob([currentKeywords.join('\n')], {type:'text/plain;charset=utf-8;'}), 'keywords.txt');
         }
         
@@ -1157,17 +1264,11 @@
         }
 
         // ============================================
-        // 키워드 조합기 검색량 조회
+        // 검색량 조회
         // ============================================
         async function getSearchVolume() {
-            if (!currentKeywords.length) { 
-                alert('먼저 키워드를 조합해주세요.'); 
-                return; 
-            }
-            if (currentKeywords.length > 100) { 
-                alert(`최대 100개까지 조회 가능합니다. (현재 ${currentKeywords.length}개)`); 
-                return; 
-            }
+            if (!currentKeywords.length) { alert('먼저 키워드를 조합해주세요.'); return; }
+            if (currentKeywords.length > 100) { alert(`최대 100개까지 조회 가능합니다. (현재 ${currentKeywords.length}개)`); return; }
             
             const loading = document.getElementById('volumeLoading');
             const loadingText = document.getElementById('loadingText');
@@ -1185,7 +1286,6 @@
                     body: JSON.stringify({ tool_type: 'search_volume', keywords: currentKeywords })
                 });
                 const data = await res.json();
-
                 if (data.success) {
                     renderVolumeTable(data.data, volumeResult);
                 } else {
@@ -1200,7 +1300,7 @@
         }
 
         // ============================================
-        // 다중 키워드 검색량 조회
+        // 다중 키워드 검색량
         // ============================================
         document.getElementById('bulkKeywords').addEventListener('input', e => {
             const count = e.target.value.split('\n').filter(l => l.trim()).length;
@@ -1211,15 +1311,8 @@
             const textarea = document.getElementById('bulkKeywords');
             const keywords = textarea.value.split('\n').filter(k => k.trim()).map(k => k.trim());
             
-            if (!keywords.length) {
-                alert('키워드를 입력해주세요.');
-                return;
-            }
-            
-            if (keywords.length > 100) {
-                alert(`최대 100개까지 조회 가능합니다. (현재 ${keywords.length}개)`);
-                return;
-            }
+            if (!keywords.length) { alert('키워드를 입력해주세요.'); return; }
+            if (keywords.length > 100) { alert(`최대 100개까지 조회 가능합니다. (현재 ${keywords.length}개)`); return; }
             
             const includeRelated = document.getElementById('includeRelated').checked;
             const resultArea = document.getElementById('bulkResultArea');
@@ -1237,15 +1330,9 @@
                 const res = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        tool_type: 'bulk_search_volume',
-                        keywords: keywords,
-                        includeRelated: includeRelated
-                    })
+                    body: JSON.stringify({ tool_type: 'bulk_search_volume', keywords: keywords, includeRelated: includeRelated })
                 });
-                
                 const data = await res.json();
-                
                 if (data.success) {
                     renderBulkVolumeResult(data, volumeResult);
                 } else {
@@ -1260,33 +1347,22 @@
         }
         
         function renderBulkVolumeResult(data, container) {
-            let html = '';
-            
-            // 메인 키워드 테이블
-            html += `
-                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);margin-bottom:var(--space-sm);">
-                    <span style="font-weight:700;">📊 입력 키워드 검색량 (${data.total}개)</span>
-                    <button class="mixer-result-btn" onclick="downloadBulkCSV('main')">📄 CSV 다운로드</button>
-                </div>
-            `;
+            let html = `<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);margin-bottom:var(--space-sm);">
+                <span style="font-weight:700;">📊 입력 키워드 검색량 (${data.total}개)</span>
+                <button class="mixer-result-btn" onclick="downloadBulkCSV('main')">📄 CSV 다운로드</button>
+            </div>`;
             html += renderVolumeTableHTML(data.data);
             
-            // 연관 키워드 테이블 (있을 경우)
             if (data.related && data.related.length > 0) {
-                html += `
-                    <div class="related-section">
-                        <div class="related-header">
-                            <span class="related-title">🔗 연관 키워드 (${data.relatedTotal}개)</span>
-                            <button class="mixer-result-btn" onclick="downloadBulkCSV('related')">📄 CSV 다운로드</button>
-                        </div>
-                `;
+                html += `<div class="related-section"><div class="related-header">
+                    <span class="related-title">🔗 연관 키워드 (${data.relatedTotal}개)</span>
+                    <button class="mixer-result-btn" onclick="downloadBulkCSV('related')">📄 CSV 다운로드</button>
+                </div>`;
                 html += renderVolumeTableHTML(data.related, true);
                 html += '</div>';
             }
             
             container.innerHTML = html;
-            
-            // CSV 다운로드용 데이터 저장
             window.bulkMainData = data.data;
             window.bulkRelatedData = data.related || [];
         }
@@ -1303,10 +1379,7 @@
         
         function downloadBulkCSV(type) {
             const data = type === 'main' ? window.bulkMainData : window.bulkRelatedData;
-            if (!data || !data.length) {
-                alert('다운로드할 데이터가 없습니다.');
-                return;
-            }
+            if (!data || !data.length) { alert('다운로드할 데이터가 없습니다.'); return; }
             
             let csv = type === 'related' 
                 ? '키워드,PC검색량,모바일검색량,총검색량,경쟁도,출처키워드\n'
@@ -1316,7 +1389,6 @@
                 const pcNum = parseVolume(item.monthlyPcQcCnt);
                 const mobileNum = parseVolume(item.monthlyMobileQcCnt);
                 const total = pcNum + mobileNum;
-                
                 if (type === 'related') {
                     csv += `"${item.keyword}",${pcNum},${mobileNum},${total},"${item.compIdx || '-'}","${item.sourceKeyword || ''}"\n`;
                 } else {
@@ -1325,45 +1397,31 @@
             });
             
             const filename = type === 'related' ? 'related_keywords.csv' : 'keyword_volume.csv';
-            const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
-            downloadFile(blob, filename);
+            downloadFile(new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'}), filename);
         }
 
         // ============================================
-        // 공통 테이블 렌더링 함수
+        // 공통 테이블 렌더링
         // ============================================
         function renderVolumeTableHTML(data, showSource = false) {
-            // 총 검색량 기준 정렬
             const sortedData = [...data].sort((a, b) => {
-                const totalA = (parseVolume(a.monthlyPcQcCnt) + parseVolume(a.monthlyMobileQcCnt));
-                const totalB = (parseVolume(b.monthlyPcQcCnt) + parseVolume(b.monthlyMobileQcCnt));
+                const totalA = parseVolume(a.monthlyPcQcCnt) + parseVolume(a.monthlyMobileQcCnt);
+                const totalB = parseVolume(b.monthlyPcQcCnt) + parseVolume(b.monthlyMobileQcCnt);
                 return totalB - totalA;
             });
             
-            let html = `
-                <div class="volume-table-wrapper">
-                    <table class="volume-table">
-                        <thead>
-                            <tr>
-                                <th>키워드</th>
-                                <th>PC</th>
-                                <th>모바일</th>
-                                <th>총합</th>
-                                <th>경쟁</th>
-                                ${showSource ? '<th>출처</th>' : ''}
-                            </tr>
-                        </thead>
-                        <tbody>
-            `;
+            let html = `<div class="volume-table-wrapper"><table class="volume-table"><thead><tr>
+                <th>키워드</th><th>PC</th><th>모바일</th><th>총합</th><th>경쟁</th>
+                ${showSource ? '<th>출처</th>' : ''}
+            </tr></thead><tbody>`;
             
             sortedData.forEach(item => {
                 const pcNum = parseVolume(item.monthlyPcQcCnt);
                 const mobileNum = parseVolume(item.monthlyMobileQcCnt);
                 const total = pcNum + mobileNum;
-                
                 const pc = formatNumber(item.monthlyPcQcCnt);
                 const mobile = formatNumber(item.monthlyMobileQcCnt);
-                const totalFormatted = formatNumber(total);
+                const totalFormatted = formatNumberValue(total);
                 
                 let volumeClass = 'volume-low';
                 if (total >= 10000) volumeClass = 'volume-high';
@@ -1374,31 +1432,25 @@
                 if (compText === '높음') compClass = 'comp-high';
                 else if (compText === '중간') compClass = 'comp-medium';
                 
-                html += `
-                    <tr>
-                        <td>${item.keyword}</td>
-                        <td>${pc}</td>
-                        <td>${mobile}</td>
-                        <td class="${volumeClass}">${totalFormatted}</td>
-                        <td><span class="${compClass}">${compText}</span></td>
-                        ${showSource ? `<td><span class="source-keyword">${item.sourceKeyword || ''}</span></td>` : ''}
-                    </tr>
-                `;
+                html += `<tr>
+                    <td>${item.keyword}</td>
+                    <td>${pc}</td>
+                    <td>${mobile}</td>
+                    <td class="${volumeClass}">${totalFormatted}</td>
+                    <td><span class="${compClass}">${compText}</span></td>
+                    ${showSource ? `<td><span class="source-keyword">${item.sourceKeyword || ''}</span></td>` : ''}
+                </tr>`;
             });
             
             html += '</tbody></table></div>';
             return html;
         }
         
-        // 기존 키워드 조합기용 테이블 렌더링 (호환성 유지)
         function renderVolumeTable(data, container) {
-            const html = `
-                <div style="margin-top:var(--space-lg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
-                    <span style="font-weight:700;">📊 검색량 결과 (${data.length}개)</span>
-                    <button class="mixer-result-btn" onclick="downloadVolumeCSV()">📄 CSV 다운로드</button>
-                </div>
-            ` + renderVolumeTableHTML(data);
-            
+            const html = `<div style="margin-top:var(--space-lg);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
+                <span style="font-weight:700;">📊 검색량 결과 (${data.length}개)</span>
+                <button class="mixer-result-btn" onclick="downloadVolumeCSV()">📄 CSV 다운로드</button>
+            </div>` + renderVolumeTableHTML(data);
             container.innerHTML = html;
             window.volumeData = data;
         }
@@ -1407,23 +1459,33 @@
         // 유틸리티 함수
         // ============================================
         function parseVolume(val) {
-            if (val === '< 10' || val === '<10' || val === '< 10') return 0;
+            if (val === '< 10' || val === '<10') return 0;
             if (val === undefined || val === null || val === '') return 0;
             const num = Number(val);
             return isNaN(num) ? 0 : num;
         }
         
         function formatNumber(num) {
-            if (num === '< 10' || num === '<10' || num === '< 10') return '< 10';
+            if (num === '< 10' || num === '<10') return '< 10';
             if (num === undefined || num === null || num === '' || num === 0) return '0';
             const n = Number(num);
             if (isNaN(n)) return '0';
             return n.toLocaleString();
         }
         
+        function formatNumberValue(num) {
+            if (num === undefined || num === null || num === 0) return '0';
+            return num.toLocaleString();
+        }
+        
+        function formatWon(value) {
+            if (value >= 100000000) return `${(value / 100000000).toFixed(1)}억원`;
+            if (value >= 10000) return `${(value / 10000).toFixed(1)}만원`;
+            return `${value.toLocaleString()}원`;
+        }
+        
         function downloadVolumeCSV() {
             if (!window.volumeData) return;
-            
             let csv = '키워드,PC검색량,모바일검색량,총검색량,경쟁도\n';
             window.volumeData.forEach(item => {
                 const pcNum = parseVolume(item.monthlyPcQcCnt);
@@ -1431,9 +1493,495 @@
                 const total = pcNum + mobileNum;
                 csv += `"${item.keyword}",${pcNum},${mobileNum},${total},"${item.compIdx || '-'}"\n`;
             });
+            downloadFile(new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'}), 'keyword_volume.csv');
+        }
+
+        // ============================================
+        // 광고 분석
+        // ============================================
+        let selectedAdMode = null;
+        
+        function selectAdMode(mode) {
+            selectedAdMode = mode;
             
-            const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
-            downloadFile(blob, 'keyword_volume.csv');
+            // 모드 카드 활성화
+            document.querySelectorAll('.ad-mode-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.mode === mode) {
+                    card.classList.add('active');
+                }
+            });
+            
+            // 입력 섹션 표시
+            const bidInputSection = document.getElementById('adBidInputSection');
+            const analyzeSection = document.getElementById('adAnalyzeSection');
+            
+            if (mode === 'custom') {
+                bidInputSection.style.display = 'block';
+                analyzeSection.style.display = 'none';
+            } else {
+                bidInputSection.style.display = 'none';
+                analyzeSection.style.display = 'block';
+            }
+            
+            // 결과 초기화
+            document.getElementById('adResultArea').style.display = 'none';
+            document.getElementById('adResult').innerHTML = '';
+        }
+        
+        async function analyzeAd() {
+            const keyword = document.getElementById('adKeyword').value.trim();
+            if (!keyword) { alert('키워드를 입력해주세요.'); return; }
+            
+            const resultArea = document.getElementById('adResultArea');
+            const loading = document.getElementById('adLoading');
+            const loadingText = document.getElementById('adLoadingText');
+            const analyzeBtn = document.getElementById('adAnalyzeBtn');
+            const result = document.getElementById('adResult');
+            
+            resultArea.style.display = 'block';
+            loading.classList.add('show');
+            analyzeBtn.disabled = true;
+            
+            const toolType = selectedAdMode === 'rank' ? 'ad_rank_bids' : 'ad_full';
+            loadingText.textContent = selectedAdMode === 'rank' ? '순위별 입찰가 조회 중...' : '전체 분석 중...';
+            
+            try {
+                const res = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tool_type: toolType, keyword: keyword })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    if (selectedAdMode === 'rank') {
+                        renderRankBidsResult(data, result);
+                    } else {
+                        renderFullAnalysisResult(data, result);
+                    }
+                } else {
+                    result.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 오류</p><p class="result-details">${data.error}</p></div>`;
+                }
+            } catch (err) {
+                result.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 네트워크 오류</p><p class="result-details">${err.message}</p></div>`;
+            } finally {
+                loading.classList.remove('show');
+                analyzeBtn.disabled = false;
+            }
+        }
+        
+        async function analyzeAdCustom() {
+            const keyword = document.getElementById('adKeyword').value.trim();
+            const bidAmount = document.getElementById('adBidAmount').value;
+            
+            if (!keyword) { alert('키워드를 입력해주세요.'); return; }
+            if (!bidAmount) { alert('입찰가를 입력해주세요.'); return; }
+            
+            const bid = parseInt(bidAmount);
+            if (bid < 70 || bid > 100000) { alert('입찰가는 70원 ~ 100,000원 범위로 입력해주세요.'); return; }
+            
+            const resultArea = document.getElementById('adResultArea');
+            const loading = document.getElementById('adLoading');
+            const loadingText = document.getElementById('adLoadingText');
+            const customBtn = document.getElementById('adCustomBtn');
+            const result = document.getElementById('adResult');
+            
+            resultArea.style.display = 'block';
+            loading.classList.add('show');
+            customBtn.disabled = true;
+            loadingText.textContent = `${bid.toLocaleString()}원 입찰가 분석 중...`;
+            
+            try {
+                const res = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tool_type: 'ad_custom', keyword: keyword, bid: bid })
+                });
+                const data = await res.json();
+                
+                if (data.success) {
+                    renderCustomAnalysisResult(data, result, bid);
+                } else {
+                    result.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 오류</p><p class="result-details">${data.error}</p></div>`;
+                }
+            } catch (err) {
+                result.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 네트워크 오류</p><p class="result-details">${err.message}</p></div>`;
+            } finally {
+                loading.classList.remove('show');
+                customBtn.disabled = false;
+            }
+        }
+        
+        // ============================================
+        // 광고 분석 결과 렌더링
+        // ============================================
+        function renderRankBidsResult(data, container) {
+            const info = data.keywordInfo || {};
+            const bidList = data.bidLandscape || [];
+            
+            const pcQc = parseVolume(info.monthlyPcQcCnt);
+            const mobileQc = parseVolume(info.monthlyMobileQcCnt);
+            const totalQc = pcQc + mobileQc;
+            const compIdx = info.compIdx || '-';
+            
+            let compClass = 'low';
+            if (compIdx === '높음') compClass = 'high';
+            else if (compIdx === '중간') compClass = 'medium';
+            
+            let html = `
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">🔎 ${info.keyword || '키워드'}</span>
+                        <span class="ad-result-badge ${compClass}">경쟁도: ${compIdx}</span>
+                    </div>
+                    <div class="ad-stat-grid">
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">월간 검색량</div>
+                            <div class="ad-stat-value">${totalQc.toLocaleString()}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">모바일</div>
+                            <div class="ad-stat-value">${mobileQc.toLocaleString()}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">PC</div>
+                            <div class="ad-stat-value">${pcQc.toLocaleString()}회</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">🏆 순위별 최소 입찰가</span>
+                    </div>
+            `;
+            
+            if (bidList.length > 0) {
+                html += `<table class="ad-rank-table">
+                    <thead><tr><th>순위</th><th>모바일 입찰가</th><th>PC 입찰가</th></tr></thead>
+                    <tbody>`;
+                
+                bidList.forEach(item => {
+                    html += `<tr>
+                        <td class="rank-num">${item.rank}위</td>
+                        <td>${item.mobileBid ? item.mobileBid.toLocaleString() + '원' : '-'}</td>
+                        <td>${item.pcBid ? item.pcBid.toLocaleString() + '원' : '-'}</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table>';
+            } else {
+                html += '<p style="text-align:center;color:var(--gray);padding:var(--space-lg);">입찰가 데이터가 없습니다.</p>';
+            }
+            
+            html += '</div>';
+            
+            container.innerHTML = html;
+        }
+        
+        function renderCustomAnalysisResult(data, container, userBid) {
+            const info = data.keywordInfo || {};
+            const perf = data.performance || {};
+            const rank = data.rankInfo || {};
+            const bidList = data.bidLandscape || [];
+            
+            const pcQc = parseVolume(info.monthlyPcQcCnt);
+            const mobileQc = parseVolume(info.monthlyMobileQcCnt);
+            const totalQc = pcQc + mobileQc;
+            const compIdx = info.compIdx || '-';
+            
+            let compClass = 'low';
+            if (compIdx === '높음') compClass = 'high';
+            else if (compIdx === '중간') compClass = 'medium';
+            
+            const clicks = perf.clicks || 0;
+            const cost = perf.cost || (clicks * userBid * 0.8);
+            const cpc = clicks > 0 ? Math.round(cost / clicks) : 0;
+            const dailyCost = Math.round(cost / 30);
+            
+            let html = `
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">🔎 ${info.keyword || '키워드'}</span>
+                        <span class="ad-result-badge ${compClass}">경쟁도: ${compIdx}</span>
+                    </div>
+                    <div class="ad-stat-grid">
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">월간 검색량</div>
+                            <div class="ad-stat-value">${totalQc.toLocaleString()}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">모바일</div>
+                            <div class="ad-stat-value">${mobileQc.toLocaleString()}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">PC</div>
+                            <div class="ad-stat-value">${pcQc.toLocaleString()}회</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">🎯 입찰가 ${userBid.toLocaleString()}원 예상 성과</span>
+                    </div>
+                    <div class="ad-stat-grid">
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">예상 순위</div>
+                            <div class="ad-stat-value highlight">${rank.rankText || '미확인'}</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">노출 점유율</div>
+                            <div class="ad-stat-value">${rank.share || 0}%</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">월 예상 클릭</div>
+                            <div class="ad-stat-value highlight">${clicks}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">월 예상 비용</div>
+                            <div class="ad-stat-value">${formatWon(cost)}</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">클릭당 비용</div>
+                            <div class="ad-stat-value">${cpc.toLocaleString()}원</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">일 예산 필요</div>
+                            <div class="ad-stat-value">${formatWon(dailyCost)}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 평가
+            let evaluation = '';
+            if (clicks >= 30) {
+                evaluation = '<p style="color:var(--success);font-weight:600;">✅ 충분한 노출 예상 - 적정 입찰가입니다.</p>';
+                if (rank.rank <= 2) {
+                    evaluation += '<p>✅ 상위 노출 - 효과 우수</p>';
+                } else if (rank.rank <= 4) {
+                    evaluation += '<p>→ 중상위 노출 - 안정적</p>';
+                } else {
+                    evaluation += '<p>→ 하위 노출 - 입찰가 증액 고려</p>';
+                }
+            } else if (clicks >= 10) {
+                evaluation = `<p style="color:var(--accent-dark);font-weight:600;">⚠️ 클릭 수 다소 적음</p>
+                    <p>→ ${(userBid + 500).toLocaleString()}원 이상 권장</p>`;
+            } else {
+                evaluation = `<p style="color:var(--error);font-weight:600;">❌ 입찰가 너무 낮음</p>
+                    <p>→ 최소 ${(userBid * 2).toLocaleString()}원 이상 필요</p>`;
+            }
+            
+            html += `
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">💡 평가</span>
+                    </div>
+                    <div style="padding:var(--space-sm);">${evaluation}</div>
+                </div>
+            `;
+            
+            // 순위별 입찰가 참고
+            if (bidList.length > 0) {
+                html += `
+                    <div class="ad-result-card">
+                        <div class="ad-result-header">
+                            <span class="ad-result-title">📊 순위별 입찰가 참고</span>
+                        </div>
+                        <table class="ad-rank-table">
+                            <thead><tr><th>순위</th><th>모바일</th><th>PC</th></tr></thead>
+                            <tbody>
+                `;
+                
+                bidList.slice(0, 5).forEach(item => {
+                    const isCurrentRank = item.rank === rank.rank;
+                    html += `<tr ${isCurrentRank ? 'style="background:rgba(234,179,8,0.15);"' : ''}>
+                        <td class="rank-num">${item.rank}위 ${isCurrentRank ? '← 현재' : ''}</td>
+                        <td>${item.mobileBid ? item.mobileBid.toLocaleString() + '원' : '-'}</td>
+                        <td>${item.pcBid ? item.pcBid.toLocaleString() + '원' : '-'}</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function renderFullAnalysisResult(data, container) {
+            const info = data.keywordInfo || {};
+            const mobilePerf = data.mobilePerformance || [];
+            const pcPerf = data.pcPerformance || [];
+            const recommended = data.recommendedBid || null;
+            const bidList = data.bidLandscape || [];
+            
+            const pcQc = parseVolume(info.monthlyPcQcCnt);
+            const mobileQc = parseVolume(info.monthlyMobileQcCnt);
+            const totalQc = pcQc + mobileQc;
+            const mobileRatio = totalQc > 0 ? Math.round(mobileQc / totalQc * 100) : 0;
+            const compIdx = info.compIdx || '-';
+            
+            let compClass = 'low';
+            if (compIdx === '높음') compClass = 'high';
+            else if (compIdx === '중간') compClass = 'medium';
+            
+            let html = `
+                <div class="ad-result-card">
+                    <div class="ad-result-header">
+                        <span class="ad-result-title">🔎 ${info.keyword || '키워드'}</span>
+                        <span class="ad-result-badge ${compClass}">경쟁도: ${compIdx}</span>
+                    </div>
+                    <div class="ad-stat-grid">
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">월간 검색량</div>
+                            <div class="ad-stat-value">${totalQc.toLocaleString()}회</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">모바일</div>
+                            <div class="ad-stat-value">${mobileQc.toLocaleString()}회 (${mobileRatio}%)</div>
+                        </div>
+                        <div class="ad-stat-item">
+                            <div class="ad-stat-label">PC</div>
+                            <div class="ad-stat-value">${pcQc.toLocaleString()}회 (${100-mobileRatio}%)</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 추천 입찰가
+            if (recommended) {
+                const dailyBudget = Math.max(Math.round(recommended.cost / 30), 10000);
+                const cpc = recommended.clicks > 0 ? Math.round(recommended.cost / recommended.clicks) : 0;
+                
+                html += `
+                    <div class="ad-recommendation">
+                        <div class="ad-recommendation-title">🎯 추천 입찰가</div>
+                        <div class="ad-recommendation-content">
+                            <div class="ad-recommendation-item">
+                                <div class="ad-recommendation-label">입찰가</div>
+                                <div class="ad-recommendation-value">${recommended.bid.toLocaleString()}원</div>
+                            </div>
+                            <div class="ad-recommendation-item">
+                                <div class="ad-recommendation-label">월 예상 클릭</div>
+                                <div class="ad-recommendation-value">${recommended.clicks}회</div>
+                            </div>
+                            <div class="ad-recommendation-item">
+                                <div class="ad-recommendation-label">월 예상 비용</div>
+                                <div class="ad-recommendation-value">${formatWon(recommended.cost)}</div>
+                            </div>
+                            <div class="ad-recommendation-item">
+                                <div class="ad-recommendation-label">클릭당 비용</div>
+                                <div class="ad-recommendation-value">${cpc.toLocaleString()}원</div>
+                            </div>
+                            <div class="ad-recommendation-item">
+                                <div class="ad-recommendation-label">일 예산</div>
+                                <div class="ad-recommendation-value">${formatWon(dailyBudget)}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // 모바일 성과 테이블
+            if (mobilePerf.length > 0) {
+                html += `
+                    <div class="ad-result-card">
+                        <div class="ad-result-header">
+                            <span class="ad-result-title">📱 모바일 입찰가별 성과</span>
+                        </div>
+                        <table class="ad-perf-table">
+                            <thead><tr><th>입찰가</th><th>월 클릭</th><th>월 비용</th><th>CPC</th></tr></thead>
+                            <tbody>
+                `;
+                
+                mobilePerf.forEach(item => {
+                    const isRecommended = recommended && item.bid === recommended.bid;
+                    const cpc = item.clicks > 0 ? Math.round(item.cost / item.clicks) : 0;
+                    html += `<tr ${isRecommended ? 'class="recommended"' : ''}>
+                        <td>${item.bid.toLocaleString()}원 ${isRecommended ? '⭐' : ''}</td>
+                        <td>${item.clicks}회</td>
+                        <td>${formatWon(item.cost)}</td>
+                        <td>${cpc.toLocaleString()}원</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+            }
+            
+            // PC 성과 테이블
+            if (pcPerf.length > 0) {
+                html += `
+                    <div class="ad-result-card">
+                        <div class="ad-result-header">
+                            <span class="ad-result-title">💻 PC 입찰가별 성과</span>
+                        </div>
+                        <table class="ad-perf-table">
+                            <thead><tr><th>입찰가</th><th>월 클릭</th><th>월 비용</th><th>CPC</th></tr></thead>
+                            <tbody>
+                `;
+                
+                pcPerf.forEach(item => {
+                    const cpc = item.clicks > 0 ? Math.round(item.cost / item.clicks) : 0;
+                    html += `<tr>
+                        <td>${item.bid.toLocaleString()}원</td>
+                        <td>${item.clicks}회</td>
+                        <td>${formatWon(item.cost)}</td>
+                        <td>${cpc.toLocaleString()}원</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+            }
+            
+            // 순위별 입찰가
+            if (bidList.length > 0) {
+                html += `
+                    <div class="ad-result-card">
+                        <div class="ad-result-header">
+                            <span class="ad-result-title">🏆 순위별 최소 입찰가</span>
+                        </div>
+                        <table class="ad-rank-table">
+                            <thead><tr><th>순위</th><th>모바일</th><th>PC</th></tr></thead>
+                            <tbody>
+                `;
+                
+                bidList.slice(0, 5).forEach(item => {
+                    html += `<tr>
+                        <td class="rank-num">${item.rank}위</td>
+                        <td>${item.mobileBid ? item.mobileBid.toLocaleString() + '원' : '-'}</td>
+                        <td>${item.pcBid ? item.pcBid.toLocaleString() + '원' : '-'}</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+            }
+            
+            // 운영 가이드
+            if (recommended) {
+                const dailyBudget = Math.max(Math.round(recommended.cost / 30), 10000);
+                html += `
+                    <div class="ad-result-card">
+                        <div class="ad-result-header">
+                            <span class="ad-result-title">📋 운영 가이드</span>
+                        </div>
+                        <div style="padding:var(--space-sm);font-size:0.875rem;line-height:1.8;">
+                            <p><strong>시작 설정</strong></p>
+                            <p>• 입찰가: ${recommended.bid.toLocaleString()}원</p>
+                            <p>• 일 예산: ${formatWon(dailyBudget)}</p>
+                            <p>• 월 예산: 약 ${formatWon(recommended.cost)}</p>
+                            <br>
+                            <p><strong>운영 팁</strong></p>
+                            <p>• 1주일 후 성과 확인</p>
+                            <p>• 전환 발생 시 예산 증액 검토</p>
+                            <p>• 품질점수 관리로 CPC 절감 가능</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
         }
     </script>
 </body>
