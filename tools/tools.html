@@ -63,11 +63,12 @@
             overflow: hidden;
         }
         
-        .tab-nav { display: flex; background: var(--primary); }
+        .tab-nav { display: flex; background: var(--primary); flex-wrap: wrap; }
         .tab-btn {
             flex: 1;
+            min-width: 80px;
             padding: var(--space-md) var(--space-sm);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: rgba(255,255,255,0.6);
             background: transparent;
@@ -147,6 +148,42 @@
         .mixer-textarea:focus { outline: none; border-color: var(--accent); }
         .mixer-textarea::placeholder { color: var(--gray-light); font-size: 0.75rem; }
         
+        .bulk-textarea {
+            width: 100%;
+            height: 200px;
+            padding: var(--space-md);
+            font-size: 0.875rem;
+            border: 2px solid var(--gray-lighter);
+            border-radius: var(--radius);
+            resize: vertical;
+            font-family: inherit;
+            line-height: 1.6;
+        }
+        .bulk-textarea:focus { outline: none; border-color: var(--accent); }
+        .bulk-options { 
+            display: flex; 
+            gap: var(--space-lg); 
+            margin: var(--space-md) 0 var(--space-lg); 
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .bulk-option { 
+            display: flex; 
+            align-items: center; 
+            gap: var(--space-sm); 
+            font-size: 0.875rem; 
+            cursor: pointer; 
+        }
+        .bulk-option input { width: 18px; height: 18px; accent-color: var(--accent); }
+        .keyword-count-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        
         .rules-section { margin-bottom: var(--space-lg); }
         .rules-title { font-size: 0.875rem; font-weight: 700; margin-bottom: var(--space-sm); }
         .rules-grid { display: flex; flex-wrap: wrap; gap: var(--space-xs); }
@@ -201,7 +238,6 @@
             margin-bottom: var(--space-md);
         }
         
-        /* 검색량 테이블 */
         .volume-table-wrapper {
             max-height: 400px;
             overflow-y: auto;
@@ -234,6 +270,32 @@
         .comp-high { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
         .comp-medium { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
         .comp-low { background: #d1fae5; color: #065f46; padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+        
+        .related-section {
+            margin-top: var(--space-lg);
+            padding-top: var(--space-lg);
+            border-top: 2px dashed var(--gray-lighter);
+        }
+        .related-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        .related-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .source-keyword {
+            font-size: 0.7rem;
+            color: var(--gray);
+            background: var(--light);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
         
         .loading-overlay {
             display: none;
@@ -289,8 +351,6 @@
         }
         .sheets-link { background: var(--success); color: var(--white); }
         .sheets-link:hover { background: #1ea34d; }
-        .actions-link { background: var(--gray-lighter); color: var(--dark); }
-        .actions-link:hover { background: var(--primary); color: var(--white); }
         
         .logout-btn {
             position: fixed;
@@ -311,11 +371,11 @@
         @media (max-width: 768px) {
             .crawler-section { padding: calc(var(--header-height) + var(--space-lg)) var(--space-md) var(--space-2xl); }
             .tab-content { padding: var(--space-lg); }
-            .tab-btn { padding: var(--space-sm); font-size: 0.7rem; }
+            .tab-btn { padding: var(--space-sm); font-size: 0.65rem; min-width: 60px; }
             .tab-btn-icon { font-size: 1rem; }
             .id-grid, .mixer-grid { grid-template-columns: 1fr; }
             .id-grid .form-group:last-child:nth-child(odd) { grid-column: span 1; }
-            .mixer-options { flex-direction: column; gap: var(--space-sm); }
+            .mixer-options, .bulk-options { flex-direction: column; gap: var(--space-sm); }
             .bottom-links { flex-direction: column; }
             .logout-btn { top: auto; bottom: var(--space-lg); right: var(--space-md); }
             .volume-table { font-size: 0.7rem; }
@@ -332,7 +392,7 @@
             <p class="password-desc">마케팅 도구 사용을 위해<br>비밀번호를 입력해주세요.</p>
             <input type="password" id="passwordInput" class="password-input" placeholder="••••••••" maxlength="20">
             <p id="passwordError" class="password-error">비밀번호가 올바르지 않습니다.</p>
-            <button onclick="checkPassword()" class="btn btn-accent btn-lg btn-full">확인</button>
+            <button onclick="checkPassword()" id="loginBtn" class="btn btn-accent btn-lg btn-full">확인</button>
         </div>
     </div>
 
@@ -361,6 +421,7 @@
                             <button class="tab-btn active" data-tab="keyword"><span class="tab-btn-icon">🔍</span>키워드 검색</button>
                             <button class="tab-btn" data-tab="place"><span class="tab-btn-icon">📍</span>플레이스 ID</button>
                             <button class="tab-btn" data-tab="mixer"><span class="tab-btn-icon">🔀</span>키워드 조합</button>
+                            <button class="tab-btn" data-tab="bulk"><span class="tab-btn-icon">📊</span>검색량 조회</button>
                         </div>
                         
                         <!-- 탭 1: 키워드 검색 -->
@@ -486,7 +547,7 @@
                                     <textarea id="keywords4" class="mixer-textarea" placeholder="2024&#10;최신"></textarea>
                                 </div>
                             </div>
-                            
+
                             <div class="rules-section">
                                 <p class="rules-title">조합 규칙</p>
                                 <div class="rules-grid">
@@ -535,6 +596,48 @@
                             </div>
                         </div>
 
+                        <!-- 탭 4: 다중 키워드 검색량 조회 -->
+                        <div id="bulkTab" class="tab-content">
+                            <div class="tab-header">
+                                <h1 class="tab-title">다중 키워드 검색량</h1>
+                                <p class="tab-subtitle">여러 키워드의 검색량을 한번에 조회</p>
+                            </div>
+                            <div class="info-box">
+                                <p class="info-box-title">📌 사용 방법</p>
+                                <ul>
+                                    <li>키워드를 한 줄에 하나씩 입력 (최대 100개)</li>
+                                    <li>연관 키워드 포함 시 더 많은 키워드 발굴 가능</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">🔎 키워드 입력 <span class="required">*</span></label>
+                                <textarea id="bulkKeywords" class="bulk-textarea" placeholder="강남 맛집&#10;홍대 카페&#10;이태원 브런치&#10;성수동 디저트&#10;..."></textarea>
+                            </div>
+                            
+                            <div class="bulk-options">
+                                <label class="bulk-option">
+                                    <input type="checkbox" id="includeRelated"> 
+                                    연관 키워드 포함 (더 많은 키워드 발굴)
+                                </label>
+                                <span class="keyword-count-badge" id="bulkCount">0개 입력됨</span>
+                            </div>
+                            
+                            <div class="btn-group">
+                                <button type="button" onclick="searchBulkVolume()" id="bulkSearchBtn" class="btn btn-accent btn-lg">📊 검색량 조회</button>
+                                <button type="button" onclick="clearBulkInput()" class="btn btn-outline btn-lg">🔄 초기화</button>
+                            </div>
+                            
+                            <div class="mixer-result" id="bulkResultArea" style="position:relative; display:none;">
+                                <div class="loading-overlay" id="bulkLoading">
+                                    <span class="spinner" style="width:32px;height:32px;border-width:3px;"></span>
+                                    <span class="loading-text" id="bulkLoadingText">검색량 조회 중...</span>
+                                </div>
+                                
+                                <div id="bulkVolumeResult"></div>
+                            </div>
+                        </div>
+
                         <div class="bottom-links">
                             <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" target="_blank" class="sheets-link">📊 결과 시트</a>
                         </div>
@@ -545,23 +648,90 @@
     </div>
 
     <script>
-        const CORRECT_PASSWORD = 'dnjsqmffjr1819';
         const STORAGE_KEY = 'oneblock_crawler_auth';
+        const TOKEN_KEY = 'oneblock_auth_token';
+        const TOKEN_EXPIRY_KEY = 'oneblock_token_expiry';
         const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
 
-        // 인증
-        function checkAuth() { if (localStorage.getItem(STORAGE_KEY) === 'true') showMainContent(); }
-        function checkPassword() {
-            const input = document.getElementById('passwordInput');
-            if (input.value === CORRECT_PASSWORD) { localStorage.setItem(STORAGE_KEY, 'true'); showMainContent(); }
-            else { document.getElementById('passwordError').classList.add('show'); input.value = ''; input.focus(); }
+        // ============================================
+        // 인증 (서버 검증 방식)
+        // ============================================
+        function checkAuth() {
+            const token = localStorage.getItem(TOKEN_KEY);
+            const expiry = localStorage.getItem(TOKEN_EXPIRY_KEY);
+            
+            if (token && expiry && Date.now() < parseInt(expiry)) {
+                showMainContent();
+            }
         }
-        function showMainContent() { document.getElementById('passwordScreen').classList.add('hidden'); document.getElementById('mainContent').classList.add('visible'); }
-        function logout() { localStorage.removeItem(STORAGE_KEY); location.reload(); }
-        document.getElementById('passwordInput').addEventListener('keypress', e => { if (e.key === 'Enter') checkPassword(); });
-        checkAuth();
         
-        // 탭
+        async function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const loginBtn = document.getElementById('loginBtn');
+            const errorEl = document.getElementById('passwordError');
+            
+            if (!input.value.trim()) {
+                errorEl.textContent = '비밀번호를 입력해주세요.';
+                errorEl.classList.add('show');
+                return;
+            }
+            
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="spinner"></span> 확인 중...';
+            errorEl.classList.remove('show');
+            
+            try {
+                const res = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tool_type: 'auth',
+                        password: input.value
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    localStorage.setItem(TOKEN_KEY, data.token);
+                    localStorage.setItem(TOKEN_EXPIRY_KEY, String(Date.now() + data.expiresIn));
+                    showMainContent();
+                } else {
+                    errorEl.textContent = data.error || '비밀번호가 올바르지 않습니다.';
+                    errorEl.classList.add('show');
+                    input.value = '';
+                    input.focus();
+                }
+            } catch (err) {
+                errorEl.textContent = '서버 연결 오류. 잠시 후 다시 시도해주세요.';
+                errorEl.classList.add('show');
+            } finally {
+                loginBtn.disabled = false;
+                loginBtn.textContent = '확인';
+            }
+        }
+        
+        function showMainContent() {
+            document.getElementById('passwordScreen').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('visible');
+        }
+        
+        function logout() {
+            localStorage.removeItem(TOKEN_KEY);
+            localStorage.removeItem(TOKEN_EXPIRY_KEY);
+            localStorage.removeItem(STORAGE_KEY);
+            location.reload();
+        }
+        
+        document.getElementById('passwordInput').addEventListener('keypress', e => {
+            if (e.key === 'Enter') checkPassword();
+        });
+        
+        checkAuth();
+
+        // ============================================
+        // 탭 전환
+        // ============================================
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -571,7 +741,9 @@
             });
         });
 
-        // 키워드 폼
+        // ============================================
+        // 키워드 크롤러 폼
+        // ============================================
         document.getElementById('keywordForm').addEventListener('submit', async e => {
             e.preventDefault();
             await submitCrawlForm({
@@ -581,7 +753,9 @@
             }, document.getElementById('keywordSubmitBtn'), document.getElementById('keywordResult'));
         });
 
-        // 플레이스 폼
+        // ============================================
+        // 플레이스 크롤러 폼
+        // ============================================
         document.getElementById('placeForm').addEventListener('submit', async e => {
             e.preventDefault();
             const extractId = input => { const m = input.match(/(\d{5,})/); return m ? m[1] : ''; };
@@ -619,7 +793,9 @@
             }
         }
 
+        // ============================================
         // 키워드 조합기
+        // ============================================
         ['keywords1','keywords2','keywords3','keywords4'].forEach((id, idx) => {
             document.getElementById(id).addEventListener('input', e => {
                 document.getElementById(`count${idx+1}`).textContent = `${e.target.value.split('\n').filter(l=>l.trim()).length}개`;
@@ -696,7 +872,9 @@
             link.click();
         }
 
-        // 검색량 조회
+        // ============================================
+        // 키워드 조합기 검색량 조회
+        // ============================================
         async function getSearchVolume() {
             if (!currentKeywords.length) { alert('먼저 키워드를 조합해주세요.'); return; }
             if (currentKeywords.length > 100) { alert(`최대 100개까지 조회 가능합니다. (현재 ${currentKeywords.length}개)`); return; }
@@ -717,12 +895,9 @@
                     body: JSON.stringify({ tool_type: 'search_volume', keywords: currentKeywords })
                 });
                 const data = await res.json();
-                
-                // 디버그: 콘솔에 원본 데이터 출력
-                console.log('API 응답:', JSON.stringify(data, null, 2));
-                
+
                 if (data.success) {
-                    renderVolumeTable(data.data);
+                    renderVolumeTable(data.data, volumeResult);
                 } else {
                     volumeResult.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 오류</p><p class="result-details">${data.error}</p></div>`;
                 }
@@ -733,24 +908,151 @@
                 volumeBtn.disabled = false;
             }
         }
+
+        // ============================================
+        // 다중 키워드 검색량 조회
+        // ============================================
+        document.getElementById('bulkKeywords').addEventListener('input', e => {
+            const count = e.target.value.split('\n').filter(l => l.trim()).length;
+            document.getElementById('bulkCount').textContent = `${count}개 입력됨`;
+        });
         
-        function renderVolumeTable(data) {
-            const volumeResult = document.getElementById('volumeResult');
+        async function searchBulkVolume() {
+            const textarea = document.getElementById('bulkKeywords');
+            const keywords = textarea.value.split('\n').filter(k => k.trim()).map(k => k.trim());
             
+            if (!keywords.length) {
+                alert('키워드를 입력해주세요.');
+                return;
+            }
+            
+            if (keywords.length > 100) {
+                alert(`최대 100개까지 조회 가능합니다. (현재 ${keywords.length}개)`);
+                return;
+            }
+            
+            const includeRelated = document.getElementById('includeRelated').checked;
+            const resultArea = document.getElementById('bulkResultArea');
+            const loading = document.getElementById('bulkLoading');
+            const loadingText = document.getElementById('bulkLoadingText');
+            const searchBtn = document.getElementById('bulkSearchBtn');
+            const volumeResult = document.getElementById('bulkVolumeResult');
+            
+            resultArea.style.display = 'block';
+            loading.classList.add('show');
+            searchBtn.disabled = true;
+            loadingText.textContent = `${keywords.length}개 키워드 검색량 조회 중...`;
+            
+            try {
+                const res = await fetch(WORKER_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        tool_type: 'bulk_search_volume',
+                        keywords: keywords,
+                        includeRelated: includeRelated
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    renderBulkVolumeResult(data, volumeResult);
+                } else {
+                    volumeResult.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 오류</p><p class="result-details">${data.error}</p></div>`;
+                }
+            } catch (err) {
+                volumeResult.innerHTML = `<div class="result-message show error"><p class="result-title">❌ 네트워크 오류</p><p class="result-details">${err.message}</p></div>`;
+            } finally {
+                loading.classList.remove('show');
+                searchBtn.disabled = false;
+            }
+        }
+        
+        function renderBulkVolumeResult(data, container) {
+            let html = '';
+            
+            // 메인 키워드 테이블
+            html += `
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);margin-bottom:var(--space-sm);">
+                    <span style="font-weight:700;">📊 입력 키워드 검색량 (${data.total}개)</span>
+                    <button class="mixer-result-btn" onclick="downloadBulkCSV('main')">📄 CSV 다운로드</button>
+                </div>
+            `;
+            html += renderVolumeTableHTML(data.data);
+            
+            // 연관 키워드 테이블 (있을 경우)
+            if (data.related && data.related.length > 0) {
+                html += `
+                    <div class="related-section">
+                        <div class="related-header">
+                            <span class="related-title">🔗 연관 키워드 (${data.relatedTotal}개)</span>
+                            <button class="mixer-result-btn" onclick="downloadBulkCSV('related')">📄 CSV 다운로드</button>
+                        </div>
+                `;
+                html += renderVolumeTableHTML(data.related, true);
+                html += '</div>';
+            }
+            
+            container.innerHTML = html;
+            
+            // CSV 다운로드용 데이터 저장
+            window.bulkMainData = data.data;
+            window.bulkRelatedData = data.related || [];
+        }
+        
+        function clearBulkInput() {
+            document.getElementById('bulkKeywords').value = '';
+            document.getElementById('bulkCount').textContent = '0개 입력됨';
+            document.getElementById('includeRelated').checked = false;
+            document.getElementById('bulkResultArea').style.display = 'none';
+            document.getElementById('bulkVolumeResult').innerHTML = '';
+            window.bulkMainData = null;
+            window.bulkRelatedData = null;
+        }
+        
+        function downloadBulkCSV(type) {
+            const data = type === 'main' ? window.bulkMainData : window.bulkRelatedData;
+            if (!data || !data.length) {
+                alert('다운로드할 데이터가 없습니다.');
+                return;
+            }
+            
+            let csv = type === 'related' 
+                ? '키워드,PC검색량,모바일검색량,총검색량,경쟁도,출처키워드\n'
+                : '키워드,PC검색량,모바일검색량,총검색량,경쟁도\n';
+            
+            data.forEach(item => {
+                const pcNum = parseVolume(item.monthlyPcQcCnt);
+                const mobileNum = parseVolume(item.monthlyMobileQcCnt);
+                const total = pcNum + mobileNum;
+                
+                if (type === 'related') {
+                    csv += `"${item.keyword}",${pcNum},${mobileNum},${total},"${item.compIdx || '-'}","${item.sourceKeyword || ''}"\n`;
+                } else {
+                    csv += `"${item.keyword}",${pcNum},${mobileNum},${total},"${item.compIdx || '-'}"\n`;
+                }
+            });
+            
+            const filename = type === 'related' ? 'related_keywords.csv' : 'keyword_volume.csv';
+            const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
+            downloadFile(blob, filename);
+        }
+
+        // ============================================
+        // 공통 테이블 렌더링 함수
+        // ============================================
+        function renderVolumeTableHTML(data, showSource = false) {
             // 총 검색량 기준 정렬
-            data.sort((a, b) => {
+            const sortedData = [...data].sort((a, b) => {
                 const totalA = (parseVolume(a.monthlyPcQcCnt) + parseVolume(a.monthlyMobileQcCnt));
                 const totalB = (parseVolume(b.monthlyPcQcCnt) + parseVolume(b.monthlyMobileQcCnt));
                 return totalB - totalA;
             });
             
             let html = `
-                <div style="margin-top:var(--space-md);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
-                    <span style="font-weight:700;">📊 검색량 결과 (${data.length}개)</span>
-                    <button class="mixer-result-btn" onclick="downloadVolumeCSV()">📄 CSV 다운로드</button>
-                </div>
                 <div class="volume-table-wrapper">
-                    <table class="volume-table" id="volumeTable">
+                    <table class="volume-table">
                         <thead>
                             <tr>
                                 <th>키워드</th>
@@ -758,18 +1060,17 @@
                                 <th>모바일</th>
                                 <th>총합</th>
                                 <th>경쟁</th>
+                                ${showSource ? '<th>출처</th>' : ''}
                             </tr>
                         </thead>
                         <tbody>
             `;
             
-            data.forEach(item => {
-                // 숫자 변환 (문자열 "< 10" 처리 포함)
+            sortedData.forEach(item => {
                 const pcNum = parseVolume(item.monthlyPcQcCnt);
                 const mobileNum = parseVolume(item.monthlyMobileQcCnt);
                 const total = pcNum + mobileNum;
                 
-                // 표시용 포맷
                 const pc = formatNumber(item.monthlyPcQcCnt);
                 const mobile = formatNumber(item.monthlyMobileQcCnt);
                 const totalFormatted = formatNumber(total);
@@ -790,18 +1091,31 @@
                         <td>${mobile}</td>
                         <td class="${volumeClass}">${totalFormatted}</td>
                         <td><span class="${compClass}">${compText}</span></td>
+                        ${showSource ? `<td><span class="source-keyword">${item.sourceKeyword || ''}</span></td>` : ''}
                     </tr>
                 `;
             });
             
             html += '</tbody></table></div>';
-            volumeResult.innerHTML = html;
+            return html;
+        }
+        
+        // 기존 키워드 조합기용 테이블 렌더링 (호환성 유지)
+        function renderVolumeTable(data, container) {
+            const html = `
+                <div style="margin-top:var(--space-md);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
+                    <span style="font-weight:700;">📊 검색량 결과 (${data.length}개)</span>
+                    <button class="mixer-result-btn" onclick="downloadVolumeCSV()">📄 CSV 다운로드</button>
+                </div>
+            ` + renderVolumeTableHTML(data);
             
-            // CSV용 데이터 저장
+            container.innerHTML = html;
             window.volumeData = data;
         }
         
-        // 숫자 파싱 (문자열 "< 10" 처리)
+        // ============================================
+        // 유틸리티 함수
+        // ============================================
         function parseVolume(val) {
             if (val === '< 10' || val === '<10' || val === '< 10') return 0;
             if (val === undefined || val === null || val === '') return 0;
@@ -809,7 +1123,6 @@
             return isNaN(num) ? 0 : num;
         }
         
-        // 숫자 포맷 (표시용)
         function formatNumber(num) {
             if (num === '< 10' || num === '<10' || num === '< 10') return '< 10';
             if (num === undefined || num === null || num === '' || num === 0) return '0';
