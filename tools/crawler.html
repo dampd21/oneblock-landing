@@ -87,7 +87,7 @@
             display: block;
         }
         
-        /* 메인 콘텐츠 (숨김) */
+        /* 메인 콘텐츠 */
         .main-content {
             display: none;
         }
@@ -96,7 +96,7 @@
             display: block;
         }
         
-        /* 크롤러 폼 스타일 */
+        /* 크롤러 섹션 */
         .crawler-section {
             padding: calc(var(--header-height) + var(--space-2xl)) 0 var(--space-4xl);
             min-height: 100vh;
@@ -104,39 +104,89 @@
         }
         
         .crawler-wrapper {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
         
         .crawler-card {
             background: var(--white);
-            padding: var(--space-2xl);
             border-radius: var(--radius-lg);
             box-shadow: var(--shadow-lg);
+            overflow: hidden;
         }
         
-        .crawler-header {
+        /* 탭 네비게이션 */
+        .tab-nav {
+            display: flex;
+            background: var(--primary);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: var(--space-lg);
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.6);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .tab-btn:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .tab-btn.active {
+            color: var(--white);
+            background: var(--primary-light);
+        }
+        
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .tab-btn-icon {
+            display: block;
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        /* 탭 콘텐츠 */
+        .tab-content {
+            display: none;
+            padding: var(--space-2xl);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-header {
             text-align: center;
             margin-bottom: var(--space-xl);
         }
         
-        .crawler-icon {
-            font-size: 3rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .crawler-title {
-            font-size: 1.75rem;
+        .tab-title {
+            font-size: 1.5rem;
             font-weight: 800;
             color: var(--dark);
             margin-bottom: var(--space-sm);
         }
         
-        .crawler-subtitle {
-            font-size: 1rem;
+        .tab-subtitle {
+            font-size: 0.9375rem;
             color: var(--gray);
         }
         
+        /* 정보 박스 */
         .info-box {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             border-radius: var(--radius-md);
@@ -171,6 +221,42 @@
             color: var(--accent);
         }
         
+        /* ID 입력 그리드 */
+        .id-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .id-grid .form-group:last-child:nth-child(odd) {
+            grid-column: span 2;
+        }
+        
+        .id-input-wrapper {
+            position: relative;
+        }
+        
+        .id-number {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            color: var(--dark);
+            font-size: 0.75rem;
+            font-weight: 700;
+            border-radius: var(--radius-full);
+        }
+        
+        .id-input-wrapper .form-input {
+            padding-left: 48px;
+        }
+        
         /* 결과 메시지 */
         .result-message {
             margin-top: var(--space-lg);
@@ -186,13 +272,13 @@
         .result-message.success {
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid var(--success);
-            color: var(--success);
+            color: #166534;
         }
         
         .result-message.error {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid var(--error);
-            color: var(--error);
+            color: #991b1b;
         }
         
         .result-message.loading {
@@ -275,12 +361,29 @@
                 padding: calc(var(--header-height) + var(--space-lg)) var(--space-md) var(--space-2xl);
             }
             
-            .crawler-card {
+            .tab-content {
                 padding: var(--space-xl);
             }
             
-            .crawler-title {
-                font-size: 1.5rem;
+            .tab-title {
+                font-size: 1.25rem;
+            }
+            
+            .tab-btn {
+                padding: var(--space-md);
+                font-size: 0.875rem;
+            }
+            
+            .tab-btn-icon {
+                font-size: 1.25rem;
+            }
+            
+            .id-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .id-grid .form-group:last-child:nth-child(odd) {
+                grid-column: span 1;
             }
             
             .logout-btn {
@@ -335,60 +438,141 @@
             <div class="container">
                 <div class="crawler-wrapper">
                     <div class="crawler-card">
-                        <div class="crawler-header">
-                            <div class="crawler-icon">🔍</div>
-                            <h1 class="crawler-title">플레이스 분석 도구</h1>
-                            <p class="crawler-subtitle">키워드로 상위 업체 리뷰 데이터 수집</p>
-                        </div>
-                        
-                        <div class="info-box">
-                            <p class="info-box-title">📌 사용 방법</p>
-                            <ul>
-                                <li>검색 키워드 입력 (예: 강남 미용실)</li>
-                                <li>수집 개수 선택 후 실행</li>
-                                <li>약 15-20분 후 Google Sheets 확인</li>
-                            </ul>
-                        </div>
-                        
-                        <form id="crawlerForm">
-                            <div class="form-group">
-                                <label class="form-label" for="keyword">
-                                    🔎 검색 키워드 <span class="required">*</span>
-                                </label>
-                                <input 
-                                    type="text" 
-                                    id="keyword" 
-                                    class="form-input"
-                                    placeholder="예: 강남 미용실, 홍대 카페, 부평 맛집"
-                                    required
-                                >
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="maxCount">
-                                    📊 수집 개수
-                                </label>
-                                <select id="maxCount" class="form-select">
-                                    <option value="5">5개 업체 (약 15분)</option>
-                                    <option value="10">10개 업체 (약 25분)</option>
-                                </select>
-                            </div>
-                            
-                            <button type="submit" id="submitBtn" class="btn btn-accent btn-lg btn-full">
-                                🚀 크롤링 시작
+                        <!-- 탭 네비게이션 -->
+                        <div class="tab-nav">
+                            <button class="tab-btn active" data-tab="keyword">
+                                <span class="tab-btn-icon">🔍</span>
+                                키워드 검색
                             </button>
-                        </form>
-                        
-                        <div id="resultMessage" class="result-message">
-                            <p class="result-title"></p>
-                            <p class="result-details"></p>
+                            <button class="tab-btn" data-tab="place">
+                                <span class="tab-btn-icon">📍</span>
+                                플레이스 ID
+                            </button>
                         </div>
                         
-                        <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" 
-                           target="_blank" 
-                           class="sheets-link">
-                            📊 Google Sheets 결과 보기
-                        </a>
+                        <!-- 탭 1: 키워드 검색 -->
+                        <div id="keywordTab" class="tab-content active">
+                            <div class="tab-header">
+                                <h1 class="tab-title">키워드 검색 분석</h1>
+                                <p class="tab-subtitle">키워드로 상위 업체 리뷰 데이터 수집</p>
+                            </div>
+                            
+                            <div class="info-box">
+                                <p class="info-box-title">📌 사용 방법</p>
+                                <ul>
+                                    <li>검색 키워드 입력 (예: 강남 미용실)</li>
+                                    <li>수집 개수 선택 후 실행</li>
+                                    <li>약 15-20분 후 Google Sheets 확인</li>
+                                </ul>
+                            </div>
+                            
+                            <form id="keywordForm">
+                                <div class="form-group">
+                                    <label class="form-label" for="keyword">
+                                        🔎 검색 키워드 <span class="required">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="keyword" 
+                                        class="form-input"
+                                        placeholder="예: 강남 미용실, 홍대 카페, 부평 맛집"
+                                        required
+                                    >
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label" for="maxCount">
+                                        📊 수집 개수
+                                    </label>
+                                    <select id="maxCount" class="form-select">
+                                        <option value="5">5개 업체 (약 15분)</option>
+                                        <option value="10">10개 업체 (약 25분)</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" id="keywordSubmitBtn" class="btn btn-accent btn-lg btn-full">
+                                    🚀 크롤링 시작
+                                </button>
+                            </form>
+                            
+                            <div id="keywordResult" class="result-message"></div>
+                        </div>
+                        
+                        <!-- 탭 2: 플레이스 ID -->
+                        <div id="placeTab" class="tab-content">
+                            <div class="tab-header">
+                                <h1 class="tab-title">플레이스 ID 분석</h1>
+                                <p class="tab-subtitle">특정 업체의 상세 리뷰 데이터 수집</p>
+                            </div>
+                            
+                            <div class="info-box">
+                                <p class="info-box-title">📌 사용 방법</p>
+                                <ul>
+                                    <li>플레이스 ID 또는 URL 입력 (1~5개)</li>
+                                    <li>ID는 네이버 플레이스 URL에서 확인</li>
+                                    <li>약 15-20분 후 Google Sheets 확인</li>
+                                </ul>
+                            </div>
+                            
+                            <form id="placeForm">
+                                <div class="id-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">플레이스 1 <span class="required">*</span></label>
+                                        <div class="id-input-wrapper">
+                                            <span class="id-number">1</span>
+                                            <input type="text" id="placeId1" class="form-input" placeholder="ID 또는 URL" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">플레이스 2</label>
+                                        <div class="id-input-wrapper">
+                                            <span class="id-number">2</span>
+                                            <input type="text" id="placeId2" class="form-input" placeholder="ID 또는 URL">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">플레이스 3</label>
+                                        <div class="id-input-wrapper">
+                                            <span class="id-number">3</span>
+                                            <input type="text" id="placeId3" class="form-input" placeholder="ID 또는 URL">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">플레이스 4</label>
+                                        <div class="id-input-wrapper">
+                                            <span class="id-number">4</span>
+                                            <input type="text" id="placeId4" class="form-input" placeholder="ID 또는 URL">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">플레이스 5</label>
+                                        <div class="id-input-wrapper">
+                                            <span class="id-number">5</span>
+                                            <input type="text" id="placeId5" class="form-input" placeholder="ID 또는 URL">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <p class="form-hint" style="margin-top: var(--space-md); margin-bottom: var(--space-lg);">
+                                    💡 URL 예시: https://m.place.naver.com/restaurant/<strong>1234567890</strong>
+                                </p>
+                                
+                                <button type="submit" id="placeSubmitBtn" class="btn btn-accent btn-lg btn-full">
+                                    🚀 크롤링 시작
+                                </button>
+                            </form>
+                            
+                            <div id="placeResult" class="result-message"></div>
+                        </div>
+                        
+                        <!-- 공통: 시트 링크 -->
+                        <div style="padding: 0 var(--space-2xl) var(--space-2xl);">
+                            <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" 
+                               target="_blank" 
+                               class="sheets-link">
+                                📊 Google Sheets 결과 보기
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -397,17 +581,17 @@
 
     <script>
         // ============================================
-        // 비밀번호 설정 (여기서 변경 가능)
+        // 비밀번호 설정
         // ============================================
-        const CORRECT_PASSWORD = 'dnjsqmffjr1819';
+        const CORRECT_PASSWORD = 'oneblock2025';
         const STORAGE_KEY = 'oneblock_crawler_auth';
+        const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
         
         // ============================================
-        // 인증 체크
+        // 인증
         // ============================================
         function checkAuth() {
-            const isAuth = localStorage.getItem(STORAGE_KEY);
-            if (isAuth === 'true') {
+            if (localStorage.getItem(STORAGE_KEY) === 'true') {
                 showMainContent();
             }
         }
@@ -436,82 +620,129 @@
             location.reload();
         }
         
-        // 엔터키로 비밀번호 확인
         document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
+            if (e.key === 'Enter') checkPassword();
         });
         
-        // 페이지 로드 시 인증 체크
         checkAuth();
         
         // ============================================
-        // 크롤러 폼 제출
+        // 탭 전환
         // ============================================
-        const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 버튼 활성화
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // 콘텐츠 전환
+                const tabId = btn.dataset.tab;
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(tabId + 'Tab').classList.add('active');
+            });
+        });
         
-        document.getElementById('crawlerForm').addEventListener('submit', async (e) => {
+        // ============================================
+        // 키워드 폼 제출
+        // ============================================
+        document.getElementById('keywordForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const keyword = document.getElementById('keyword').value.trim();
             const maxCount = document.getElementById('maxCount').value;
-            const submitBtn = document.getElementById('submitBtn');
-            const resultDiv = document.getElementById('resultMessage');
-            const resultTitle = resultDiv.querySelector('.result-title');
-            const resultDetails = resultDiv.querySelector('.result-details');
+            const submitBtn = document.getElementById('keywordSubmitBtn');
+            const resultDiv = document.getElementById('keywordResult');
             
-            if (!keyword) {
-                resultDiv.className = 'result-message show error';
-                resultTitle.textContent = '❌ 오류';
-                resultDetails.textContent = '키워드를 입력해주세요.';
-                return;
-            }
+            await submitForm({
+                tool_type: 'keyword',
+                keyword: keyword,
+                max_count: maxCount
+            }, submitBtn, resultDiv, `키워드: <strong>${keyword}</strong><br>수집 개수: <strong>${maxCount}개</strong>`);
+        });
+        
+        // ============================================
+        // 플레이스 ID 폼 제출
+        // ============================================
+        document.getElementById('placeForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
             
+            const ids = [
+                document.getElementById('placeId1').value.trim(),
+                document.getElementById('placeId2').value.trim(),
+                document.getElementById('placeId3').value.trim(),
+                document.getElementById('placeId4').value.trim(),
+                document.getElementById('placeId5').value.trim()
+            ];
+            
+            // ID 추출 (URL에서 숫자만)
+            const extractId = (input) => {
+                if (!input) return '';
+                const match = input.match(/(\d{5,})/);
+                return match ? match[1] : input;
+            };
+            
+            const submitBtn = document.getElementById('placeSubmitBtn');
+            const resultDiv = document.getElementById('placeResult');
+            
+            const validIds = ids.map(extractId).filter(id => id);
+            
+            await submitForm({
+                tool_type: 'place',
+                place_id_1: extractId(ids[0]),
+                place_id_2: extractId(ids[1]),
+                place_id_3: extractId(ids[2]),
+                place_id_4: extractId(ids[3]),
+                place_id_5: extractId(ids[4])
+            }, submitBtn, resultDiv, `플레이스 ID: <strong>${validIds.length}개</strong><br>ID: ${validIds.join(', ')}`);
+        });
+        
+        // ============================================
+        // 공통 제출 함수
+        // ============================================
+        async function submitForm(body, submitBtn, resultDiv, successDetails) {
             // 로딩 상태
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="spinner"></span> 요청 중...';
             resultDiv.className = 'result-message show loading';
-            resultTitle.textContent = '⏳ 처리 중';
-            resultDetails.textContent = 'GitHub Actions에 요청을 보내고 있습니다...';
+            resultDiv.innerHTML = '<p class="result-title">⏳ 처리 중</p><p class="result-details">GitHub Actions에 요청을 보내고 있습니다...</p>';
             
             try {
                 const response = await fetch(WORKER_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        keyword: keyword,
-                        max_count: maxCount
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
                 });
                 
                 const data = await response.json();
                 
                 if (data.success) {
                     resultDiv.className = 'result-message show success';
-                    resultTitle.textContent = '✅ 크롤링 시작됨!';
-                    resultDetails.innerHTML = `
-                        <strong>키워드:</strong> ${keyword}<br>
-                        <strong>수집 개수:</strong> ${maxCount}개<br><br>
-                        약 15-20분 후 아래 Google Sheets에서 결과를 확인하세요.
+                    resultDiv.innerHTML = `
+                        <p class="result-title">✅ 크롤링 시작됨!</p>
+                        <p class="result-details">
+                            ${successDetails}<br><br>
+                            약 15-20분 후 아래 Google Sheets에서 결과를 확인하세요.
+                        </p>
                     `;
                 } else {
                     resultDiv.className = 'result-message show error';
-                    resultTitle.textContent = '❌ 오류 발생';
-                    resultDetails.textContent = data.error || '알 수 없는 오류가 발생했습니다.';
+                    resultDiv.innerHTML = `
+                        <p class="result-title">❌ 오류 발생</p>
+                        <p class="result-details">${data.error || '알 수 없는 오류가 발생했습니다.'}</p>
+                    `;
                 }
                 
             } catch (error) {
                 resultDiv.className = 'result-message show error';
-                resultTitle.textContent = '❌ 네트워크 오류';
-                resultDetails.textContent = error.message;
+                resultDiv.innerHTML = `
+                    <p class="result-title">❌ 네트워크 오류</p>
+                    <p class="result-details">${error.message}</p>
+                `;
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '🚀 크롤링 시작';
             }
-        });
+        }
     </script>
 </body>
 </html>
