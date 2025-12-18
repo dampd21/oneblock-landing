@@ -329,10 +329,10 @@
         <div class="password-box">
             <div class="password-icon">🔐</div>
             <h1 class="password-title">접근 제한</h1>
-            <p class="password-desc">관리자 전용 페이지입니다.</p>
-            <input type="password" id="passwordInput" class="password-input" placeholder="••••••" maxlength="20" autofocus>
-            <p id="passwordError" class="password-error">비밀번호가 틀렸습니다.</p>
-            <button onclick="checkPassword()" class="btn btn-accent btn-full">확인</button>
+            <p class="password-desc">마케팅 도구 사용을 위해<br>비밀번호를 입력해주세요.</p>
+            <input type="password" id="passwordInput" class="password-input" placeholder="••••••••" maxlength="20">
+            <p id="passwordError" class="password-error">비밀번호가 올바르지 않습니다.</p>
+            <button onclick="checkPassword()" class="btn btn-accent btn-lg btn-full">확인</button>
         </div>
     </div>
 
@@ -392,7 +392,7 @@
                             </form>
                             <div id="keywordResult" class="result-message"></div>
                         </div>
-                        
+
                         <!-- 탭 2: 플레이스 ID -->
                         <div id="placeTab" class="tab-content">
                             <div class="tab-header">
@@ -534,8 +534,7 @@
                                 <div id="volumeResult"></div>
                             </div>
                         </div>
-                        
-                        <!-- 하단 링크 -->
+
                         <div class="bottom-links">
                             <a href="https://docs.google.com/spreadsheets/d/17mERwFzSJgnK6h61Ryh8uT3f496NR9ZO2nyGow4J_to" target="_blank" class="sheets-link">📊 결과 시트</a>
                             <a href="https://github.com/dampd21/DampdPrograms/actions" target="_blank" class="actions-link">📋 실행 로그</a>
@@ -550,7 +549,7 @@
         const CORRECT_PASSWORD = 'oneblock2025';
         const STORAGE_KEY = 'oneblock_crawler_auth';
         const WORKER_URL = 'https://crawler-trigger.dampd21.workers.dev';
-        
+
         // 인증
         function checkAuth() { if (localStorage.getItem(STORAGE_KEY) === 'true') showMainContent(); }
         function checkPassword() {
@@ -572,7 +571,7 @@
                 document.getElementById(btn.dataset.tab + 'Tab').classList.add('active');
             });
         });
-        
+
         // 키워드 폼
         document.getElementById('keywordForm').addEventListener('submit', async e => {
             e.preventDefault();
@@ -582,7 +581,7 @@
                 max_count: document.getElementById('maxCount').value
             }, document.getElementById('keywordSubmitBtn'), document.getElementById('keywordResult'));
         });
-        
+
         // 플레이스 폼
         document.getElementById('placeForm').addEventListener('submit', async e => {
             e.preventDefault();
@@ -620,7 +619,7 @@
                 btn.innerHTML = '🚀 크롤링 시작';
             }
         }
-        
+
         // 키워드 조합기
         ['keywords1','keywords2','keywords3','keywords4'].forEach((id, idx) => {
             document.getElementById(id).addEventListener('input', e => {
@@ -697,7 +696,7 @@
             link.download = filename;
             link.click();
         }
-        
+
         // 검색량 조회
         async function getSearchVolume() {
             if (!currentKeywords.length) { alert('먼저 키워드를 조합해주세요.'); return; }
@@ -711,7 +710,7 @@
             loading.classList.add('show');
             volumeBtn.disabled = true;
             loadingText.textContent = `${currentKeywords.length}개 키워드 검색량 조회 중...`;
-            
+
             try {
                 const res = await fetch(WORKER_URL, {
                     method: 'POST',
@@ -719,6 +718,9 @@
                     body: JSON.stringify({ tool_type: 'search_volume', keywords: currentKeywords })
                 });
                 const data = await res.json();
+                
+                // 디버그: 콘솔에 원본 데이터 출력
+                console.log('API 응답:', JSON.stringify(data, null, 2));
                 
                 if (data.success) {
                     renderVolumeTable(data.data);
@@ -737,7 +739,11 @@
             const volumeResult = document.getElementById('volumeResult');
             
             // 총 검색량 기준 정렬
-            data.sort((a, b) => (b.monthlyPcQcCnt + b.monthlyMobileQcCnt) - (a.monthlyPcQcCnt + a.monthlyMobileQcCnt));
+            data.sort((a, b) => {
+                const totalA = (parseVolume(a.monthlyPcQcCnt) + parseVolume(a.monthlyMobileQcCnt));
+                const totalB = (parseVolume(b.monthlyPcQcCnt) + parseVolume(b.monthlyMobileQcCnt));
+                return totalB - totalA;
+            });
             
             let html = `
                 <div style="margin-top:var(--space-md);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-sm);">
@@ -759,7 +765,12 @@
             `;
             
             data.forEach(item => {
-                const total = (item.monthlyPcQcCnt || 0) + (item.monthlyMobileQcCnt || 0);
+                // 숫자 변환 (문자열 "< 10" 처리 포함)
+                const pcNum = parseVolume(item.monthlyPcQcCnt);
+                const mobileNum = parseVolume(item.monthlyMobileQcCnt);
+                const total = pcNum + mobileNum;
+                
+                // 표시용 포맷
                 const pc = formatNumber(item.monthlyPcQcCnt);
                 const mobile = formatNumber(item.monthlyMobileQcCnt);
                 const totalFormatted = formatNumber(total);
@@ -791,9 +802,21 @@
             window.volumeData = data;
         }
         
+        // 숫자 파싱 (문자열 "< 10" 처리)
+        function parseVolume(val) {
+            if (val === '< 10' || val === '<10' || val === '< 10') return 0;
+            if (val === undefined || val === null || val === '') return 0;
+            const num = Number(val);
+            return isNaN(num) ? 0 : num;
+        }
+        
+        // 숫자 포맷 (표시용)
         function formatNumber(num) {
-            if (num === undefined || num === null || num === '< 10') return '< 10';
-            return Number(num).toLocaleString();
+            if (num === '< 10' || num === '<10' || num === '< 10') return '< 10';
+            if (num === undefined || num === null || num === '' || num === 0) return '0';
+            const n = Number(num);
+            if (isNaN(n)) return '0';
+            return n.toLocaleString();
         }
         
         function downloadVolumeCSV() {
@@ -801,8 +824,10 @@
             
             let csv = '키워드,PC검색량,모바일검색량,총검색량,경쟁도\n';
             window.volumeData.forEach(item => {
-                const total = (item.monthlyPcQcCnt || 0) + (item.monthlyMobileQcCnt || 0);
-                csv += `"${item.keyword}",${item.monthlyPcQcCnt || 0},${item.monthlyMobileQcCnt || 0},${total},"${item.compIdx || '-'}"\n`;
+                const pcNum = parseVolume(item.monthlyPcQcCnt);
+                const mobileNum = parseVolume(item.monthlyMobileQcCnt);
+                const total = pcNum + mobileNum;
+                csv += `"${item.keyword}",${pcNum},${mobileNum},${total},"${item.compIdx || '-'}"\n`;
             });
             
             const blob = new Blob(['\uFEFF' + csv], {type:'text/csv;charset=utf-8;'});
